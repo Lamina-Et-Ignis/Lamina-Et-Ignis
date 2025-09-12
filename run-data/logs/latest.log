@@ -1,0 +1,31 @@
+[13Sep2025 00:01:42.817] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, /home/adam/.gradle/caches/forge_gradle/assets, --gameDir, ., --fml.forgeVersion, 47.4.6, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, lamina_et_ignis, --all, --output, /home/adam/Repositories/Java - Minecraft/1.20.1/lamina-ignis 1.20.1/src/generated/resources, --existing, /home/adam/Repositories/Java - Minecraft/1.20.1/lamina-ignis 1.20.1/src/main/resources]
+[13Sep2025 00:01:42.819] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.16 by Eclipse Adoptium; OS Linux arch amd64 version 6.8.0-79-generic
+[13Sep2025 00:01:42.864] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[13Sep2025 00:01:42.886] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/home/adam/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23116!/ Service=ModLauncher Env=CLIENT
+[13Sep2025 00:01:43.041] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/adam/.gradle/caches/modules-2/files-2.1/net.minecraftforge/javafmllanguage/1.20.1-47.4.6/9e86bf67e222253576e982856d9958695725adb5/javafmllanguage-1.20.1-47.4.6.jar is missing mods.toml file
+[13Sep2025 00:01:43.041] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/adam/.gradle/caches/modules-2/files-2.1/net.minecraftforge/lowcodelanguage/1.20.1-47.4.6/56100545804adc991cc48ab68b86ba46c5873246/lowcodelanguage-1.20.1-47.4.6.jar is missing mods.toml file
+[13Sep2025 00:01:43.042] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/adam/.gradle/caches/modules-2/files-2.1/net.minecraftforge/mclanguage/1.20.1-47.4.6/fd228d7d879a9da774eda022ea3092cedb5178f1/mclanguage-1.20.1-47.4.6.jar is missing mods.toml file
+[13Sep2025 00:01:43.043] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file /home/adam/.gradle/caches/modules-2/files-2.1/net.minecraftforge/fmlcore/1.20.1-47.4.6/cefc55ada370ce2f23f92834530eb967c0de1fdd/fmlcore-1.20.1-47.4.6.jar is missing mods.toml file
+[13Sep2025 00:01:43.072] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[13Sep2025 00:01:43.689] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, /home/adam/.gradle/caches/forge_gradle/assets, --assetIndex, 5, --mod, lamina_et_ignis, --all, --output, /home/adam/Repositories/Java - Minecraft/1.20.1/lamina-ignis 1.20.1/src/generated/resources, --existing, /home/adam/Repositories/Java - Minecraft/1.20.1/lamina-ignis 1.20.1/src/main/resources]
+[13Sep2025 00:01:43.804] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [lamina_et_ignis]
+[13Sep2025 00:01:45.559] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.4.6, for MC 1.20.1 with MCP 20230612.114412
+[13Sep2025 00:01:45.559] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.4.6 Initialized
+[13Sep2025 00:01:45.634] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[13Sep2025 00:01:45.636] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 1.602 ms
+[13Sep2025 00:01:45.750] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/adam/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.6_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.6_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23181!/assets/.mcassetsroot' uses unexpected schema
+[13Sep2025 00:01:45.750] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/home/adam/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.4.6_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.4.6_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23181!/data/.mcassetsroot' uses unexpected schema
+[13Sep2025 00:01:45.812] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[13Sep2025 00:01:45.814] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 1 ms
+[13Sep2025 00:01:45.814] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[13Sep2025 00:01:45.819] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 5 ms
+[13Sep2025 00:01:45.819] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: lamina_et_ignis
+[13Sep2025 00:01:45.820] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: lamina_et_ignis finished after 0 ms
+[13Sep2025 00:01:45.820] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: lamina_et_ignis
+[13Sep2025 00:01:45.830] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: lamina_et_ignis finished after 9 ms
+[13Sep2025 00:01:45.830] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id lamina_et_ignis
+[13Sep2025 00:01:45.883] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id lamina_et_ignis finished after 52 ms
+[13Sep2025 00:01:45.883] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id lamina_et_ignis
+[13Sep2025 00:01:45.883] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id lamina_et_ignis finished after 0 ms
+[13Sep2025 00:01:45.883] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 71 ms
+[13Sep2025 00:01:45.886] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 38, old count: 18, new count: 39, removed stale: 0, written: 20

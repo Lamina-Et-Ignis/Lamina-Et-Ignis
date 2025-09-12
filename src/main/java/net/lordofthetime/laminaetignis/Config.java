@@ -1,4 +1,4 @@
-package net.lordofthetime.template;
+package net.lordofthetime.laminaetignis;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

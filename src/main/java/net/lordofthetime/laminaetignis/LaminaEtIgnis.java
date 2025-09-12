@@ -1,6 +1,9 @@
-package net.lordofthetime.template;
+package net.lordofthetime.laminaetignis;
 
 import com.mojang.logging.LogUtils;
+import net.lordofthetime.laminaetignis.block.ModBlocks;
+import net.lordofthetime.laminaetignis.item.ModCreativeModeTabs;
+import net.lordofthetime.laminaetignis.item.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -26,6 +29,9 @@ public class LaminaEtIgnis {
     public LaminaEtIgnis(FMLJavaModLoadingContext context){
         IEventBus modEventBus = context.getModEventBus();
 
+        ModCreativeModeTabs.register(modEventBus);
+        ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
