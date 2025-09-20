@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 0.5,
+  "group": "copper",
+  "ingredient": {
+    "item": "minecraft:deepslate_copper_ore"
+  },
+  "result": "lamina_et_ignis:crude_copper_ingot"
+}

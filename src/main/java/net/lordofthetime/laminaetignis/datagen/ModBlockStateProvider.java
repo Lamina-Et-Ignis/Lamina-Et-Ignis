@@ -21,9 +21,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-
+        for (RegistryObject<Block> ore : ModBlocks.ORES.getEntries()) {
+            System.out.println("Genereting BlockState for "+ore.getId());
+            simpleBlockState(ore);
+        }
         for (RegistryObject<Block> block : ModBlocks.BLOCKS.getEntries()) {
-            System.out.println(block.getId());
+            System.out.println("Genereting BlockState for "+block.getId());
             String name = block.getId().getPath();
             if(name.endsWith("leaves")){
                 leavesBlock(block); //leaves
@@ -70,6 +73,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
             }else {
                 simpleBlockState(block); //all other blocks
             }
+
         }
 
     }

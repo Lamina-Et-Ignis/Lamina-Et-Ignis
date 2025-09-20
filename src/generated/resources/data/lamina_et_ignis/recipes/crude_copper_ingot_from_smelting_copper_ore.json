@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 800,
+  "experience": 0.7,
+  "group": "copper",
+  "ingredient": {
+    "item": "minecraft:copper_ore"
+  },
+  "result": "lamina_et_ignis:crude_copper_ingot"
+}

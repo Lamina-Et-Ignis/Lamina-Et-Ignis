@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 675,
+  "experience": 0.5,
+  "group": "gold",
+  "ingredient": {
+    "item": "minecraft:raw_gold"
+  },
+  "result": "lamina_et_ignis:crude_gold_ingot"
+}

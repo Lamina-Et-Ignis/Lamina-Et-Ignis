@@ -1,4 +1,6 @@
-// 1.20.1	2025-09-14T03:09:33.514038102	Item Models: lamina_et_ignis
+// 1.20.1	2025-09-17T18:06:26.237489074	Item Models: lamina_et_ignis
+4862fad149f834e328ef84b50db8ebe4c5fcd630 assets/lamina_et_ignis/models/item/andesite_brick_slab.json
+8d5a020d9da54f8bb5bd656fdcaa553eb9d8fd4c assets/lamina_et_ignis/models/item/andesite_brick_stairs.json
 93c342f2cc2fc66ab645f719976cfbe2b5323319 assets/lamina_et_ignis/models/item/bone_needle.json
 33d2e025f979386d5d67aed50947cb57e8cc18e7 assets/lamina_et_ignis/models/item/bone_shard.json
 f02f157d96a7a8f3e52de33bef9d3b0bd03356ba assets/lamina_et_ignis/models/item/chalkous.json
@@ -28,10 +30,16 @@ ff6e06ccd943768aac7564e02458d0fa31d171cf assets/lamina_et_ignis/models/item/crud
 e3e00dcb06ff3a5383f85f620a3a9e95c0ea4e15 assets/lamina_et_ignis/models/item/crude_tin_mehty_pipe.json
 df212161d7c33fa939c613a262905efb01a4141f assets/lamina_et_ignis/models/item/crude_tin_nugget.json
 ce17e5f06d62b87420b1b19f71a8563c36dce5a0 assets/lamina_et_ignis/models/item/crude_tin_plate.json
+3b5a7f3b96305280ce432c8cd349498e01fd7434 assets/lamina_et_ignis/models/item/diorite_brick_slab.json
+625326405587f2094b5dbc41c29594031bed2f18 assets/lamina_et_ignis/models/item/diorite_brick_stairs.json
+4d636e60a3df3818bf38c5dc3a950f4d5b345b48 assets/lamina_et_ignis/models/item/fleece.json
 0fea852f5ae9f14f21640ebec7a06b6be0ce4dcf assets/lamina_et_ignis/models/item/gold_chip.json
 feea0c9aea405da3ab550b888f4c9c57a79d135c assets/lamina_et_ignis/models/item/gold_grit.json
 d85de7266669710af1d7e4e0eeff4a42dd8aa43a assets/lamina_et_ignis/models/item/gold_plate.json
 3e0fce7b22d5d1a0a94ff896d81f666089025e04 assets/lamina_et_ignis/models/item/goldvein.json
+6eced4afef07f78e52b938e8404e41f717ff50f2 assets/lamina_et_ignis/models/item/granite_brick_slab.json
+600ce69d1a26e7f95e7cdaa18e28243335cd0431 assets/lamina_et_ignis/models/item/granite_brick_stairs.json
+f63c4518fc887068f9493a568759d202f535748d assets/lamina_et_ignis/models/item/greasy_fleece.json
 0f44b6336e6b98e5bd9382cb30922af564c810fa assets/lamina_et_ignis/models/item/hellenic_blueprint.json
 c72f80725e18894bc6b5dca04c65aacf20212f4f assets/lamina_et_ignis/models/item/iron_chip.json
 dbee6cc6846a1888fda09908defc8eb3ac183e25 assets/lamina_et_ignis/models/item/iron_grit.json

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:blasting",
+  "conditions": [
+    {
+      "type": "forge:false"
+    }
+  ]
+}

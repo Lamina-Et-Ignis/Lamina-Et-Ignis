@@ -13,6 +13,9 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LaminaEtIgnis.MODID);
 
+    //wool related
+    public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLEECE = ITEMS.register("fleece", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> CRUDE_COPPER_INGOT = ITEMS.register("crude_copper_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CRUDE_COPPER_PLATE = ITEMS.register("crude_copper_plate", () -> new Item(new Item.Properties()));
@@ -66,7 +69,7 @@ public class ModItems {
     public static final RegistryObject<Item> COW_HIDE = ITEMS.register("cow_hide", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BONE_SHARD = ITEMS.register("bone_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BONE_NEEDLE = ITEMS.register("bone_needle", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CORD_SPOOL = ITEMS.register("cord_spool", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CORD_SPOOL = ITEMS.register("cord_spool", () -> new Item(new Item.Properties().durability(8)));
 
 
 

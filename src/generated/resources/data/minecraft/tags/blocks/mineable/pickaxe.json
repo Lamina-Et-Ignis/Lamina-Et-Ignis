@@ -1,0 +1,17 @@
+{
+  "values": [
+    "lamina_et_ignis:andesite_bricks",
+    "lamina_et_ignis:andesite_brick_stairs",
+    "lamina_et_ignis:andesite_brick_slab",
+    "lamina_et_ignis:andesite_brick_wall",
+    "lamina_et_ignis:diorite_bricks",
+    "lamina_et_ignis:diorite_brick_stairs",
+    "lamina_et_ignis:diorite_brick_slab",
+    "lamina_et_ignis:diorite_brick_wall",
+    "lamina_et_ignis:granite_bricks",
+    "lamina_et_ignis:granite_brick_stairs",
+    "lamina_et_ignis:granite_brick_slab",
+    "lamina_et_ignis:granite_brick_wall",
+    "lamina_et_ignis:tin_ore"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 0.5,
+  "group": "iron",
+  "ingredient": {
+    "item": "minecraft:deepslate_iron_ore"
+  },
+  "result": "lamina_et_ignis:crude_iron_ingot"
+}
