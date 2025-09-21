@@ -2,8 +2,11 @@ package net.lordofthetime.laminaetignis;
 
 import com.mojang.logging.LogUtils;
 import net.lordofthetime.laminaetignis.block.ModBlocks;
+import net.lordofthetime.laminaetignis.entity.ModEntities;
 import net.lordofthetime.laminaetignis.item.ModCreativeModeTabs;
 import net.lordofthetime.laminaetignis.item.ModItems;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -32,6 +35,7 @@ public class LaminaEtIgnis {
         ModCreativeModeTabs.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModEntities.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -65,7 +69,7 @@ public class LaminaEtIgnis {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event){
-
+            EntityRenderers.register(ModEntities.PEBBLE_PROJECTILE.get(), ThrownItemRenderer::new);
         }
     }
 }

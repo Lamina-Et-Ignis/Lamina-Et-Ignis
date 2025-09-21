@@ -2,6 +2,8 @@ package net.lordofthetime.laminaetignis.datagen;
 
 import net.lordofthetime.laminaetignis.block.ModBlocks;
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
+import net.lordofthetime.laminaetignis.item.ModItems;
+import net.lordofthetime.laminaetignis.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -19,6 +21,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        this.tag(ModTags.Items.SLING_AMMO).add(
+                ModItems.PEBBLE.get().asItem()
+        );
         // items tags when needed
 //        this.tag(ItemTags.LOGS_THAT_BURN).add(
 //                ModBlocks.CORRUPTED_LOG.get().asItem(),

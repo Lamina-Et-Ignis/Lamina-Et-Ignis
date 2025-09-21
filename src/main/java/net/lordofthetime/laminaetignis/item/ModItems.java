@@ -1,10 +1,9 @@
 package net.lordofthetime.laminaetignis.item;
 
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tiers;
+import net.lordofthetime.laminaetignis.item.custom.PebbleItem;
+import net.lordofthetime.laminaetignis.item.custom.SlingItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -12,6 +11,9 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LaminaEtIgnis.MODID);
+    //sling
+    public static final RegistryObject<Item> SLING = ITEMS.register("sling", () -> new SlingItem(new Item.Properties().durability(100)));
+    public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble", () -> new PebbleItem(new Item.Properties()));
 
     //wool related
     public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new Item(new Item.Properties()));
@@ -57,8 +59,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> RAW_TIN = ITEMS.register("raw_tin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GOLDVEIN = ITEMS.register("goldvein", () -> new Item(new Item.Properties()));
-
-    public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> LEATHER_STRAP = ITEMS.register("leather_strap", () -> new Item(new Item.Properties()));
 
