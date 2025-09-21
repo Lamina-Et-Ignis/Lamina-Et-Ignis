@@ -3,7 +3,6 @@ package net.lordofthetime.laminaetignis.entity.custom;
 
 import net.lordofthetime.laminaetignis.entity.ModEntities;
 import net.lordofthetime.laminaetignis.item.ModItems;
-import net.minecraft.commands.arguments.coordinates.BlockPosArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,6 +26,17 @@ public class PebbleProjectileEntity extends ThrowableItemProjectile {
         super(ModEntities.PEBBLE_PROJECTILE.get(),livingEntity, pLevel);
     }
 
+    private float damage = 2;
+
+    public float getDamage(){
+        return  this.damage;
+    }
+    public void setDamage(float damage){
+        if(damage >= 0){
+            this.damage = damage;
+        }
+    }
+
 
     @Override
     protected Item getDefaultItem() {
@@ -36,7 +46,7 @@ public class PebbleProjectileEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
-        pResult.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), (float)2);
+        pResult.getEntity().hurt(this.damageSources().thrown(this, this.getOwner()), (float)damage);
         this.discard();
     }
 
