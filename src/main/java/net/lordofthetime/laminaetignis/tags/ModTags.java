@@ -11,6 +11,9 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
     public static class Blocks{
 
+        public static final TagKey<Block> NEEDS_BONE_TOOL = tag("needs_bone_tool");
+        public static final TagKey<Block> NEEDS_TIN_TOOL = tag("needs_tin_tool");
+        public static final TagKey<Block> NEEDS_COPPER_TOOL = tag("needs_copper_tool");
 
         private static TagKey<Block> tag(String name){
             return BlockTags.create(ResourceLocation.tryBuild(LaminaEtIgnis.MODID,name));

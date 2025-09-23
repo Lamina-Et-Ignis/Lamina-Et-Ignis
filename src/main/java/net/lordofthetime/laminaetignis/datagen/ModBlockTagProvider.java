@@ -2,9 +2,11 @@ package net.lordofthetime.laminaetignis.datagen;
 
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
 import net.lordofthetime.laminaetignis.block.ModBlocks;
+import net.lordofthetime.laminaetignis.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -19,6 +21,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+
+        //delete tags
+
+        tag(BlockTags.NEEDS_STONE_TOOL).remove(Blocks.COPPER_ORE);
+        tag(BlockTags.NEEDS_STONE_TOOL).remove(Blocks.DEEPSLATE_COPPER_ORE);
+
 
         //tool tags
 
@@ -78,6 +86,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 //        );
 
         // Mod Tags
+        this.tag(ModTags.Blocks.NEEDS_TIN_TOOL).add(
+                Blocks.COPPER_ORE,
+                Blocks.DEEPSLATE_COPPER_ORE,
+                ModBlocks.TIN_ORE.get()
+        );
 
 
 
