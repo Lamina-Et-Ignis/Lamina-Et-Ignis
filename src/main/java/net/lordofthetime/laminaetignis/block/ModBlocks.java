@@ -26,7 +26,19 @@ public class ModBlocks {
             .requiresCorrectToolForDrops()
             .strength(4F)
             .explosionResistance(4F),UniformInt.of(3,6)));
-
+    //cobble
+    public static final RegistryObject<Block> GRANITE_COBBLE =
+            registerBlock("granite_cobble",() -> new Block(BlockBehaviour
+                    .Properties.copy(Blocks.COBBLESTONE)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIORITE_COBBLE =
+            registerBlock("diorite_cobble",() -> new Block(BlockBehaviour
+                    .Properties.copy(Blocks.COBBLESTONE)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ANDESITE_COBBLE =
+            registerBlock("andesite_cobble",() -> new Block(BlockBehaviour
+                    .Properties.copy(Blocks.COBBLESTONE)
+                    .requiresCorrectToolForDrops()));
     //Granite Bricks
     public static final RegistryObject<Block> GRANITE_BRICKS =
             registerBlock("granite_bricks",() -> new Block(BlockBehaviour

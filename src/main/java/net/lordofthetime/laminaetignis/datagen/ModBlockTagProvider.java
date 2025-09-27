@@ -36,16 +36,19 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 ModBlocks.ANDESITE_BRICK_STAIRS.get(),
                 ModBlocks.ANDESITE_BRICK_SLAB.get(),
                 ModBlocks.ANDESITE_BRICK_WALL.get(),
+                ModBlocks.ANDESITE_COBBLE.get(),
                 //DIORITE
                 ModBlocks.DIORITE_BRICKS.get(),
                 ModBlocks.DIORITE_BRICK_STAIRS.get(),
                 ModBlocks.DIORITE_BRICK_SLAB.get(),
                 ModBlocks.DIORITE_BRICK_WALL.get(),
+                ModBlocks.DIORITE_COBBLE.get(),
                 //GRANITE
                 ModBlocks.GRANITE_BRICKS.get(),
                 ModBlocks.GRANITE_BRICK_STAIRS.get(),
                 ModBlocks.GRANITE_BRICK_SLAB.get(),
                 ModBlocks.GRANITE_BRICK_WALL.get(),
+                ModBlocks.GRANITE_COBBLE.get(),
 
                 //ORES
                 ModBlocks.TIN_ORE.get()

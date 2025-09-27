@@ -32,16 +32,30 @@ public class SlingItem extends BowItem {
     };
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
+        int charge = this.getUseDuration(pStack) - pTimeLeft;
+        if(charge < 5){
+            return;
+        }
         if (pEntityLiving instanceof Player player) {
-            ItemStack itemstack = player.getOffhandItem();
+            ItemStack itemstack = null;
+            if(player.getAbilities().instabuild) {
+                itemstack = ModItems.PEBBLE.get().getDefaultInstance();
+            }
+            else{
+                for(int i = 0; i < player.getInventory().getContainerSize(); ++i) {
+                    ItemStack slotItemStack = player.getInventory().getItem(i);
+                    if(slotItemStack.getTags().anyMatch(Predicate.isEqual(ModTags.Items.SLING_AMMO))) {
+                        itemstack = slotItemStack;
+                        break;
+                    }
+                }
+            }
             if(itemstack.getTags().anyMatch(Predicate.isEqual(ModTags.Items.SLING_AMMO))){
                 pLevel.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
                 if (!pLevel.isClientSide) {
                     PebbleProjectileEntity pebble = new PebbleProjectileEntity(player, pLevel);
                     pebble.setItem(itemstack);
-                    int charge = this.getUseDuration(pStack) - pTimeLeft;
                     pebble.setDamage(2 * getPowerForTime(charge));
-                    System.out.println(pebble.getDamage());
                     pebble.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
                     pStack.hurtAndBreak(1, player, (p) -> {
                             p.broadcastBreakEvent(player.getUsedItemHand());});
@@ -53,23 +67,6 @@ public class SlingItem extends BowItem {
                     itemstack.shrink(1);
                 }
             }
-//                    if (!pLevel.isClientSide) {
-//
-//                        PebbleProjectileEntity pebbleProjectile = new PebbleProjectileEntity(ModEntities.PEBBLE_PROJECTILE.get(), pLevel);
-//
-//                        pStack.hurtAndBreak(1, player, (p) -> {
-//                            p.broadcastBreakEvent(player.getUsedItemHand());
-//                        });
-//                        pLevel.addFreshEntity(pebbleProjectile);
-//                    }
-//
-//
-//                    pLevel.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
-//
-//                    ItemStack itemstack = ModItems.PEBBLE.get().getDefaultInstance();
-//                    itemstack.shrink(1);
-//                    player.awardStat(Stats.ITEM_USED.get(this));
-//                }
         }
     }
 }
