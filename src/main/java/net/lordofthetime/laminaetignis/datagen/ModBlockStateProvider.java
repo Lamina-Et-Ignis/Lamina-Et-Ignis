@@ -28,46 +28,37 @@ public class ModBlockStateProvider extends BlockStateProvider {
         for (RegistryObject<Block> block : ModBlocks.BLOCKS.getEntries()) {
             System.out.println("Genereting BlockState for "+block.getId());
             String name = block.getId().getPath();
-            if(name.endsWith("leaves")){
+            Block baseBlock = getBaseBlock(name.replaceAll("(_stairs|_slab|_wall|_fence|_button|_fance_gate)","")
+                    .replace("brick","bricks")
+                    .replace("plank","planks"));
+            if(block.get() instanceof SlabBlock){
+                slabBlock(((SlabBlock) block.get()),blockTexture(baseBlock),blockTexture(baseBlock));
+            }else if(block.get() instanceof StairBlock){
+                stairsBlock(((StairBlock) block.get()),blockTexture(baseBlock));
+            }else if(block.get() instanceof WallBlock){
+                wallBlock(((WallBlock) block.get()),blockTexture(baseBlock));
+            }else if(block.get() instanceof LeavesBlock){
                 leavesBlock(block); //leaves
-            } else if (name.endsWith("log")) {
-                Block baseBlock = getBaseBlock(name);
-                if(name.startsWith("stripped")){
-                    axisBlock(((RotatedPillarBlock) block.get() ),blockTexture(baseBlock),
-                            ResourceLocation.tryBuild(LaminaEtIgnis.MODID, "block/"+name+ "_top"));
-                    //stripped log blocks
-                }
-                else{
+            } else if (block.get() instanceof RotatedPillarBlock) {
+                baseBlock = getBaseBlock(name);
+                if(name.endsWith("log")){
+                    if(name.startsWith("stripped")){
+                        axisBlock(((RotatedPillarBlock) block.get() ),blockTexture(baseBlock),
+                                ResourceLocation.tryBuild(LaminaEtIgnis.MODID, "block/"+name+ "_top"));
+                        //stripped log blocks
+                    }
+                    else{
 
-                    logBlock((RotatedPillarBlock) block.get()); //log blocks
-                }
-                blockItem(block,name);
-            }else if (name.endsWith("wood")) { // wood blocks
-                Block baseBlock = getBaseBlock(name);
-                if (name.startsWith("stripped")) {
-                    axisBlock(((RotatedPillarBlock) block.get()), blockTexture(baseBlock), blockTexture(baseBlock)); //stripped wood blocks
-                } else {
-                    axisBlock(((RotatedPillarBlock) block.get()), blockTexture(baseBlock), blockTexture(baseBlock)); //wood blocks
-                }
-                blockItem(block,name);
-            }else if(name.contains("brick_")){
-                Block baseBlock = getBaseBlock(name.replaceAll("(_stairs|_slab|_wall)","").replace("brick","bricks"));
-                if(name.endsWith("slab")){
-                    slabBlock(((SlabBlock) block.get()),blockTexture(baseBlock),blockTexture(baseBlock));
-                }else if(name.endsWith("stairs")){
-                    stairsBlock(((StairBlock) block.get()),blockTexture(baseBlock));
-                }else{
-                    wallBlock(((WallBlock) block.get()),blockTexture(baseBlock));
-                }
-
-            }else if(name.contains("plank_")){
-                Block baseBlock = getBaseBlock(name.replaceAll("(_stairs|_slab|_wall)","").replace("plank","planks"));
-                if(name.endsWith("slab")){
-                    slabBlock(((SlabBlock) block.get()),blockTexture(baseBlock),blockTexture(baseBlock));
-                }else if(name.endsWith("stairs")){
-                    stairsBlock(((StairBlock) block.get()),blockTexture(baseBlock));
-                }else{
-                    wallBlock(((WallBlock) block.get()),blockTexture(baseBlock));
+                        logBlock((RotatedPillarBlock) block.get()); //log blocks
+                    }
+                }else if (name.endsWith("wood")) { // wood blocks
+                    baseBlock = getBaseBlock(name);
+                    if (name.startsWith("stripped")) {
+                        axisBlock(((RotatedPillarBlock) block.get()), blockTexture(baseBlock), blockTexture(baseBlock)); //stripped wood blocks
+                    } else {
+                        axisBlock(((RotatedPillarBlock) block.get()), blockTexture(baseBlock), blockTexture(baseBlock)); //wood blocks
+                    }
+                    blockItem(block, name);
                 }
 
             }else {

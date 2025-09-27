@@ -14,7 +14,10 @@ public class ModItems {
     //sling
     public static final RegistryObject<Item> SLING = ITEMS.register("sling", () -> new SlingItem(new Item.Properties().durability(100)));
     public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble", () -> new PebbleItem(new Item.Properties()));
-
+    public static final RegistryObject<Item> DEEPSLATE_PEBBLE = ITEMS.register("deepslate_pebble", () -> new PebbleItem(new Item.Properties()));
+    public static final RegistryObject<Item> GRANITE_PEBBLE = ITEMS.register("granite_pebble", () -> new PebbleItem(new Item.Properties()));
+    public static final RegistryObject<Item> ANDESITE_PEBBLE = ITEMS.register("andesite_pebble", () -> new PebbleItem(new Item.Properties()));
+    public static final RegistryObject<Item> DIORITE_PEBBLE = ITEMS.register("diorite_pebble", () -> new PebbleItem(new Item.Properties()));
 
     public static final RegistryObject<Item> COW_HIDE_PELT_CLOAK = ITEMS.register("cow_hide_pelt_cloak", () -> new ArmorItem(ModArmorMaterials.COWHIDE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     //wool related

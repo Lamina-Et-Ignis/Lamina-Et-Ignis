@@ -1,5 +1,9 @@
 {
   "values": [
-    "lamina_et_ignis:pebble"
+    "lamina_et_ignis:pebble",
+    "lamina_et_ignis:deepslate_pebble",
+    "lamina_et_ignis:granite_pebble",
+    "lamina_et_ignis:andesite_pebble",
+    "lamina_et_ignis:diorite_pebble"
   ]
 }

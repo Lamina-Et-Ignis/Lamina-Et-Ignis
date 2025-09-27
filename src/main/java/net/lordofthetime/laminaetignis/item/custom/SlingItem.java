@@ -34,7 +34,7 @@ public class SlingItem extends BowItem {
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
         if (pEntityLiving instanceof Player player) {
             ItemStack itemstack = player.getOffhandItem();
-            if(itemstack.getItem() == ModItems.PEBBLE.get()){
+            if(itemstack.getTags().anyMatch(Predicate.isEqual(ModTags.Items.SLING_AMMO))){
                 pLevel.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
                 if (!pLevel.isClientSide) {
                     PebbleProjectileEntity pebble = new PebbleProjectileEntity(player, pLevel);

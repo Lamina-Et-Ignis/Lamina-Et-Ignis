@@ -22,7 +22,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(ModTags.Items.SLING_AMMO).add(
-                ModItems.PEBBLE.get().asItem()
+                ModItems.PEBBLE.get().asItem(),
+                ModItems.DEEPSLATE_PEBBLE.get().asItem(),
+                ModItems.GRANITE_PEBBLE.get().asItem(),
+                ModItems.ANDESITE_PEBBLE.get().asItem(),
+                ModItems.DIORITE_PEBBLE.get().asItem()
+
         );
         // items tags when needed
 //        this.tag(ItemTags.LOGS_THAT_BURN).add(
