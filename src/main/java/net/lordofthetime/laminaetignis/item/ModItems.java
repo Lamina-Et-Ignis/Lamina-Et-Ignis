@@ -15,6 +15,8 @@ public class ModItems {
     public static final RegistryObject<Item> SLING = ITEMS.register("sling", () -> new SlingItem(new Item.Properties().durability(100)));
     public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble", () -> new PebbleItem(new Item.Properties()));
 
+
+    public static final RegistryObject<Item> COW_HIDE_PELT_CLOAK = ITEMS.register("cow_hide_pelt_cloak", () -> new ArmorItem(ModArmorMaterials.COWHIDE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     //wool related
     public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLEECE = ITEMS.register("fleece", () -> new Item(new Item.Properties()));

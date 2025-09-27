@@ -1,6 +1,7 @@
 {
   "values": [
     "minecraft:copper_ore",
-    "minecraft:deepslate_copper_ore"
+    "minecraft:deepslate_copper_ore",
+    "lamina_et_ignis:tin_ore"
   ]
 }
