@@ -27,6 +27,7 @@ public class PebbleProjectileEntity extends ThrowableItemProjectile {
     }
 
     private float damage = 2;
+    private ItemStack item = ModItems.PEBBLE.get().getDefaultInstance();
 
     public float getDamage(){
         return  this.damage;
@@ -37,7 +38,12 @@ public class PebbleProjectileEntity extends ThrowableItemProjectile {
         }
     }
 
-
+    public ItemStack getItem(){
+        return this.item;
+    }
+    public void setItem(ItemStack item){
+        this.item = item.copyWithCount(1);
+    }
     @Override
     protected Item getDefaultItem() {
         return ModItems.PEBBLE.get();
@@ -54,7 +60,7 @@ public class PebbleProjectileEntity extends ThrowableItemProjectile {
     protected void onHitBlock(BlockHitResult pResult) {
         super.onHitBlock(pResult);
         if (!this.level().isClientSide) {
-            ItemStack stack = new ItemStack(getDefaultItem(), 1); // 1 pebble
+            ItemStack stack = new ItemStack(this.item.getItem(), 1); // 1 pebble
             BlockPos pos = pResult.getBlockPos().above();
             ItemEntity itemEntity = new ItemEntity(level(),
                     pos.getX(),
