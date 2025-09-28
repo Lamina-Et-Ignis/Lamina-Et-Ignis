@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:deepslate_pebble"
+    }
+  ],
+  "result": {
+    "item": "minecraft:cobbled_deepslate"
+  }
+}

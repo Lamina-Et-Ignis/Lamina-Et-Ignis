@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "lamina_et_ignis:block/granite_cobble_slab"
+    },
+    "type=double": {
+      "model": "lamina_et_ignis:block/granite_cobble"
+    },
+    "type=top": {
+      "model": "lamina_et_ignis:block/granite_cobble_slab_top"
+    }
+  }
+}

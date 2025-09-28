@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:diorite_cobble"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "lamina_et_ignis:diorite_pebble"
+  }
+}

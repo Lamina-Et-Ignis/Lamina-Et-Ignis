@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:diorite_pebble"
+    }
+  ],
+  "result": {
+    "item": "lamina_et_ignis:diorite_cobble"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:granite_pebble"
+    }
+  ],
+  "result": {
+    "item": "lamina_et_ignis:granite_cobble"
+  }
+}

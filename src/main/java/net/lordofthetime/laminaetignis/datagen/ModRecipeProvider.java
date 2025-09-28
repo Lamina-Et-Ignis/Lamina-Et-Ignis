@@ -12,11 +12,14 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -40,6 +43,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', Items.STICK)
                 .unlockedBy(getHasName(Items.STICK),has(Items.STICK))
                 .unlockedBy(getHasName(Items.STRING),has(Items.STRING))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.CRUDE_STONE_BRICKS.get(),4)
+                .pattern("CC ")
+                .pattern("CC ")
+                .define('C', Items.COBBLESTONE)
+                .unlockedBy(getHasName(Items.COBBLESTONE),has(Items.COBBLESTONE))
                 .save(pWriter);
 
 
@@ -68,14 +78,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //iron tools
 
         //shapeless
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.PEBBLE.get(),9)
-                .requires(Blocks.COBBLESTONE)
-                .unlockedBy(getHasName(Blocks.COBBLESTONE),has(Blocks.COBBLESTONE))
-                .save(pWriter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,Blocks.COBBLESTONE,1)
-                .requires(ModItems.PEBBLE.get(),9)
-                .unlockedBy(getHasName(ModItems.PEBBLE.get()),has(ModItems.PEBBLE.get()))
-                .save(pWriter);
+        Map.of(
+                ModItems.PEBBLE.get(), Blocks.COBBLESTONE,
+                ModItems.DEEPSLATE_PEBBLE.get(), Blocks.COBBLED_DEEPSLATE,
+                ModItems.ANDESITE_PEBBLE.get(), ModBlocks.ANDESITE_COBBLE.get(),
+                ModItems.GRANITE_PEBBLE.get(), ModBlocks.GRANITE_COBBLE.get(),
+                ModItems.DIORITE_PEBBLE.get(), ModBlocks.DIORITE_COBBLE.get()
+        ).forEach(
+                (pebble,cobble) ->{
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,pebble,9)
+                            .requires(cobble)
+                            .unlockedBy(getHasName(cobble),has(cobble))
+                            .save(pWriter);
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,cobble,1)
+                            .requires(pebble,9)
+                            .unlockedBy(getHasName(pebble),has(pebble))
+                            .save(pWriter);
+                }
+        );
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,ModItems.BONE_SHARD.get(),2)
                 .requires(Items.BONE)

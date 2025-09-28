@@ -31,24 +31,35 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         //tool tags
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+
+                ModBlocks.CRUDE_STONE_BRICKS.get(),
                 //andesite
                 ModBlocks.ANDESITE_BRICKS.get(),
                 ModBlocks.ANDESITE_BRICK_STAIRS.get(),
                 ModBlocks.ANDESITE_BRICK_SLAB.get(),
                 ModBlocks.ANDESITE_BRICK_WALL.get(),
                 ModBlocks.ANDESITE_COBBLE.get(),
+                ModBlocks.ANDESITE_COBBLE_STAIRS.get(),
+                ModBlocks.ANDESITE_COBBLE_SLAB.get(),
+                ModBlocks.ANDESITE_COBBLE_WALL.get(),
                 //DIORITE
                 ModBlocks.DIORITE_BRICKS.get(),
                 ModBlocks.DIORITE_BRICK_STAIRS.get(),
                 ModBlocks.DIORITE_BRICK_SLAB.get(),
                 ModBlocks.DIORITE_BRICK_WALL.get(),
                 ModBlocks.DIORITE_COBBLE.get(),
+                ModBlocks.GRANITE_COBBLE_STAIRS.get(),
+                ModBlocks.GRANITE_COBBLE_SLAB.get(),
+                ModBlocks.GRANITE_COBBLE_WALL.get(),
                 //GRANITE
                 ModBlocks.GRANITE_BRICKS.get(),
                 ModBlocks.GRANITE_BRICK_STAIRS.get(),
                 ModBlocks.GRANITE_BRICK_SLAB.get(),
                 ModBlocks.GRANITE_BRICK_WALL.get(),
                 ModBlocks.GRANITE_COBBLE.get(),
+                ModBlocks.GRANITE_COBBLE_STAIRS.get(),
+                ModBlocks.GRANITE_COBBLE_SLAB.get(),
+                ModBlocks.GRANITE_COBBLE_WALL.get(),
 
                 //ORES
                 ModBlocks.TIN_ORE.get()

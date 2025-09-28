@@ -26,19 +26,63 @@ public class ModBlocks {
             .requiresCorrectToolForDrops()
             .strength(4F)
             .explosionResistance(4F),UniformInt.of(3,6)));
+
+    public static final RegistryObject<Block> CRUDE_STONE_BRICKS =
+            registerBlock("crude_stone_bricks",() -> new Block(BlockBehaviour
+                    .Properties.copy(Blocks.STONE_BRICKS)
+                    .requiresCorrectToolForDrops()));
     //cobble
     public static final RegistryObject<Block> GRANITE_COBBLE =
             registerBlock("granite_cobble",() -> new Block(BlockBehaviour
                     .Properties.copy(Blocks.COBBLESTONE)
                     .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GRANITE_COBBLE_STAIRS =
+            registerBlock("granite_cobble_stairs",() -> new StairBlock(() ->  ModBlocks.GRANITE_COBBLE.get().defaultBlockState(),BlockBehaviour
+                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GRANITE_COBBLE_SLAB =
+            registerBlock("granite_cobble_slab",() -> new SlabBlock(BlockBehaviour
+                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GRANITE_COBBLE_WALL =
+            registerBlock("granite_cobble_wall",() -> new WallBlock(BlockBehaviour
+                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+
     public static final RegistryObject<Block> DIORITE_COBBLE =
             registerBlock("diorite_cobble",() -> new Block(BlockBehaviour
                     .Properties.copy(Blocks.COBBLESTONE)
                     .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIORITE_COBBLE_STAIRS =
+            registerBlock("diorite_cobble_stairs",() -> new StairBlock(() ->  ModBlocks.DIORITE_COBBLE.get().defaultBlockState(),BlockBehaviour
+                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIORITE_COBBLE_SLAB =
+            registerBlock("diorite_cobble_slab",() -> new SlabBlock(BlockBehaviour
+                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIORITE_COBBLE_WALL =
+            registerBlock("diorite_cobble_wall",() -> new WallBlock(BlockBehaviour
+                    .Properties.copy(ModBlocks.DIORITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+
     public static final RegistryObject<Block> ANDESITE_COBBLE =
             registerBlock("andesite_cobble",() -> new Block(BlockBehaviour
                     .Properties.copy(Blocks.COBBLESTONE)
                     .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ANDESITE_COBBLE_STAIRS =
+            registerBlock("andesite_cobble_stairs",() -> new StairBlock(() ->  ModBlocks.ANDESITE_COBBLE.get().defaultBlockState(),BlockBehaviour
+                    .Properties.copy(ModBlocks.ANDESITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ANDESITE_COBBLE_SLAB =
+            registerBlock("andesite_cobble_slab",() -> new SlabBlock(BlockBehaviour
+                    .Properties.copy(ModBlocks.ANDESITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ANDESITE_COBBLE_WALL =
+            registerBlock("andesite_cobble_wall",() -> new WallBlock(BlockBehaviour
+                    .Properties.copy(ModBlocks.ANDESITE_COBBLE.get())
+                    .requiresCorrectToolForDrops()));
+
     //Granite Bricks
     public static final RegistryObject<Block> GRANITE_BRICKS =
             registerBlock("granite_bricks",() -> new Block(BlockBehaviour
@@ -51,7 +95,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> GRANITE_BRICK_SLAB =
             registerBlock("granite_brick_slab",() -> new SlabBlock(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));public static final RegistryObject<Block> GRANITE_BRICK_WALL =
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> GRANITE_BRICK_WALL =
             registerBlock("granite_brick_wall",() -> new WallBlock(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)
                     .requiresCorrectToolForDrops()));
@@ -67,7 +112,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> DIORITE_BRICK_SLAB =
             registerBlock("diorite_brick_slab",() -> new SlabBlock(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));public static final RegistryObject<Block> DIORITE_BRICK_WALL =
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIORITE_BRICK_WALL =
             registerBlock("diorite_brick_wall",() -> new WallBlock(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)
                     .requiresCorrectToolForDrops()));
@@ -83,7 +129,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> ANDESITE_BRICK_SLAB =
             registerBlock("andesite_brick_slab",() -> new SlabBlock(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));public static final RegistryObject<Block> ANDESITE_BRICK_WALL =
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> ANDESITE_BRICK_WALL =
             registerBlock("andesite_brick_wall",() -> new WallBlock(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)
                     .requiresCorrectToolForDrops()));

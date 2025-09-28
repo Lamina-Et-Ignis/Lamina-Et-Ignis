@@ -37,7 +37,7 @@ public class VanillaLootOverrides {
         }
 
 
-        //stone and ores
+        //stones
 
         if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/stone"))) {
             event.setTable(LootTable.lootTable()
@@ -47,12 +47,63 @@ public class VanillaLootOverrides {
                                     .add(LootItem.lootTableItem(ModItems.PEBBLE.get()))
                     ).build());
         }
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/deepslate"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(4.0F, 9.0F))
+                                    .add(LootItem.lootTableItem(ModItems.DEEPSLATE_PEBBLE.get()))
+                    ).build());
+        }
+
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/diorite"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(4.0F, 9.0F))
+                                    .add(LootItem.lootTableItem(ModItems.DIORITE_PEBBLE.get()))
+                    ).build());
+        }
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/andesite"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(4.0F, 9.0F))
+                                    .add(LootItem.lootTableItem(ModItems.ANDESITE_PEBBLE.get()))
+                    ).build());
+        }if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/granite"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(4.0F, 9.0F))
+                                    .add(LootItem.lootTableItem(ModItems.GRANITE_PEBBLE.get()))
+                    ).build());
+        }
+
+
+        //ores
         if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/copper_ore"))) {
             event.setTable(LootTable.lootTable()
                     .withPool(
                             LootPool.lootPool()
                                     .setRolls(UniformGenerator.between(2.0F, 3.0F))
                                     .add(LootItem.lootTableItem(ModItems.PEBBLE.get()))
+                    ).withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(1.0F, 1.0F))
+                                    .add(LootItem.lootTableItem(Items.RAW_COPPER))
+                    ).withPool(
+                            LootPool.lootPool()
+                                    .setRolls(BinomialDistributionGenerator.binomial(1, 0.20F))
+                                    .add(LootItem.lootTableItem(Items.RAW_COPPER))
+                    ).build());
+        }
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/deepslate_copper_ore"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(2.0F, 3.0F))
+                                    .add(LootItem.lootTableItem(ModItems.DEEPSLATE_PEBBLE.get()))
                     ).withPool(
                             LootPool.lootPool()
                                     .setRolls(UniformGenerator.between(1.0F, 1.0F))
@@ -79,9 +130,29 @@ public class VanillaLootOverrides {
                                     .add(LootItem.lootTableItem(Items.COAL))
                     ).build());
         }
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/deepslate_coal_ore"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(2.0F, 3.0F))
+                                    .add(LootItem.lootTableItem(ModItems.DEEPSLATE_PEBBLE.get()))
+                    ).withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(1.0F, 1.0F))
+                                    .add(LootItem.lootTableItem(Items.COAL))
+                    ).withPool(
+                            LootPool.lootPool()
+                                    .setRolls(BinomialDistributionGenerator.binomial(1, 0.20F))
+                                    .add(LootItem.lootTableItem(Items.COAL))
+                    ).build());
+        }
         if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/iron_ore"))) {
-            event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(2.0F, 3.0F)).add(LootItem.lootTableItem(ModItems.PEBBLE.get())).build());
-
+            event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(2.0F, 3.0F))
+                    .add(LootItem.lootTableItem(ModItems.PEBBLE.get())).build());
+        }
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/deepslate_iron_ore"))) {
+            event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(2.0F, 3.0F))
+                    .add(LootItem.lootTableItem(ModItems.DEEPSLATE_PEBBLE.get())).build());
         }
         if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/gold_ore"))) {
             event.setTable(LootTable.lootTable()
@@ -89,6 +160,22 @@ public class VanillaLootOverrides {
                             LootPool.lootPool()
                                     .setRolls(UniformGenerator.between(2.0F, 4.0F))
                                     .add(LootItem.lootTableItem(ModItems.PEBBLE.get()))
+                    ).withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(1.0F, 1.0F))
+                                    .add(LootItem.lootTableItem(ModItems.GOLDVEIN.get()))
+                    ).withPool(
+                            LootPool.lootPool()
+                                    .setRolls(BinomialDistributionGenerator.binomial(1, 0.05F))
+                                    .add(LootItem.lootTableItem(Items.RAW_GOLD))
+                    ).build());
+        }
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/deepslate_gold_ore"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(2.0F, 4.0F))
+                                    .add(LootItem.lootTableItem(ModItems.DEEPSLATE_PEBBLE.get()))
                     ).withPool(
                             LootPool.lootPool()
                                     .setRolls(UniformGenerator.between(1.0F, 1.0F))

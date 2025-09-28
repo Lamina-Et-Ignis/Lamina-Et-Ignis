@@ -1,0 +1,5 @@
+// 1.20.1	2025-09-28T22:56:56.676355303	Tags for minecraft:block mod id lamina_et_ignis
+1d2ad42b4dae46f076235197903259af0ff5027b data/lamina_et_ignis/tags/blocks/needs_tin_tool.json
+2d7dd3321fb9fc33c2f70fed349bd5addbec29b4 data/minecraft/tags/blocks/mineable/pickaxe.json
+8354851657b5a4483b70d3275d60ac021f81c0ce data/minecraft/tags/blocks/needs_stone_tool.json
+fbea17bb5759490e768535eef646e65fdf97d844 data/minecraft/tags/blocks/walls.json
