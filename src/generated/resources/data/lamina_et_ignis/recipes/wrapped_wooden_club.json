@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:leather_strap"
+    },
+    {
+      "item": "lamina_et_ignis:wooden_club"
+    }
+  ],
+  "result": {
+    "item": "lamina_et_ignis:wrapped_wooden_club"
+  }
+}

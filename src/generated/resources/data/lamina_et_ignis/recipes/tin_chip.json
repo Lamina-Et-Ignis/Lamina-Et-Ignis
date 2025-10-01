@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:tin_nugget"
+    },
+    {
+      "tag": "lamina_et_ignis:hammer_tier_1"
+    }
+  ],
+  "result": {
+    "item": "lamina_et_ignis:tin_chip"
+  }
+}

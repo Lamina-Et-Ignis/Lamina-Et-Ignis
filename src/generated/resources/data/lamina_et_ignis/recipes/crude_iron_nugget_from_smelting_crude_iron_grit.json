@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 1200,
+  "experience": 0.1,
+  "group": "nuggets",
+  "ingredient": {
+    "item": "lamina_et_ignis:crude_iron_grit"
+  },
+  "result": "lamina_et_ignis:crude_iron_nugget"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "lamina_et_ignis:crude_tin_nugget"
+    }
+  },
+  "pattern": [
+    "   ",
+    "###",
+    "###"
+  ],
+  "result": {
+    "item": "lamina_et_ignis:crude_tin_ingot"
+  },
+  "show_notification": true
+}

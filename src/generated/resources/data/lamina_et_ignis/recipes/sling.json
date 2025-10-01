@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "/": {
+      "item": "lamina_et_ignis:leather_strap"
+    }
+  },
+  "pattern": [
+    " # ",
+    "# #",
+    "#/#"
+  ],
+  "result": {
+    "item": "lamina_et_ignis:sling"
+  },
+  "show_notification": true
+}

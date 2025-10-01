@@ -1,21 +1,16 @@
 package net.lordofthetime.laminaetignis.loot;
 
 import net.lordofthetime.laminaetignis.item.ModItems;
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.animal.Sheep;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.BinomialDistributionGenerator;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -29,34 +24,42 @@ import java.util.function.Predicate;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class VanillaLootOverrides {
 
-    @SubscribeEvent
-    public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
-        if (!(event.getTarget() instanceof Sheep sheep)) return;
-        ItemStack stack = event.getItemStack();
-        if (stack.getItem() != Items.SHEARS) return;
-        if (!sheep.level().isClientSide && sheep.readyForShearing()) {
-            event.setCanceled(true);
-            stack.hurtAndBreak(1, event.getEntity(), e -> e.broadcastBreakEvent(event.getHand()));
-            List<ItemStack> drops = List.of(
-                    new ItemStack(ModItems.GREASY_FLEECE.get(),1)
-            );
 
-            for (ItemStack drop : drops) {
-                sheep.spawnAtLocation(drop);
-            }
-            sheep.setSheared(true);
-        }
-    }
-    @SubscribeEvent
-    public static void onLivingDrops(LivingDropsEvent event) {
-        if (event.getEntity() instanceof Sheep sheep) {
-            // Remove wool drops added outside the loot table
-            event.getDrops().removeIf(itemEntity ->
-                    itemEntity.getItem().getTags().anyMatch(Predicate.isEqual(BlockTags.WOOL)) ||
-                            itemEntity.getItem().is(Items.WHITE_WOOL)
-            );
-        }
-    }
+    /*--------------------------------------
+
+        Sheep drops change disabled for 0.1
+        update, planned release in 0.1.1
+
+    --------------------------------------*/
+
+//    @SubscribeEvent
+//    public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+//        if (!(event.getTarget() instanceof Sheep sheep)) return;
+//        ItemStack stack = event.getItemStack();
+//        if (stack.getItem() != Items.SHEARS) return;
+//        if (!sheep.level().isClientSide && sheep.readyForShearing()) {
+//            event.setCanceled(true);
+//            stack.hurtAndBreak(1, event.getEntity(), e -> e.broadcastBreakEvent(event.getHand()));
+//            List<ItemStack> drops = List.of(
+//                    new ItemStack(ModItems.GREASY_FLEECE.get(),1)
+//            );
+//
+//            for (ItemStack drop : drops) {
+//                sheep.spawnAtLocation(drop);
+//            }
+//            sheep.setSheared(true);
+//        }
+//    }
+//    @SubscribeEvent
+//    public static void onLivingDrops(LivingDropsEvent event) {
+//        if (event.getEntity() instanceof Sheep sheep) {
+//            // Remove wool drops added outside the loot table
+//            event.getDrops().removeIf(itemEntity ->
+//                    itemEntity.getItem().getTags().anyMatch(Predicate.isEqual(BlockTags.WOOL)) ||
+//                            itemEntity.getItem().is(Items.WHITE_WOOL)
+//            );
+//        }
+//    }
 @SubscribeEvent
     public static void onLootTableLoad(LootTableLoadEvent event) {
         //mobs
@@ -77,16 +80,25 @@ public class VanillaLootOverrides {
                 ).build());
     }
     if (event.getName().equals(ResourceLocation.tryBuild("minecraft","entities/sheep"))) {
-        event.setTable(LootTable.lootTable()
-                .withPool(
-                        LootPool.lootPool()
+
+
+          // replace for 0.1.1
+          event.getTable().addPool(LootPool.lootPool()
                                 .setRolls(UniformGenerator.between(0.0F, 2.0F))
-                                .add(LootItem.lootTableItem(Items.BONE))
-                ).withPool(
-                        LootPool.lootPool()
-                                .setRolls(ConstantValue.exactly(1))
-                                .add(LootItem.lootTableItem(ModItems.GREASY_FLEECE.get()))
-                ).build());
+                                .add(LootItem.lootTableItem(Items.BONE)).build());
+          event.getTable().addPool(LootPool.lootPool()
+                  .setRolls(BinomialDistributionGenerator.binomial(1,0.66F))
+                  .add(LootItem.lootTableItem(Items.STRING)).build());
+//        event.setTable(LootTable.lootTable()
+//                .withPool(
+//                        LootPool.lootPool()
+//                                .setRolls(UniformGenerator.between(0.0F, 2.0F))
+//                                .add(LootItem.lootTableItem(Items.BONE))
+//                ).withPool(
+//                        LootPool.lootPool()
+//                                .setRolls(ConstantValue.exactly(1))
+//                                .add(LootItem.lootTableItem(ModItems.GREASY_FLEECE.get()))
+//                ).build());
     }
 
 

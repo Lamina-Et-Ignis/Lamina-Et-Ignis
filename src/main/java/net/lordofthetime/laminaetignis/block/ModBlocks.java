@@ -26,7 +26,6 @@ public class ModBlocks {
             .requiresCorrectToolForDrops()
             .strength(4F)
             .explosionResistance(4F),UniformInt.of(3,6)));
-
     public static final RegistryObject<Block> CRUDE_STONE_BRICKS =
             registerBlock("crude_stone_bricks",() -> new Block(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)

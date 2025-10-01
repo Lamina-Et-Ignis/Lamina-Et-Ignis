@@ -8,7 +8,9 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,27 +24,44 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(ModTags.Items.SLING_AMMO).add(
-                ModItems.PEBBLE.get().asItem(),
-                ModItems.DEEPSLATE_PEBBLE.get().asItem(),
-                ModItems.GRANITE_PEBBLE.get().asItem(),
-                ModItems.ANDESITE_PEBBLE.get().asItem(),
-                ModItems.DIORITE_PEBBLE.get().asItem()
+                ModItems.PEBBLE.get(),
+                ModItems.DEEPSLATE_PEBBLE.get(),
+                ModItems.GRANITE_PEBBLE.get(),
+                ModItems.ANDESITE_PEBBLE.get(),
+                ModItems.DIORITE_PEBBLE.get()
 
         );
+        this.tag(ModTags.Items.HIDES).add(
+                ModItems.COW_HIDE.get(),
+                Items.RABBIT_HIDE
+        );
+
+        //hammer tiers
+        this.tag(ModTags.Items.HAMMER_TIER_0).add(
+                ModItems.WOODEN_HAMMER.get(),
+                ModItems.CRUDE_TIN_MEHTY.get(),
+                ModItems.TIN_MEHTY.get(),
+                ModItems.CRUDE_COPPER_MEHTY.get(),
+                ModItems.COPPER_MEHTY.get()
+        );
+        this.tag(ModTags.Items.HAMMER_TIER_0).addTags(
+                ModTags.Items.HAMMER_TIER_1
+        );
+        this.tag(ModTags.Items.HAMMER_TIER_1).add(
+                ModItems.CRUDE_TIN_HAMMER.get(),
+                ModItems.TIN_HAMMER.get(),
+                ModItems.CRUDE_COPPER_HAMMER.get(),
+                ModItems.COPPER_HAMMER.get()
+        );
+
+
+
         // items tags when needed
 //        this.tag(ItemTags.LOGS_THAT_BURN).add(
-//                ModBlocks.CORRUPTED_LOG.get().asItem(),
-//                ModBlocks.MAGICAL_LOG.get().asItem(),
-//                ModBlocks.STRIPPED_CORRUPTED_LOG.get().asItem(),
-//                ModBlocks.STRIPPED_MAGICAL_LOG.get().asItem(),
-//                ModBlocks.CORRUPTED_WOOD.get().asItem(),
-//                ModBlocks.MAGICAL_WOOD.get().asItem(),
-//                ModBlocks.STRIPPED_CORRUPTED_WOOD.get().asItem(),
-//                ModBlocks.STRIPPED_MAGICAL_WOOD.get().asItem()
+//                ModBlocks.LOG.get().asItem(),
 //        );
 //        this.tag(ItemTags.PLANKS).add(
-//                ModBlocks.CORRUPTED_PLANKS.get().asItem(),
-//                ModBlocks.MAGICAL_PLANKS.get().asItem()
+//                ModBlocks.PLANK.get().asItem(),
 //        );
     }
 }

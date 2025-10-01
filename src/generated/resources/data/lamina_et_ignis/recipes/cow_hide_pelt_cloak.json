@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "lamina_et_ignis:cow_hide"
+    },
+    "/": {
+      "item": "lamina_et_ignis:cord_spool"
+    },
+    "|": {
+      "item": "lamina_et_ignis:bone_needle"
+    }
+  },
+  "pattern": [
+    " |/",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "lamina_et_ignis:cow_hide_pelt_cloak"
+  },
+  "show_notification": true
+}

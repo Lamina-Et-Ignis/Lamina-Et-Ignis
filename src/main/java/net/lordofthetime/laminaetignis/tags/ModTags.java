@@ -22,6 +22,9 @@ public class ModTags {
     public static class Items{
 
         public static final TagKey<Item> SLING_AMMO = tag("sling_ammo");
+        public static final TagKey<Item> HIDES = tag("hides");
+        public static final TagKey<Item> HAMMER_TIER_0 = tag("hammer_tier_0");
+        public static final TagKey<Item> HAMMER_TIER_1 = tag("hammer_tier_1");
 
         private static TagKey<Item> tag(String name){
             return ItemTags.create(ResourceLocation.tryBuild(LaminaEtIgnis.MODID,name));

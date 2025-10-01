@@ -3,10 +3,13 @@ package net.lordofthetime.laminaetignis.datagen;
 import net.lordofthetime.laminaetignis.block.ModBlocks;
 import net.lordofthetime.laminaetignis.item.ModItems;
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.WallBlock;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -24,17 +27,28 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
 
 
-//        wallItem(CORRUPTED_BRICK_WALL,ModBlocks.CORRUPTED_BRICKS);
-//        wallItem(MAGICAL_BRICK_WALL,ModBlocks.MAGICAL_BRICKS);
+        wallItem(ModBlocks.ANDESITE_BRICK_WALL,ModBlocks.ANDESITE_BRICKS);
+        wallItem(ModBlocks.DIORITE_BRICK_WALL,ModBlocks.DIORITE_BRICKS);
+        wallItem(ModBlocks.GRANITE_BRICK_WALL,ModBlocks.GRANITE_BRICKS);
+
+        wallItem(ModBlocks.ANDESITE_COBBLE_WALL,ModBlocks.ANDESITE_COBBLE);
+        wallItem(ModBlocks.DIORITE_COBBLE_WALL,ModBlocks.DIORITE_COBBLE);
+        wallItem(ModBlocks.GRANITE_COBBLE_WALL,ModBlocks.GRANITE_COBBLE);
+
+
+
 
         for(RegistryObject<Item> item : ModItems.ITEMS.getEntries()){
             System.out.println(item.getId());
-            if(!String.valueOf(item.getId()).endsWith("wall")){
-                simpleItem(item);
+            if(item.get() instanceof BlockItem blockItem) {
+                Block block = blockItem.getBlock(); // get the Block behind the BlockItem
+                if(block instanceof WallBlock) {
+                    continue;
+                }
             }
+            simpleItem(item);
 
-        }
-
+        };
     }
     public void wallItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/wall_inventory"))

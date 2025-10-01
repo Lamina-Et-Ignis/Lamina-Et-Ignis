@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_andesite_cobble": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lamina_et_ignis:andesite_cobble"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lamina_et_ignis:andesite_cobble_wall"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_andesite_cobble",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lamina_et_ignis:andesite_cobble_wall"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
-    COWHIDE("cowhide",26,new int[] {5,7,5,4},20,
+    COWHIDE("cowhide",3,new int[] {1,1,1,1},20,
             SoundEvents.ARMOR_EQUIP_LEATHER,0F,0F,() -> Ingredient.of(ModItems.COW_HIDE.get()));
     private final String name;
     private final int durabilityMultiplier;
