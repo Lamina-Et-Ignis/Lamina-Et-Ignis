@@ -6,7 +6,7 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 
 public class MehtySwordItem extends SwordItem {
-    private int durabilityUse = 1;
+    private int durabilityUse = 2;
 
     public MehtySwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties,int durabilityUse) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties);

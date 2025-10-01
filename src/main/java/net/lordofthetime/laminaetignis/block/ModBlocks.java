@@ -30,6 +30,25 @@ public class ModBlocks {
             registerBlock("crude_stone_bricks",() -> new Block(BlockBehaviour
                     .Properties.copy(Blocks.STONE_BRICKS)
                     .requiresCorrectToolForDrops()));
+
+    //oresands
+    public static final RegistryObject<Block> IRON_SAND = registerOre("iron_sand", () -> new DropExperienceBlock(BlockBehaviour
+            .Properties.copy(Blocks.SAND)
+            .requiresCorrectToolForDrops()
+            .strength(0.5f)));
+    public static final RegistryObject<Block> CRUDE_IRON_SAND = registerOre("crude_iron_sand", () -> new DropExperienceBlock(BlockBehaviour
+            .Properties.copy(Blocks.SAND)
+            .requiresCorrectToolForDrops()
+            .strength(0.5f)));
+
+    public static final RegistryObject<Block> GOLD_SAND = registerOre("gold_sand", () -> new DropExperienceBlock(BlockBehaviour
+            .Properties.copy(Blocks.SAND)
+            .requiresCorrectToolForDrops()
+            .strength(0.5f)));
+    public static final RegistryObject<Block> CRUDE_GOLD_SAND = registerOre("crude_gold_sand", () -> new DropExperienceBlock(BlockBehaviour
+            .Properties.copy(Blocks.SAND)
+            .requiresCorrectToolForDrops()
+            .strength(0.5f)));
     //cobble
     public static final RegistryObject<Block> GRANITE_COBBLE =
             registerBlock("granite_cobble",() -> new Block(BlockBehaviour

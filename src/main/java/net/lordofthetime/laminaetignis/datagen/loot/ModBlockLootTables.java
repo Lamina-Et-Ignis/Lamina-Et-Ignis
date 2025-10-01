@@ -21,6 +21,8 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
@@ -45,10 +47,34 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         }
 //        add ores drop, make sure to somehow exclude them later
 //        this.add(orehere ,block -> createRedstoneOreDrops());
-            this.add(ModBlocks.TIN_ORE.get(),
-                    block -> createOreDrops(ModBlocks.TIN_ORE.get(),ModItems.RAW_TIN.get(),
-                            ConstantValue.exactly(1),
-                            BinomialDistributionGenerator.binomial(1,0.2f)));
+        this.add(ModBlocks.TIN_ORE.get(),
+                block -> createOreDrops(ModBlocks.TIN_ORE.get(),ModItems.RAW_TIN.get(),
+                        ConstantValue.exactly(1),
+                        BinomialDistributionGenerator.binomial(1,0.2f)));
+        this.add(ModBlocks.IRON_SAND.get(),
+                block -> createOreSandDrops(ModBlocks.IRON_SAND.get(),
+                        Map.of(
+                                ModItems.IRON_GRIT.get(),UniformGenerator.between(1,2),
+                                Items.IRON_NUGGET,BinomialDistributionGenerator.binomial(1,0.5f)
+                        )));
+        this.add(ModBlocks.CRUDE_IRON_SAND.get(),
+                block -> createOreSandDrops(ModBlocks.IRON_SAND.get(),
+                        Map.of(
+                                ModItems.CRUDE_IRON_GRIT.get(),UniformGenerator.between(1,2),
+                                ModItems.CRUDE_IRON_NUGGET.get(),BinomialDistributionGenerator.binomial(1,0.5f)
+                        )));
+        this.add(ModBlocks.GOLD_SAND.get(),
+                block -> createOreSandDrops(ModBlocks.GOLD_SAND.get(),
+                        Map.of(
+                                ModItems.GOLD_GRIT.get(),UniformGenerator.between(1,2),
+                                Items.GOLD_NUGGET,BinomialDistributionGenerator.binomial(1,0.5f)
+                        )));
+        this.add(ModBlocks.CRUDE_GOLD_SAND.get(),
+                block -> createOreSandDrops(ModBlocks.GOLD_SAND.get(),
+                        Map.of(
+                                ModItems.CRUDE_GOLD_GRIT.get(),UniformGenerator.between(1,2),
+                                ModItems.CRUDE_GOLD_NUGGET.get(),BinomialDistributionGenerator.binomial(1,0.5f)
+                        )));
     }
     protected LootTable.Builder createOreDrops(Block pBlock, Item item, NumberProvider amount) {
         return createSilkTouchDispatchTable(pBlock,
@@ -56,10 +82,24 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         .apply(SetItemCountFunction.setCount(amount))
                         .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
+    protected LootTable.Builder createOreSandDrops(Block block, Map<Item,NumberProvider> items){
+        LootTable.Builder table = LootTable.lootTable();
+                items.forEach(
+                        (item,amount) -> {
+                            table.withPool(LootPool.lootPool()
+                                    .setRolls(amount)
+                                    .add(LootItem.lootTableItem(item)
+                                            .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+                        }
+                );
+                return table.withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(Items.SAND)));
+    }
     protected LootTable.Builder createOreDrops(Block pBlock, Item item,NumberProvider amount, BinomialDistributionGenerator bonus) {
         return LootTable.lootTable()
                 .withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1)) // main drop rolls once
+                        .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(item)
                                 .apply(SetItemCountFunction.setCount(amount))
                                 .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))

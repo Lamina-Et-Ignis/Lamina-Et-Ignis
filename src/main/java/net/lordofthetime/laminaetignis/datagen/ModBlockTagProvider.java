@@ -2,6 +2,7 @@ package net.lordofthetime.laminaetignis.datagen;
 
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
 import net.lordofthetime.laminaetignis.block.ModBlocks;
+import net.lordofthetime.laminaetignis.item.ModItems;
 import net.lordofthetime.laminaetignis.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -24,8 +25,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         //delete tags
 
-        tag(BlockTags.NEEDS_STONE_TOOL).remove(Blocks.COPPER_ORE);
-        tag(BlockTags.NEEDS_STONE_TOOL).remove(Blocks.DEEPSLATE_COPPER_ORE);
+        //add copper back to tin tools when it will be obtainable with ore sand
+//        tag(BlockTags.NEEDS_STONE_TOOL).remove(Blocks.COPPER_ORE);
+//        tag(BlockTags.NEEDS_STONE_TOOL).remove(Blocks.DEEPSLATE_COPPER_ORE);
 
 
         //tool tags
@@ -69,8 +71,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 //        );
 //        this.tag(BlockTags.MINEABLE_WITH_HOE).add(
 //        );
-//        this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
-//        );
+        this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
+                ModBlocks.CRUDE_IRON_SAND.get(),
+                ModBlocks.IRON_SAND.get(),
+                ModBlocks.CRUDE_GOLD_SAND.get(),
+                ModBlocks.GOLD_SAND.get()
+        );
 
         //tool tier tags
 
@@ -99,10 +105,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 //        this.tag(BlockTags.PLANKS).add(
 //        );
 
-        // Mod Tags
+        // add copper back to tin tools when it will be obtainable with ore sand
         this.tag(ModTags.Blocks.NEEDS_TIN_TOOL).add(
-                Blocks.COPPER_ORE,
-                Blocks.DEEPSLATE_COPPER_ORE,
+//                Blocks.COPPER_ORE,
+//                Blocks.DEEPSLATE_COPPER_ORE,
                 ModBlocks.TIN_ORE.get()
         );
 

@@ -196,8 +196,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //shapeless
-
-
+        hammerRecipe(pWriter,Items.GOLD_ORE,ModItems.GOLDVEIN.get(),ModTags.Items.HAMMER_TIER_0,1);
+        //scroll and patterns
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS,ModItems.SCROLL.get(),1)
+                .requires(ModItems.LEATHER_STRAP.get())
+                .requires(Items.PAPER)
+                .unlockedBy(getHasName(Items.PAPER),has(Items.PAPER))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS,ModItems.HELLENIC_BLUEPRINT.get(),1)
+                .requires(ModItems.SCROLL.get())
+                .requires(Items.IRON_INGOT)
+                .requires(ItemTags.FLOWERS)
+                .unlockedBy(getHasName(ModItems.SCROLL.get()),has(ModItems.SCROLL.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS,ModItems.ROMAN_BLUEPRINT.get(),1)
+                .requires(ModItems.SCROLL.get())
+                .requires(Items.IRON_INGOT)
+                .requires(Items.FEATHER)
+                .unlockedBy(getHasName(ModItems.SCROLL.get()),has(ModItems.SCROLL.get()))
+                .save(pWriter);
         //pebbles
         Map.of(
                 ModItems.PEBBLE.get(), Blocks.COBBLESTONE,

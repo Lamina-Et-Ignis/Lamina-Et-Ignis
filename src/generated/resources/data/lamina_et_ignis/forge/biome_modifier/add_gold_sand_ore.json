@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#minecraft:is_river",
+  "features": "lamina_et_ignis:gold_sand_placed",
+  "step": "top_layer_modification"
+}
