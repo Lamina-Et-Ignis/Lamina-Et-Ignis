@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "lamina_et_ignis:block/crude_diorite_bricks",
+    "side": "lamina_et_ignis:block/crude_diorite_bricks",
+    "top": "lamina_et_ignis:block/crude_diorite_bricks"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_goldvein": {
+    "has_granite_cobble": {
       "conditions": {
         "items": [
           {
             "items": [
-              "lamina_et_ignis:goldvein"
+              "lamina_et_ignis:granite_cobble"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:gold_ore"
+        "recipe": "lamina_et_ignis:crude_granite_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_goldvein",
+      "has_granite_cobble",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:gold_ore"
+      "lamina_et_ignis:crude_granite_bricks"
     ]
   },
   "sends_telemetry_event": false

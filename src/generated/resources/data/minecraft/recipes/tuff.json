@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:tuff_pebble"
+    }
+  ],
+  "result": {
+    "item": "minecraft:tuff"
+  }
+}

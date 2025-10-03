@@ -120,7 +120,22 @@ public class VanillaLootOverrides {
                                     .add(LootItem.lootTableItem(ModItems.DEEPSLATE_PEBBLE.get()))
                     ).build());
         }
-
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/tuff"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(4.0F, 9.0F))
+                                    .add(LootItem.lootTableItem(ModItems.TUFF_PEBBLE.get()))
+                    ).build());
+        }
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/CALCITE"))) {
+            event.setTable(LootTable.lootTable()
+                    .withPool(
+                            LootPool.lootPool()
+                                    .setRolls(UniformGenerator.between(4.0F, 9.0F))
+                                    .add(LootItem.lootTableItem(ModItems.CALCITE_PEBBLE.get()))
+                    ).build());
+        }
         if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/diorite"))) {
             event.setTable(LootTable.lootTable()
                     .withPool(

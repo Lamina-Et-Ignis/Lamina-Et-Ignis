@@ -26,6 +26,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
         this.tag(ModTags.Items.SLING_AMMO).add(
                 ModItems.PEBBLE.get(),
                 ModItems.DEEPSLATE_PEBBLE.get(),
+                ModItems.TUFF_PEBBLE.get(),
+                ModItems.CALCITE_PEBBLE.get(),
                 ModItems.GRANITE_PEBBLE.get(),
                 ModItems.ANDESITE_PEBBLE.get(),
                 ModItems.DIORITE_PEBBLE.get()
@@ -35,7 +37,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ModItems.COW_HIDE.get(),
                 Items.RABBIT_HIDE
         );
-
+        this.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(
+                ModBlocks.GRANITE_COBBLE.get().asItem(),
+                ModBlocks.DIORITE_COBBLE.get().asItem(),
+                ModBlocks.ANDESITE_COBBLE.get().asItem()
+        );
         //hammer tiers
         this.tag(ModTags.Items.HAMMER_TIER_0).add(
                 ModItems.WOODEN_HAMMER.get(),

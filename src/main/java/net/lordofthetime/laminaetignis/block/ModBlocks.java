@@ -26,10 +26,6 @@ public class ModBlocks {
             .requiresCorrectToolForDrops()
             .strength(4F)
             .explosionResistance(4F),UniformInt.of(3,6)));
-    public static final RegistryObject<Block> CRUDE_STONE_BRICKS =
-            registerBlock("crude_stone_bricks",() -> new Block(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
 
     //oresands
     public static final RegistryObject<Block> IRON_SAND = registerOre("iron_sand", () -> new DropExperienceBlock(BlockBehaviour
@@ -51,107 +47,185 @@ public class ModBlocks {
             .strength(0.5f)));
     //cobble
     public static final RegistryObject<Block> GRANITE_COBBLE =
-            registerBlock("granite_cobble",() -> new Block(BlockBehaviour
-                    .Properties.copy(Blocks.COBBLESTONE)
-                    .requiresCorrectToolForDrops()));
+            registerBricks("granite_cobble",() -> Blocks.COBBLESTONE);
     public static final RegistryObject<Block> GRANITE_COBBLE_STAIRS =
-            registerBlock("granite_cobble_stairs",() -> new StairBlock(() ->  ModBlocks.GRANITE_COBBLE.get().defaultBlockState(),BlockBehaviour
-                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneStairs("granite_cobble_stairs",GRANITE_COBBLE);
     public static final RegistryObject<Block> GRANITE_COBBLE_SLAB =
-            registerBlock("granite_cobble_slab",() -> new SlabBlock(BlockBehaviour
-                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneSlab("granite_cobble_slab",GRANITE_COBBLE);
     public static final RegistryObject<Block> GRANITE_COBBLE_WALL =
-            registerBlock("granite_cobble_wall",() -> new WallBlock(BlockBehaviour
-                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneWall("granite_cobble_wall",GRANITE_COBBLE);
 
     public static final RegistryObject<Block> DIORITE_COBBLE =
-            registerBlock("diorite_cobble",() -> new Block(BlockBehaviour
-                    .Properties.copy(Blocks.COBBLESTONE)
-                    .requiresCorrectToolForDrops()));
+            registerBricks("diorite_cobble",() -> Blocks.COBBLESTONE);
     public static final RegistryObject<Block> DIORITE_COBBLE_STAIRS =
-            registerBlock("diorite_cobble_stairs",() -> new StairBlock(() ->  ModBlocks.DIORITE_COBBLE.get().defaultBlockState(),BlockBehaviour
-                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneStairs("diorite_cobble_stairs",DIORITE_COBBLE);
     public static final RegistryObject<Block> DIORITE_COBBLE_SLAB =
-            registerBlock("diorite_cobble_slab",() -> new SlabBlock(BlockBehaviour
-                    .Properties.copy(ModBlocks.GRANITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneSlab("diorite_cobble_slab",DIORITE_COBBLE);
     public static final RegistryObject<Block> DIORITE_COBBLE_WALL =
-            registerBlock("diorite_cobble_wall",() -> new WallBlock(BlockBehaviour
-                    .Properties.copy(ModBlocks.DIORITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneWall("diorite_cobble_wall",DIORITE_COBBLE);
 
     public static final RegistryObject<Block> ANDESITE_COBBLE =
-            registerBlock("andesite_cobble",() -> new Block(BlockBehaviour
-                    .Properties.copy(Blocks.COBBLESTONE)
-                    .requiresCorrectToolForDrops()));
+            registerBricks("andesite_cobble",() -> Blocks.COBBLESTONE);
     public static final RegistryObject<Block> ANDESITE_COBBLE_STAIRS =
-            registerBlock("andesite_cobble_stairs",() -> new StairBlock(() ->  ModBlocks.ANDESITE_COBBLE.get().defaultBlockState(),BlockBehaviour
-                    .Properties.copy(ModBlocks.ANDESITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneStairs("andesite_cobble_stairs",ANDESITE_COBBLE);
     public static final RegistryObject<Block> ANDESITE_COBBLE_SLAB =
-            registerBlock("andesite_cobble_slab",() -> new SlabBlock(BlockBehaviour
-                    .Properties.copy(ModBlocks.ANDESITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneSlab("andesite_cobble_slab",ANDESITE_COBBLE);
     public static final RegistryObject<Block> ANDESITE_COBBLE_WALL =
-            registerBlock("andesite_cobble_wall",() -> new WallBlock(BlockBehaviour
-                    .Properties.copy(ModBlocks.ANDESITE_COBBLE.get())
-                    .requiresCorrectToolForDrops()));
+            registerStoneWall("andesite_cobble_wall",ANDESITE_COBBLE);
+
+    public static final RegistryObject<Block> CALCITE_COBBLE =
+            registerBricks("calcite_cobble",() -> Blocks.COBBLESTONE);
+    public static final RegistryObject<Block> CALCITE_COBBLE_STAIRS =
+            registerStoneStairs("calcite_cobble_stairs",GRANITE_COBBLE);
+    public static final RegistryObject<Block> CALCITE_COBBLE_SLAB =
+            registerStoneSlab("calcite_cobble_slab",GRANITE_COBBLE);
+    public static final RegistryObject<Block> CALCITE_COBBLE_WALL =
+            registerStoneWall("calcite_cobble_wall",GRANITE_COBBLE);
+
+    public static final RegistryObject<Block> TUFF_COBBLE =
+            registerBricks("tuff_cobble",() -> Blocks.COBBLESTONE);
+    public static final RegistryObject<Block> TUFF_COBBLE_STAIRS =
+            registerStoneStairs("tuff_cobble_stairs",GRANITE_COBBLE);
+    public static final RegistryObject<Block> TUFF_COBBLE_SLAB =
+            registerStoneSlab("tuff_cobble_slab",GRANITE_COBBLE);
+    public static final RegistryObject<Block> TUFF_COBBLE_WALL =
+            registerStoneWall("tuff_cobble_wall",GRANITE_COBBLE);
 
     //Granite Bricks
     public static final RegistryObject<Block> GRANITE_BRICKS =
-            registerBlock("granite_bricks",() -> new Block(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerBricks("granite_bricks",() -> Blocks.STONE_BRICKS);
     public static final RegistryObject<Block> GRANITE_BRICK_STAIRS =
-            registerBlock("granite_brick_stairs",() -> new StairBlock(() ->  ModBlocks.GRANITE_BRICKS.get().defaultBlockState(),BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneStairs("granite_brick_stairs",GRANITE_BRICKS);
     public static final RegistryObject<Block> GRANITE_BRICK_SLAB =
-            registerBlock("granite_brick_slab",() -> new SlabBlock(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneSlab("granite_brick_slab",GRANITE_BRICKS);
     public static final RegistryObject<Block> GRANITE_BRICK_WALL =
-            registerBlock("granite_brick_wall",() -> new WallBlock(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneWall("granite_brick_wall",GRANITE_BRICKS);
+
+    public static final RegistryObject<Block> CRUDE_GRANITE_BRICKS =
+            registerBricks("crude_granite_bricks",() -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_GRANITE_BRICK_STAIRS =
+            registerStoneStairs("crude_granite_brick_stairs",CRUDE_GRANITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_GRANITE_BRICK_SLAB =
+            registerStoneSlab("crude_granite_brick_slab",CRUDE_GRANITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_GRANITE_BRICK_WALL =
+            registerStoneWall("crude_granite_brick_wall",CRUDE_GRANITE_BRICKS);
     //Diorite bricks
     public static final RegistryObject<Block> DIORITE_BRICKS =
-            registerBlock("diorite_bricks",() -> new Block(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerBricks("diorite_bricks",() -> Blocks.STONE_BRICKS);
     public static final RegistryObject<Block> DIORITE_BRICK_STAIRS =
-            registerBlock("diorite_brick_stairs",() -> new StairBlock(() ->  ModBlocks.GRANITE_BRICKS.get().defaultBlockState(),BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneStairs("diorite_brick_stairs",DIORITE_BRICKS);
     public static final RegistryObject<Block> DIORITE_BRICK_SLAB =
-            registerBlock("diorite_brick_slab",() -> new SlabBlock(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneSlab("diorite_brick_slab",DIORITE_BRICKS);
     public static final RegistryObject<Block> DIORITE_BRICK_WALL =
-            registerBlock("diorite_brick_wall",() -> new WallBlock(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneWall("diorite_brick_wall",DIORITE_BRICKS);
+
+    public static final RegistryObject<Block> CRUDE_DIORITE_BRICKS =
+            registerBricks("crude_diorite_bricks",() -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_DIORITE_BRICK_STAIRS =
+            registerStoneStairs("crude_diorite_brick_stairs",CRUDE_DIORITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_DIORITE_BRICK_SLAB =
+            registerStoneSlab("crude_diorite_brick_slab",CRUDE_DIORITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_DIORITE_BRICK_WALL =
+            registerStoneWall("crude_diorite_brick_wall",CRUDE_DIORITE_BRICKS);
+
     //Andesite bricks
     public static final RegistryObject<Block> ANDESITE_BRICKS =
-            registerBlock("andesite_bricks",() -> new Block(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerBricks("andesite_bricks",() -> Blocks.STONE_BRICKS);
     public static final RegistryObject<Block> ANDESITE_BRICK_STAIRS =
-            registerBlock("andesite_brick_stairs",() -> new StairBlock(() ->  ModBlocks.GRANITE_BRICKS.get().defaultBlockState(),BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneStairs("andesite_brick_stairs",ANDESITE_BRICKS);
     public static final RegistryObject<Block> ANDESITE_BRICK_SLAB =
-            registerBlock("andesite_brick_slab",() -> new SlabBlock(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneSlab("andesite_brick_slab",ANDESITE_BRICKS);
     public static final RegistryObject<Block> ANDESITE_BRICK_WALL =
-            registerBlock("andesite_brick_wall",() -> new WallBlock(BlockBehaviour
-                    .Properties.copy(Blocks.STONE_BRICKS)
-                    .requiresCorrectToolForDrops()));
+            registerStoneWall("andesite_brick_wall",ANDESITE_BRICKS);
+
+    public static final RegistryObject<Block> CRUDE_ANDESITE_BRICKS =
+            registerBricks("crude_andesite_bricks",() -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_ANDESITE_BRICK_STAIRS =
+            registerStoneStairs("crude_andesite_brick_stairs",CRUDE_ANDESITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_ANDESITE_BRICK_SLAB =
+            registerStoneSlab("crude_andesite_brick_slab",CRUDE_ANDESITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_ANDESITE_BRICK_WALL =
+            registerStoneWall("crude_andesite_brick_wall",CRUDE_ANDESITE_BRICKS);
+
+    //Calcite bricks
+    public static final RegistryObject<Block> CALCITE_BRICKS =
+            registerBricks("calcite_bricks",() -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> CALCITE_BRICK_STAIRS =
+            registerStoneStairs("calcite_brick_stairs",GRANITE_BRICKS);
+    public static final RegistryObject<Block> CALCITE_BRICK_SLAB =
+            registerStoneSlab("calcite_brick_slab",GRANITE_BRICKS);
+    public static final RegistryObject<Block> CALCITE_BRICK_WALL =
+            registerStoneWall("calcite_brick_wall",GRANITE_BRICKS);
+
+    public static final RegistryObject<Block> CRUDE_CALCITE_BRICKS =
+            registerBricks("crude_calcite_bricks",() -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_CALCITE_BRICK_STAIRS =
+            registerStoneStairs("crude_calcite_brick_stairs",CRUDE_CALCITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_CALCITE_BRICK_SLAB =
+            registerStoneSlab("crude_calcite_brick_slab",CRUDE_CALCITE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_CALCITE_BRICK_WALL =
+            registerStoneWall("crude_calcite_brick_wall",CRUDE_CALCITE_BRICKS);
+
+    //Tuff bricks
+    public static final RegistryObject<Block> TUFF_BRICKS =
+            registerBricks("tuff_bricks",() -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> TUFF_BRICK_STAIRS =
+            registerStoneStairs("tuff_brick_stairs",TUFF_BRICKS);
+    public static final RegistryObject<Block> TUFF_BRICK_SLAB =
+            registerStoneSlab("tuff_brick_slab",TUFF_BRICKS);
+    public static final RegistryObject<Block> TUFF_BRICK_WALL =
+            registerStoneWall("tuff_brick_wall",TUFF_BRICKS);
+
+    public static final RegistryObject<Block> CRUDE_TUFF_BRICKS =
+            registerBricks("crude_tuff_bricks",() -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_TUFF_BRICK_STAIRS =
+            registerStoneStairs("crude_tuff_brick_stairs",CRUDE_TUFF_BRICKS);
+    public static final RegistryObject<Block> CRUDE_TUFF_BRICK_SLAB =
+            registerStoneSlab("crude_tuff_brick_slab",CRUDE_TUFF_BRICKS);
+    public static final RegistryObject<Block> CRUDE_TUFF_BRICK_WALL =
+            registerStoneWall("crude_tuff_brick_wall",CRUDE_TUFF_BRICKS);
+
+    //Stone and deepslate crude variants
+    public static final RegistryObject<Block> CRUDE_STONE_BRICKS =
+            registerBricks("crude_stone_bricks", () -> Blocks.STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_STONE_BRICK_STAIRS =
+            registerStoneStairs("crude_stone_brick_stairs",CRUDE_STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_STONE_BRICK_SLAB =
+            registerStoneSlab("crude_stone_brick_slab",CRUDE_STONE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_STONE_BRICK_WALL =
+            registerStoneWall("crude_stone_brick_wall",CRUDE_STONE_BRICKS);
+
+    public static final RegistryObject<Block> CRUDE_DEEPSLATE_BRICKS =
+            registerBricks("crude_deepslate_bricks", () -> Blocks.DEEPSLATE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_DEEPSLATE_BRICK_STAIRS =
+            registerStoneStairs("crude_deepslate_brick_stairs",CRUDE_DEEPSLATE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_DEEPSLATE_BRICK_SLAB =
+            registerStoneSlab("crude_deepslate_brick_slab",CRUDE_DEEPSLATE_BRICKS);
+    public static final RegistryObject<Block> CRUDE_DEEPSLATE_BRICK_WALL =
+            registerStoneWall("crude_deepslate_brick_wall",CRUDE_DEEPSLATE_BRICKS);
+
+    private static RegistryObject<Block> registerBricks(String name, Supplier<Block> usedBlock) {
+        return registerBlock(name, () -> new Block(BlockBehaviour
+                .Properties.copy(usedBlock.get())
+                .requiresCorrectToolForDrops()));
+    }
+
+    private static RegistryObject<Block> registerStoneStairs(String name, Supplier<Block> usedBlock) {
+        return registerBlock(name, () -> new StairBlock(usedBlock.get().defaultBlockState(),
+                BlockBehaviour.Properties.copy(usedBlock.get()).requiresCorrectToolForDrops()));
+    }
+
+    private static RegistryObject<Block> registerStoneSlab(String name, Supplier<Block> usedBlock) {
+        return registerBlock(name, () -> new SlabBlock(BlockBehaviour
+                .Properties.copy(usedBlock.get())
+                .requiresCorrectToolForDrops()));
+    }
+
+    private static RegistryObject<Block> registerStoneWall(String name, Supplier<Block> usedBlock) {
+        return registerBlock(name, () -> new WallBlock(BlockBehaviour
+                .Properties.copy(usedBlock.get())
+                .requiresCorrectToolForDrops()));
+    }
     private static<T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
         RegistryObject<T> toReturn = BLOCKS.register(name,block);
         registerBlockItem(name,toReturn);

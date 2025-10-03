@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "lamina_et_ignis:granite_cobble"
+    }
+  },
+  "pattern": [
+    "CC ",
+    "CC "
+  ],
+  "result": {
+    "count": 4,
+    "item": "lamina_et_ignis:crude_granite_bricks"
+  },
+  "show_notification": true
+}

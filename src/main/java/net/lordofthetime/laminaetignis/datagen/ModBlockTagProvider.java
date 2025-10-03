@@ -7,8 +7,10 @@ import net.lordofthetime.laminaetignis.tags.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -33,8 +35,15 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         //tool tags
 
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-
+                //Stone and Deepslate
                 ModBlocks.CRUDE_STONE_BRICKS.get(),
+                ModBlocks.CRUDE_STONE_BRICK_STAIRS.get(),
+                ModBlocks.CRUDE_STONE_BRICK_SLAB.get(),
+                ModBlocks.CRUDE_STONE_BRICK_WALL.get(),
+                ModBlocks.CRUDE_DEEPSLATE_BRICKS.get(),
+                ModBlocks.CRUDE_DEEPSLATE_BRICK_STAIRS.get(),
+                ModBlocks.CRUDE_DEEPSLATE_BRICK_SLAB.get(),
+                ModBlocks.CRUDE_DEEPSLATE_BRICK_WALL.get(),
                 //andesite
                 ModBlocks.ANDESITE_BRICKS.get(),
                 ModBlocks.ANDESITE_BRICK_STAIRS.get(),
@@ -44,15 +53,23 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 ModBlocks.ANDESITE_COBBLE_STAIRS.get(),
                 ModBlocks.ANDESITE_COBBLE_SLAB.get(),
                 ModBlocks.ANDESITE_COBBLE_WALL.get(),
+                ModBlocks.CRUDE_ANDESITE_BRICKS.get(),
+                ModBlocks.CRUDE_ANDESITE_BRICK_STAIRS.get(),
+                ModBlocks.CRUDE_ANDESITE_BRICK_SLAB.get(),
+                ModBlocks.CRUDE_ANDESITE_BRICK_WALL.get(),
                 //DIORITE
                 ModBlocks.DIORITE_BRICKS.get(),
                 ModBlocks.DIORITE_BRICK_STAIRS.get(),
                 ModBlocks.DIORITE_BRICK_SLAB.get(),
                 ModBlocks.DIORITE_BRICK_WALL.get(),
                 ModBlocks.DIORITE_COBBLE.get(),
-                ModBlocks.GRANITE_COBBLE_STAIRS.get(),
-                ModBlocks.GRANITE_COBBLE_SLAB.get(),
-                ModBlocks.GRANITE_COBBLE_WALL.get(),
+                ModBlocks.DIORITE_COBBLE_STAIRS.get(),
+                ModBlocks.DIORITE_COBBLE_SLAB.get(),
+                ModBlocks.DIORITE_COBBLE_WALL.get(),
+                ModBlocks.CRUDE_DIORITE_BRICKS.get(),
+                ModBlocks.CRUDE_DIORITE_BRICK_STAIRS.get(),
+                ModBlocks.CRUDE_DIORITE_BRICK_SLAB.get(),
+                ModBlocks.CRUDE_DIORITE_BRICK_WALL.get(),
                 //GRANITE
                 ModBlocks.GRANITE_BRICKS.get(),
                 ModBlocks.GRANITE_BRICK_STAIRS.get(),
@@ -62,6 +79,36 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 ModBlocks.GRANITE_COBBLE_STAIRS.get(),
                 ModBlocks.GRANITE_COBBLE_SLAB.get(),
                 ModBlocks.GRANITE_COBBLE_WALL.get(),
+                ModBlocks.CRUDE_GRANITE_BRICKS.get(),
+                ModBlocks.CRUDE_GRANITE_BRICK_STAIRS.get(),
+                ModBlocks.CRUDE_GRANITE_BRICK_SLAB.get(),
+                ModBlocks.CRUDE_GRANITE_BRICK_WALL.get(),
+                //CALCITE
+                ModBlocks.CALCITE_BRICKS.get(),
+                ModBlocks.CALCITE_BRICK_STAIRS.get(),
+                ModBlocks.CALCITE_BRICK_SLAB.get(),
+                ModBlocks.CALCITE_BRICK_WALL.get(),
+                ModBlocks.CALCITE_COBBLE.get(),
+                ModBlocks.CALCITE_COBBLE_STAIRS.get(),
+                ModBlocks.CALCITE_COBBLE_SLAB.get(),
+                ModBlocks.CALCITE_COBBLE_WALL.get(),
+                ModBlocks.CRUDE_CALCITE_BRICKS.get(),
+                ModBlocks.CRUDE_CALCITE_BRICK_STAIRS.get(),
+                ModBlocks.CRUDE_CALCITE_BRICK_SLAB.get(),
+                ModBlocks.CRUDE_CALCITE_BRICK_WALL.get(),
+                //TUFF
+                ModBlocks.TUFF_BRICKS.get(),
+                ModBlocks.TUFF_BRICK_STAIRS.get(),
+                ModBlocks.TUFF_BRICK_SLAB.get(),
+                ModBlocks.TUFF_BRICK_WALL.get(),
+                ModBlocks.TUFF_COBBLE.get(),
+                ModBlocks.TUFF_COBBLE_STAIRS.get(),
+                ModBlocks.TUFF_COBBLE_SLAB.get(),
+                ModBlocks.TUFF_COBBLE_WALL.get(),
+                ModBlocks.CRUDE_TUFF_BRICKS.get(),
+                ModBlocks.CRUDE_TUFF_BRICK_STAIRS.get(),
+                ModBlocks.CRUDE_TUFF_BRICK_SLAB.get(),
+                ModBlocks.CRUDE_TUFF_BRICK_WALL.get(),
 
                 //ORES
                 ModBlocks.TIN_ORE.get()
@@ -93,7 +140,22 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         this.tag(BlockTags.WALLS).add(
                 ModBlocks.ANDESITE_BRICK_WALL.get(),
                 ModBlocks.GRANITE_BRICK_WALL.get(),
-                ModBlocks.DIORITE_BRICK_WALL.get()
+                ModBlocks.DIORITE_BRICK_WALL.get(),
+                ModBlocks.TUFF_BRICK_WALL.get(),
+                ModBlocks.CALCITE_BRICK_WALL.get(),
+                ModBlocks.ANDESITE_COBBLE_WALL.get(),
+                ModBlocks.GRANITE_COBBLE_WALL.get(),
+                ModBlocks.DIORITE_COBBLE_WALL.get(),
+                ModBlocks.TUFF_COBBLE_WALL.get(),
+                ModBlocks.CALCITE_COBBLE_WALL.get(),
+                ModBlocks.CRUDE_ANDESITE_BRICK_WALL.get(),
+                ModBlocks.CRUDE_GRANITE_BRICK_WALL.get(),
+                ModBlocks.CRUDE_DIORITE_BRICK_WALL.get(),
+                ModBlocks.CRUDE_TUFF_BRICK_WALL.get(),
+                ModBlocks.CRUDE_CALCITE_BRICK_WALL.get(),
+                ModBlocks.CRUDE_DEEPSLATE_BRICK_WALL.get(),
+                ModBlocks.CRUDE_STONE_BRICK_WALL.get()
+
 
         );
 //        this.tag(BlockTags.FENCES).add(

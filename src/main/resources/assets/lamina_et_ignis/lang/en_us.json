@@ -1,7 +1,146 @@
 {
   "item.lamina_et_ignis.crude_copper_ingot": "Crude Copper Ingot",
+  "item.lamina_et_ignis.crude_copper_plate": "Crude Copper Plate",
+  "item.lamina_et_ignis.crude_copper_nugget": "Crude Copper Nugget",
+  "item.lamina_et_ignis.crude_copper_chip": "Crude Copper Chip",
+  "item.lamina_et_ignis.crude_copper_hammer": "Crude Copper Hammer",
+  "item.lamina_et_ignis.crude_copper_mehty_pipe": "Crude Copper Mehty",
 
-  "block.lamina_et_ignis.block_purifier": "Block Purifier",
+  "item.lamina_et_ignis.copper_plate": "Copper Plate",
+  "item.lamina_et_ignis.copper_nugget": "Copper Nugget",
+  "item.lamina_et_ignis.copper_chip": "Copper Chip",
+  "item.lamina_et_ignis.copper_hammer": "Copper Hammer",
+  "item.lamina_et_ignis.copper_mehty_pipe": "Copper Mehty",
+
+  "item.lamina_et_ignis.crude_tin_ingot": "Crude Tin Ingot",
+  "item.lamina_et_ignis.crude_tin_plate": "Crude Tin Plate",
+  "item.lamina_et_ignis.crude_tin_nugget": "Crude Tin Nugget",
+  "item.lamina_et_ignis.crude_tin_chip": "Crude Tin Chip",
+  "item.lamina_et_ignis.crude_tin_hammer": "Crude Tin Hammer",
+  "item.lamina_et_ignis.crude_tin_mehty_pipe": "Crude Tin Mehty",
+
+  "item.lamina_et_ignis.tin_ingot": "Tin Ingot",
+  "item.lamina_et_ignis.tin_plate": "Tin Plate",
+  "item.lamina_et_ignis.tin_nugget": "Tin Nugget",
+  "item.lamina_et_ignis.tin_chip": "Tin Chip",
+  "item.lamina_et_ignis.tin_hammer": "Tin Hammer",
+  "item.lamina_et_ignis.tin_mehty_pipe": "Tin Mehty",
+
+  "item.lamina_et_ignis.crude_iron_ingot": "Crude Iron Ingot",
+  "item.lamina_et_ignis.crude_iron_plate": "Crude Iron Plate",
+  "item.lamina_et_ignis.crude_iron_nugget": "Crude Iron Nugget",
+  "item.lamina_et_ignis.crude_iron_chip": "Crude Iron Chip",
+  "item.lamina_et_ignis.crude_iron_grit": "Crude Iron Grit",
+
+  "item.lamina_et_ignis.iron_plate": "Iron Plate",
+  "item.lamina_et_ignis.iron_chip": "Iron Chip",
+  "item.lamina_et_ignis.iron_grit": "Iron Grit",
+
+  "item.lamina_et_ignis.crude_gold_ingot": "Crude Gold Ingot",
+  "item.lamina_et_ignis.crude_gold_plate": "Crude Gold Plate",
+  "item.lamina_et_ignis.crude_gold_nugget": "Crude Gold Nugget",
+  "item.lamina_et_ignis.crude_gold_chip": "Crude Gold Chip",
+  "item.lamina_et_ignis.crude_gold_grit": "Crude Gold Grit",
+
+  "item.lamina_et_ignis.gold_plate": "Gold Plate",
+  "item.lamina_et_ignis.gold_chip": "Gold Chip",
+  "item.lamina_et_ignis.gold_grit": "Gold Grit",
+
+
+  "item.lamina_et_ignis.cow_hide": "Cow Hide",
+  "item.lamina_et_ignis.cow_hide_pelt_cloak": "Cow Hide Pelt Cloak",
+  "item.lamina_et_ignis.leather_strap": "Leather Strap",
+
+  "item.lamina_et_ignis.sling": "Sling",
+
+  "item.lamina_et_ignis.cord_spool": "Cord Spool",
+
+  "item.lamina_et_ignis.bone_shard": "Bone Shard",
+  "item.lamina_et_ignis.bone_needle": "Bone Needle",
+
+  "item.lamina_et_ignis.scroll": "Scroll",
+  "item.lamina_et_ignis.hellenic_blueprint": "Hellenic Blueprint",
+  "item.lamina_et_ignis.roman_blueprint": "Roman Blueprint",
+
+  "item.lamina_et_ignis.chalkous": "Chalkous",
+
+
+
+  "item.lamina_et_ignis.wrapped_wooden_club": "Wrapped Wooden Club",
+  "item.lamina_et_ignis.wooden_club": "Wooden Club",
+  "item.lamina_et_ignis.wooden_hammer": "Wooden Hammer",
+
+
+  "item.lamina_et_ignis.pebble": "Pebble",
+  "item.lamina_et_ignis.deepslate_pebble": "Deepslate Pebble",
+  "item.lamina_et_ignis.tuff_pebble": "Tuff Pebble",
+  "item.lamina_et_ignis.calcite_pebble": "Calcite Pebble",
+  "item.lamina_et_ignis.granite_pebble": "Granite Pebble",
+  "item.lamina_et_ignis.andesite_pebble": "Andesite Pebble",
+  "item.lamina_et_ignis.diorite_pebble": "Diorite Pebble",
+
+  "item.lamina_et_ignis.greasy_fleece": "Greasy Fleece",
+  "item.lamina_et_ignis.fleece": "Fleece",
+
+
+
+  "item.lamina_et_ignis.goldvein": "Goldvein",
+
+  "item.lamina_et_ignis.raw_tin": "Raw Tin",
+  "block.lamina_et_ignis.tin_ore": "Tin Ore",
+
+  "block.lamina_et_ignis.iron_sand": "Iron Sand",
+  "block.lamina_et_ignis.crude_iron_sand": "Crude Iron Sand",
+  "block.lamina_et_ignis.gold_sand": "Gold Sand",
+  "block.lamina_et_ignis.crude_gold_sand": "Crude Gold Sand",
+
+  "block.lamina_et_ignis.crude_stone_bricks": "Crude Stone Bricks",
+
+  "block.lamina_et_ignis.granite_cobble": "Granite Cobble",
+  "block.lamina_et_ignis.granite_cobble_stairs": "Granite Cobble Stairs",
+  "block.lamina_et_ignis.granite_cobble_slab": "Granite Cobble Slab",
+  "block.lamina_et_ignis.granite_cobble_wall": "Granite Cobble Walls",
+
+  "block.lamina_et_ignis.granite_bricks": "Granite Bricks",
+  "block.lamina_et_ignis.granite_brick_stairs": "Granite Brick Stairs",
+  "block.lamina_et_ignis.granite_brick_slab": "Granite Brick Slab",
+  "block.lamina_et_ignis.granite_brick_wall": "Granite Brick Walls",
+
+  "block.lamina_et_ignis.crude_granite_bricks": "Crude Granite Bricks",
+  "block.lamina_et_ignis.crude_granite_brick_stairs": "Crude Granite Brick Stairs",
+  "block.lamina_et_ignis.crude_granite_brick_slab": "Crude Granite Brick Slab",
+  "block.lamina_et_ignis.crude_granite_brick_wall": "Crude Granite Brick Walls",
+
+  "block.lamina_et_ignis.andesite_cobble": "Andesite Cobble",
+  "block.lamina_et_ignis.andesite_cobble_stairs": "Andesite Cobble Stairs",
+  "block.lamina_et_ignis.andesite_cobble_slab": "Andesite Cobble Slab",
+  "block.lamina_et_ignis.andesite_cobble_wall": "Andesite Cobble Walls",
+
+  "block.lamina_et_ignis.andesite_bricks": "Andesite Bricks",
+  "block.lamina_et_ignis.andesite_brick_stairs": "Andesite Brick Stairs",
+  "block.lamina_et_ignis.andesite_brick_slab": "Andesite Brick Slab",
+  "block.lamina_et_ignis.andesite_brick_wall": "Andesite Brick Walls",
+
+  "block.lamina_et_ignis.crude_andesite_bricks": "Crude Andesite Bricks",
+  "block.lamina_et_ignis.crude_andesite_brick_stairs": "Crude Andesite Brick Stairs",
+  "block.lamina_et_ignis.crude_andesite_brick_slab": "Crude Andesite Brick Slab",
+  "block.lamina_et_ignis.crude_andesite_brick_wall": "Crude Andesite Brick Walls",
+
+  "block.lamina_et_ignis.diorite_cobble": "Diorite Cobble",
+  "block.lamina_et_ignis.diorite_cobble_stairs": "Diorite Cobble Stairs",
+  "block.lamina_et_ignis.diorite_cobble_slab": "Diorite Cobble Slab",
+  "block.lamina_et_ignis.diorite_cobble_wall": "Diorite Cobble Walls",
+
+  "block.lamina_et_ignis.diorite_bricks": "Diorite Bricks",
+  "block.lamina_et_ignis.diorite_brick_stairs": "Diorite Brick Stairs",
+  "block.lamina_et_ignis.diorite_brick_slab": "Diorite Brick Slab",
+  "block.lamina_et_ignis.diorite_brick_wall": "Diorite Brick Walls",
+
+  "block.lamina_et_ignis.crude_diorite_bricks": "Crude Diorite Bricks",
+  "block.lamina_et_ignis.crude_diorite_brick_stairs": "Crude Diorite Brick Stairs",
+  "block.lamina_et_ignis.crude_diorite_brick_slab": "Crude Diorite Brick Slab",
+  "block.lamina_et_ignis.crude_diorite_brick_wall": "Crude Diorite Brick Walls",
+
 
   "creativetab.laminaetignistab": "Lamina et Ignis"
 }

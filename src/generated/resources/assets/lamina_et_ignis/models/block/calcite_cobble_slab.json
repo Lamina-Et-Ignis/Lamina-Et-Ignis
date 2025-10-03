@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "lamina_et_ignis:block/calcite_cobble",
+    "side": "lamina_et_ignis:block/calcite_cobble",
+    "top": "lamina_et_ignis:block/calcite_cobble"
+  }
+}

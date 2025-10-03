@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:tuff"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tuff_pebble": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lamina_et_ignis:tuff_pebble"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tuff_pebble",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:tuff"
+    ]
+  },
+  "sends_telemetry_event": false
+}

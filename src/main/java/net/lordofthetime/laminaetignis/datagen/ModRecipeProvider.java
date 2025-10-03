@@ -39,8 +39,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         Map.of(
                 Blocks.ANDESITE,ModBlocks.ANDESITE_BRICKS.get(),
                 Blocks.DIORITE,ModBlocks.DIORITE_BRICKS.get(),
-                Blocks.GRANITE,ModBlocks.GRANITE_BRICKS.get()
+                Blocks.GRANITE,ModBlocks.GRANITE_BRICKS.get(),
+                ModBlocks.ANDESITE_COBBLE.get(),ModBlocks.CRUDE_ANDESITE_BRICKS.get(),
+                ModBlocks.DIORITE_COBBLE.get(),ModBlocks.CRUDE_DIORITE_BRICKS.get(),
+                ModBlocks.GRANITE_COBBLE.get(),ModBlocks.CRUDE_GRANITE_BRICKS.get()
         ).forEach((base,brick) ->{brickBuilder(pWriter,base,brick);});
+
+        stairBuilder(pWriter,ModBlocks.CRUDE_DIORITE_BRICKS.get(),ModBlocks.CRUDE_DIORITE_BRICK_STAIRS.get());
+        slabBuilder(pWriter,ModBlocks.CRUDE_DIORITE_BRICKS.get(),ModBlocks.CRUDE_DIORITE_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CRUDE_DIORITE_BRICKS.get(),ModBlocks.CRUDE_DIORITE_BRICK_WALL.get());
+
+        stairBuilder(pWriter,ModBlocks.CRUDE_ANDESITE_BRICKS.get(),ModBlocks.CRUDE_ANDESITE_BRICK_STAIRS.get());
+        slabBuilder(pWriter,ModBlocks.CRUDE_ANDESITE_BRICKS.get(),ModBlocks.CRUDE_ANDESITE_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CRUDE_ANDESITE_BRICKS.get(),ModBlocks.CRUDE_ANDESITE_BRICK_WALL.get());
+
+        ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.CRUDE_GRANITE_BRICKS.get(),ModBlocks.CRUDE_GRANITE_BRICK_STAIRS.get());
+        ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.CRUDE_GRANITE_BRICKS.get(),ModBlocks.CRUDE_GRANITE_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CRUDE_GRANITE_BRICKS.get(),ModBlocks.CRUDE_GRANITE_BRICK_WALL.get());
 
         stairBuilder(pWriter,ModBlocks.DIORITE_BRICKS.get(),ModBlocks.DIORITE_BRICK_STAIRS.get());
         slabBuilder(pWriter,ModBlocks.DIORITE_BRICKS.get(),ModBlocks.DIORITE_BRICK_SLAB.get());
@@ -196,7 +211,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //shapeless
-        hammerRecipe(pWriter,Items.GOLD_ORE,ModItems.GOLDVEIN.get(),ModTags.Items.HAMMER_TIER_0,1);
+        hammerRecipe(pWriter,Items.RAW_GOLD,ModItems.GOLDVEIN.get(),ModTags.Items.HAMMER_TIER_0,1);
+        hammerRecipe(pWriter,ModItems.CHALKOUS.get(),ModItems.COPPER_CHIP.get(),ModTags.Items.HAMMER_TIER_1,1);
         //scroll and patterns
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS,ModItems.SCROLL.get(),1)
                 .requires(ModItems.LEATHER_STRAP.get())
@@ -221,8 +237,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModItems.DEEPSLATE_PEBBLE.get(), Blocks.COBBLED_DEEPSLATE,
                 ModItems.ANDESITE_PEBBLE.get(), ModBlocks.ANDESITE_COBBLE.get(),
                 ModItems.GRANITE_PEBBLE.get(), ModBlocks.GRANITE_COBBLE.get(),
-                ModItems.DIORITE_PEBBLE.get(), ModBlocks.DIORITE_COBBLE.get()
-        ).forEach(
+                ModItems.DIORITE_PEBBLE.get(), ModBlocks.DIORITE_COBBLE.get(),
+                ModItems.TUFF_PEBBLE.get(), Blocks.TUFF,
+                ModItems.CALCITE_PEBBLE.get(), Blocks.CALCITE
+                ).forEach(
                 (pebble,cobble) ->{
                     ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,pebble,9)
                             .requires(cobble)

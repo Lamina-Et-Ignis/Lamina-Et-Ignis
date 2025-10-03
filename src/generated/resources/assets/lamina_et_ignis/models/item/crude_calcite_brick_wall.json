@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "lamina_et_ignis:block/crude_calcite_bricks"
+  }
+}

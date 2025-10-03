@@ -2,6 +2,20 @@
   "values": [
     "lamina_et_ignis:andesite_brick_wall",
     "lamina_et_ignis:granite_brick_wall",
-    "lamina_et_ignis:diorite_brick_wall"
+    "lamina_et_ignis:diorite_brick_wall",
+    "lamina_et_ignis:tuff_brick_wall",
+    "lamina_et_ignis:calcite_brick_wall",
+    "lamina_et_ignis:andesite_cobble_wall",
+    "lamina_et_ignis:granite_cobble_wall",
+    "lamina_et_ignis:diorite_cobble_wall",
+    "lamina_et_ignis:tuff_cobble_wall",
+    "lamina_et_ignis:calcite_cobble_wall",
+    "lamina_et_ignis:crude_andesite_brick_wall",
+    "lamina_et_ignis:crude_granite_brick_wall",
+    "lamina_et_ignis:crude_diorite_brick_wall",
+    "lamina_et_ignis:crude_tuff_brick_wall",
+    "lamina_et_ignis:crude_calcite_brick_wall",
+    "lamina_et_ignis:crude_deepslate_brick_wall",
+    "lamina_et_ignis:crude_stone_brick_wall"
   ]
 }

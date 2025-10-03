@@ -30,10 +30,23 @@ public class ModItemModelProvider extends ItemModelProvider {
         wallItem(ModBlocks.ANDESITE_BRICK_WALL,ModBlocks.ANDESITE_BRICKS);
         wallItem(ModBlocks.DIORITE_BRICK_WALL,ModBlocks.DIORITE_BRICKS);
         wallItem(ModBlocks.GRANITE_BRICK_WALL,ModBlocks.GRANITE_BRICKS);
+        wallItem(ModBlocks.CALCITE_BRICK_WALL,ModBlocks.CALCITE_BRICKS);
+        wallItem(ModBlocks.TUFF_BRICK_WALL,ModBlocks.TUFF_BRICKS);
+
+        wallItem(ModBlocks.CRUDE_ANDESITE_BRICK_WALL,ModBlocks.CRUDE_ANDESITE_BRICKS);
+        wallItem(ModBlocks.CRUDE_DIORITE_BRICK_WALL,ModBlocks.CRUDE_DIORITE_BRICKS);
+        wallItem(ModBlocks.CRUDE_GRANITE_BRICK_WALL,ModBlocks.CRUDE_GRANITE_BRICKS);
+        wallItem(ModBlocks.CRUDE_CALCITE_BRICK_WALL,ModBlocks.CRUDE_CALCITE_BRICKS);
+        wallItem(ModBlocks.CRUDE_TUFF_BRICK_WALL,ModBlocks.CRUDE_TUFF_BRICKS);
+        wallItem(ModBlocks.CRUDE_DEEPSLATE_BRICK_WALL,ModBlocks.CRUDE_DEEPSLATE_BRICKS);
+        wallItem(ModBlocks.CRUDE_STONE_BRICK_WALL,ModBlocks.CRUDE_STONE_BRICKS);
 
         wallItem(ModBlocks.ANDESITE_COBBLE_WALL,ModBlocks.ANDESITE_COBBLE);
         wallItem(ModBlocks.DIORITE_COBBLE_WALL,ModBlocks.DIORITE_COBBLE);
         wallItem(ModBlocks.GRANITE_COBBLE_WALL,ModBlocks.GRANITE_COBBLE);
+        wallItem(ModBlocks.CALCITE_COBBLE_WALL,ModBlocks.CALCITE_COBBLE);
+        wallItem(ModBlocks.TUFF_COBBLE_WALL,ModBlocks.TUFF_COBBLE);
+
 
 
 

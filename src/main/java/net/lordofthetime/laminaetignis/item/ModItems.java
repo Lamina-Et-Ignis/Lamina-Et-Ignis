@@ -13,6 +13,9 @@ public class ModItems {
     //sling
     public static final RegistryObject<Item> SLING = ITEMS.register("sling", () -> new SlingItem(new Item.Properties().durability(100)));
     public static final RegistryObject<Item> PEBBLE = ITEMS.register("pebble", () -> new PebbleItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> CALCITE_PEBBLE = ITEMS.register("calcite_pebble", () -> new PebbleItem(new Item.Properties()));
+    public static final RegistryObject<Item> TUFF_PEBBLE = ITEMS.register("tuff_pebble", () -> new PebbleItem(new Item.Properties()));
     public static final RegistryObject<Item> DEEPSLATE_PEBBLE = ITEMS.register("deepslate_pebble", () -> new PebbleItem(new Item.Properties()));
     public static final RegistryObject<Item> GRANITE_PEBBLE = ITEMS.register("granite_pebble", () -> new PebbleItem(new Item.Properties()));
     public static final RegistryObject<Item> ANDESITE_PEBBLE = ITEMS.register("andesite_pebble", () -> new PebbleItem(new Item.Properties()));

@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    },
+    {
+      "item": "lamina_et_ignis:calcite_pebble"
+    }
+  ],
+  "result": {
+    "item": "minecraft:calcite"
+  }
+}
