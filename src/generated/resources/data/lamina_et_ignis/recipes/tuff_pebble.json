@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:tuff"
+      "item": "lamina_et_ignis:tuff_cobble"
     }
   ],
   "result": {

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 450,
+  "experience": 0.5,
+  "group": "tin",
+  "ingredient": {
+    "item": "lamina_et_ignis:crude_tin_ingot"
+  },
+  "result": "lamina_et_ignis:tin_ingot"
+}

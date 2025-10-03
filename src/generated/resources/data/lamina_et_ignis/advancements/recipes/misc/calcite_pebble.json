@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_calcite": {
+    "has_calcite_cobble": {
       "conditions": {
         "items": [
           {
             "items": [
-              "minecraft:calcite"
+              "lamina_et_ignis:calcite_cobble"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_calcite",
+      "has_calcite_cobble",
       "has_the_recipe"
     ]
   ],

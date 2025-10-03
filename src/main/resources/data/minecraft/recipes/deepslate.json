@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:smelting",
+  "conditions": [
+    {
+      "type": "forge:false"
+    }
+  ]
+}

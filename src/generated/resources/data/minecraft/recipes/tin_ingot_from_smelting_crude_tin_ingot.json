@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 600,
+  "experience": 0.7,
+  "group": "tin",
+  "ingredient": {
+    "item": "lamina_et_ignis:crude_tin_ingot"
+  },
+  "result": "lamina_et_ignis:tin_ingot"
+}

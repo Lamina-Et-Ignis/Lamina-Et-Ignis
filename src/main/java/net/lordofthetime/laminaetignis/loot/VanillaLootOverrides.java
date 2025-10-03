@@ -128,7 +128,7 @@ public class VanillaLootOverrides {
                                     .add(LootItem.lootTableItem(ModItems.TUFF_PEBBLE.get()))
                     ).build());
         }
-        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/CALCITE"))) {
+        if (event.getName().equals(ResourceLocation.tryBuild("minecraft","blocks/calcite"))) {
             event.setTable(LootTable.lootTable()
                     .withPool(
                             LootPool.lootPool()

@@ -1,34 +1,34 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "lamina_et_ignis:tuff_pebble"
-      },
-      "trigger": "minecraft:recipe_unlocked"
-    },
-    "has_tuff_cobble": {
+    "has_cobblestone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "lamina_et_ignis:tuff_cobble"
+              "minecraft:cobblestone"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:stone_from_smelting_cobblestone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_tuff_cobble",
+      "has_cobblestone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "lamina_et_ignis:tuff_pebble"
+      "minecraft:stone_from_smelting_cobblestone"
     ]
   },
   "sends_telemetry_event": false

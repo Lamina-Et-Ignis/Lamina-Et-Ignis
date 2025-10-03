@@ -3,16 +3,16 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "lamina_et_ignis:tuff_pebble"
+        "recipe": "lamina_et_ignis:tuff_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_tuff_cobble": {
+    "has_tuff": {
       "conditions": {
         "items": [
           {
             "items": [
-              "lamina_et_ignis:tuff_cobble"
+              "minecraft:tuff"
             ]
           }
         ]
@@ -22,13 +22,13 @@
   },
   "requirements": [
     [
-      "has_tuff_cobble",
+      "has_tuff",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "lamina_et_ignis:tuff_pebble"
+      "lamina_et_ignis:tuff_bricks"
     ]
   },
   "sends_telemetry_event": false

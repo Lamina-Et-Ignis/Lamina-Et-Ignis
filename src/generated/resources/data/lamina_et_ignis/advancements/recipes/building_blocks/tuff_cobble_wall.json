@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "lamina_et_ignis:tuff_pebble"
+        "recipe": "lamina_et_ignis:tuff_cobble_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "lamina_et_ignis:tuff_pebble"
+      "lamina_et_ignis:tuff_cobble_wall"
     ]
   },
   "sends_telemetry_event": false

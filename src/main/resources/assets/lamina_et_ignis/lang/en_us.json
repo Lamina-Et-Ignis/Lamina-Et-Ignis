@@ -95,6 +95,14 @@
   "block.lamina_et_ignis.crude_gold_sand": "Crude Gold Sand",
 
   "block.lamina_et_ignis.crude_stone_bricks": "Crude Stone Bricks",
+  "block.lamina_et_ignis.crude_stone_brick_stairs": "Crude Stone Brick Stairs",
+  "block.lamina_et_ignis.crude_stone_brick_slab": "Crude Stone Brick Slab",
+  "block.lamina_et_ignis.crude_stone_brick_wall": "Crude Stone Brick Walls",
+
+  "block.lamina_et_ignis.crude_deepslate_bricks": "Crude Deepslate Bricks",
+  "block.lamina_et_ignis.crude_deepslate_brick_stairs": "Crude Deepslate Brick Stairs",
+  "block.lamina_et_ignis.crude_deepslate_brick_slab": "Crude Deepslate Brick Slab",
+  "block.lamina_et_ignis.crude_deepslate_brick_wall": "Crude Deepslate Brick Walls",
 
   "block.lamina_et_ignis.granite_cobble": "Granite Cobble",
   "block.lamina_et_ignis.granite_cobble_stairs": "Granite Cobble Stairs",
@@ -140,6 +148,36 @@
   "block.lamina_et_ignis.crude_diorite_brick_stairs": "Crude Diorite Brick Stairs",
   "block.lamina_et_ignis.crude_diorite_brick_slab": "Crude Diorite Brick Slab",
   "block.lamina_et_ignis.crude_diorite_brick_wall": "Crude Diorite Brick Walls",
+
+  "block.lamina_et_ignis.calcite_cobble": "Calcite Cobble",
+  "block.lamina_et_ignis.calcite_cobble_stairs": "Calcite Cobble Stairs",
+  "block.lamina_et_ignis.calcite_cobble_slab": "Calcite Cobble Slab",
+  "block.lamina_et_ignis.calcite_cobble_wall": "Calcite Cobble Walls",
+
+  "block.lamina_et_ignis.calcite_bricks": "Calcite Bricks",
+  "block.lamina_et_ignis.calcite_brick_stairs": "Calcite Brick Stairs",
+  "block.lamina_et_ignis.calcite_brick_slab": "Calcite Brick Slab",
+  "block.lamina_et_ignis.calcite_brick_wall": "Calcite Brick Walls",
+
+  "block.lamina_et_ignis.crude_calcite_bricks": "Crude Calcite Bricks",
+  "block.lamina_et_ignis.crude_calcite_brick_stairs": "Crude Calcite Brick Stairs",
+  "block.lamina_et_ignis.crude_calcite_brick_slab": "Crude Calcite Brick Slab",
+  "block.lamina_et_ignis.crude_calcite_brick_wall": "Crude Calcite Brick Walls",
+
+  "block.lamina_et_ignis.tuff_cobble": "Tuff Cobble",
+  "block.lamina_et_ignis.tuff_cobble_stairs": "Tuff Cobble Stairs",
+  "block.lamina_et_ignis.tuff_cobble_slab": "Tuff Cobble Slab",
+  "block.lamina_et_ignis.tuff_cobble_wall": "Tuff Cobble Walls",
+
+  "block.lamina_et_ignis.tuff_bricks": "Tuff Bricks",
+  "block.lamina_et_ignis.tuff_brick_stairs": "Tuff Brick Stairs",
+  "block.lamina_et_ignis.tuff_brick_slab": "Tuff Brick Slab",
+  "block.lamina_et_ignis.tuff_brick_wall": "Tuff Brick Walls",
+
+  "block.lamina_et_ignis.crude_tuff_bricks": "Crude Tuff Bricks",
+  "block.lamina_et_ignis.crude_tuff_brick_stairs": "Crude Tuff Brick Stairs",
+  "block.lamina_et_ignis.crude_tuff_brick_slab": "Crude Tuff Brick Slab",
+  "block.lamina_et_ignis.crude_tuff_brick_wall": "Crude Tuff Brick Walls",
 
 
   "creativetab.laminaetignistab": "Lamina et Ignis"

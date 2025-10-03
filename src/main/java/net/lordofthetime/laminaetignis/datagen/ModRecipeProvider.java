@@ -36,14 +36,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //shaped
 
         //bricks
-        Map.of(
-                Blocks.ANDESITE,ModBlocks.ANDESITE_BRICKS.get(),
-                Blocks.DIORITE,ModBlocks.DIORITE_BRICKS.get(),
-                Blocks.GRANITE,ModBlocks.GRANITE_BRICKS.get(),
-                ModBlocks.ANDESITE_COBBLE.get(),ModBlocks.CRUDE_ANDESITE_BRICKS.get(),
-                ModBlocks.DIORITE_COBBLE.get(),ModBlocks.CRUDE_DIORITE_BRICKS.get(),
-                ModBlocks.GRANITE_COBBLE.get(),ModBlocks.CRUDE_GRANITE_BRICKS.get()
-        ).forEach((base,brick) ->{brickBuilder(pWriter,base,brick);});
+        Map.ofEntries(
+                Map.entry(Blocks.ANDESITE, ModBlocks.ANDESITE_BRICKS.get()),
+                Map.entry(Blocks.DIORITE, ModBlocks.DIORITE_BRICKS.get()),
+                Map.entry(Blocks.GRANITE, ModBlocks.GRANITE_BRICKS.get()),
+                Map.entry(Blocks.CALCITE, ModBlocks.CALCITE_BRICKS.get()),
+                Map.entry(Blocks.TUFF, ModBlocks.TUFF_BRICKS.get()),
+                Map.entry(ModBlocks.ANDESITE_COBBLE.get(), ModBlocks.CRUDE_ANDESITE_BRICKS.get()),
+                Map.entry(ModBlocks.DIORITE_COBBLE.get(), ModBlocks.CRUDE_DIORITE_BRICKS.get()),
+                Map.entry(ModBlocks.GRANITE_COBBLE.get(), ModBlocks.CRUDE_GRANITE_BRICKS.get()),
+                Map.entry(ModBlocks.CALCITE_COBBLE.get(), ModBlocks.CRUDE_CALCITE_BRICKS.get()),
+                Map.entry(ModBlocks.TUFF_COBBLE.get(), ModBlocks.CRUDE_TUFF_BRICKS.get()),
+                Map.entry(Blocks.COBBLED_DEEPSLATE, ModBlocks.CRUDE_DEEPSLATE_BRICKS.get())
+        ).forEach((base,brick) ->{brickBuilder(pWriter, base, brick);});
 
         stairBuilder(pWriter,ModBlocks.CRUDE_DIORITE_BRICKS.get(),ModBlocks.CRUDE_DIORITE_BRICK_STAIRS.get());
         slabBuilder(pWriter,ModBlocks.CRUDE_DIORITE_BRICKS.get(),ModBlocks.CRUDE_DIORITE_BRICK_SLAB.get());
@@ -57,6 +62,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.CRUDE_GRANITE_BRICKS.get(),ModBlocks.CRUDE_GRANITE_BRICK_SLAB.get());
         wallBuilder(pWriter,ModBlocks.CRUDE_GRANITE_BRICKS.get(),ModBlocks.CRUDE_GRANITE_BRICK_WALL.get());
 
+        ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.CRUDE_CALCITE_BRICKS.get(),ModBlocks.CRUDE_CALCITE_BRICK_STAIRS.get());
+        ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.CRUDE_CALCITE_BRICKS.get(),ModBlocks.CRUDE_CALCITE_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CRUDE_CALCITE_BRICKS.get(),ModBlocks.CRUDE_CALCITE_BRICK_WALL.get());
+
+        ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.CRUDE_TUFF_BRICKS.get(),ModBlocks.CRUDE_TUFF_BRICK_STAIRS.get());
+        ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.CRUDE_TUFF_BRICKS.get(),ModBlocks.CRUDE_TUFF_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CRUDE_TUFF_BRICKS.get(),ModBlocks.CRUDE_TUFF_BRICK_WALL.get());
+
+        ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.CRUDE_DEEPSLATE_BRICKS.get(),ModBlocks.CRUDE_DEEPSLATE_BRICK_STAIRS.get());
+        ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.CRUDE_DEEPSLATE_BRICKS.get(),ModBlocks.CRUDE_DEEPSLATE_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CRUDE_DEEPSLATE_BRICKS.get(),ModBlocks.CRUDE_DEEPSLATE_BRICK_WALL.get());
+
+        ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.CRUDE_STONE_BRICKS.get(),ModBlocks.CRUDE_STONE_BRICK_STAIRS.get());
+        ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.CRUDE_STONE_BRICKS.get(),ModBlocks.CRUDE_STONE_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CRUDE_STONE_BRICKS.get(),ModBlocks.CRUDE_STONE_BRICK_WALL.get());
+
         stairBuilder(pWriter,ModBlocks.DIORITE_BRICKS.get(),ModBlocks.DIORITE_BRICK_STAIRS.get());
         slabBuilder(pWriter,ModBlocks.DIORITE_BRICKS.get(),ModBlocks.DIORITE_BRICK_SLAB.get());
         wallBuilder(pWriter,ModBlocks.DIORITE_BRICKS.get(),ModBlocks.DIORITE_BRICK_WALL.get());
@@ -68,6 +89,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.GRANITE_BRICKS.get(),ModBlocks.GRANITE_BRICK_STAIRS.get());
         ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.GRANITE_BRICKS.get(),ModBlocks.GRANITE_BRICK_SLAB.get());
         wallBuilder(pWriter,ModBlocks.GRANITE_BRICKS.get(),ModBlocks.GRANITE_BRICK_WALL.get());
+
+        ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.CALCITE_BRICKS.get(),ModBlocks.CALCITE_BRICK_STAIRS.get());
+        ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.CALCITE_BRICKS.get(),ModBlocks.CALCITE_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CALCITE_BRICKS.get(),ModBlocks.CALCITE_BRICK_WALL.get());
+
+        ModRecipeBuilders.stairBuilder(pWriter,ModBlocks.TUFF_BRICKS.get(),ModBlocks.TUFF_BRICK_STAIRS.get());
+        ModRecipeBuilders.slabBuilder(pWriter,ModBlocks.TUFF_BRICKS.get(),ModBlocks.TUFF_BRICK_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.TUFF_BRICKS.get(),ModBlocks.TUFF_BRICK_WALL.get());
 
         //cobble
         stairBuilder(pWriter,ModBlocks.DIORITE_COBBLE.get(),ModBlocks.DIORITE_COBBLE_STAIRS.get());
@@ -81,6 +110,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         stairBuilder(pWriter,ModBlocks.GRANITE_COBBLE.get(),ModBlocks.GRANITE_COBBLE_STAIRS.get());
         slabBuilder(pWriter,ModBlocks.GRANITE_COBBLE.get(),ModBlocks.GRANITE_COBBLE_SLAB.get());
         wallBuilder(pWriter,ModBlocks.GRANITE_COBBLE.get(),ModBlocks.GRANITE_COBBLE_WALL.get());
+
+        stairBuilder(pWriter,ModBlocks.CALCITE_COBBLE.get(),ModBlocks.CALCITE_COBBLE_STAIRS.get());
+        slabBuilder(pWriter,ModBlocks.CALCITE_COBBLE.get(),ModBlocks.CALCITE_COBBLE_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.CALCITE_COBBLE.get(),ModBlocks.CALCITE_COBBLE_WALL.get());
+
+        stairBuilder(pWriter,ModBlocks.TUFF_COBBLE.get(),ModBlocks.TUFF_COBBLE_STAIRS.get());
+        slabBuilder(pWriter,ModBlocks.TUFF_COBBLE.get(),ModBlocks.TUFF_COBBLE_SLAB.get());
+        wallBuilder(pWriter,ModBlocks.TUFF_COBBLE.get(),ModBlocks.TUFF_COBBLE_WALL.get());
 
 
 
@@ -173,6 +210,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ResourceLocation.tryBuild("minecraft", "iron_ingot_from_nuggets"),
                 ResourceLocation.tryBuild("minecraft", "iron_nugget"));
 
+
+        //cobble smelting
+
+        Map.of(
+                ModBlocks.GRANITE_COBBLE.get(), Blocks.GRANITE,
+                ModBlocks.DIORITE_COBBLE.get(), Blocks.DIORITE,
+                ModBlocks.ANDESITE_COBBLE.get(), Blocks.ANDESITE,
+                ModBlocks.CALCITE_COBBLE.get(), Blocks.CALCITE,
+                ModBlocks.TUFF_COBBLE.get(), Blocks.TUFF,
+                Blocks.COBBLED_DEEPSLATE, Blocks.DEEPSLATE,
+                Blocks.COBBLESTONE, Blocks.STONE
+        ).forEach((cobble,result) ->{
+            oreSmelting(pWriter,List.of(cobble),RecipeCategory.MISC,result,0.1f,20*20, getItemName(result));
+        });
         //plates
         plateBuilder(pWriter,ModItems.CRUDE_TIN_PLATE.get(),ModItems.CRUDE_TIN_INGOT.get(),ModTags.Items.HAMMER_TIER_1);
         plateBuilder(pWriter,ModItems.TIN_PLATE.get(),ModItems.TIN_INGOT.get(),ModTags.Items.HAMMER_TIER_1);
@@ -238,8 +289,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModItems.ANDESITE_PEBBLE.get(), ModBlocks.ANDESITE_COBBLE.get(),
                 ModItems.GRANITE_PEBBLE.get(), ModBlocks.GRANITE_COBBLE.get(),
                 ModItems.DIORITE_PEBBLE.get(), ModBlocks.DIORITE_COBBLE.get(),
-                ModItems.TUFF_PEBBLE.get(), Blocks.TUFF,
-                ModItems.CALCITE_PEBBLE.get(), Blocks.CALCITE
+                ModItems.TUFF_PEBBLE.get(), ModBlocks.TUFF_COBBLE.get(),
+                ModItems.CALCITE_PEBBLE.get(), ModBlocks.CALCITE_COBBLE.get()
                 ).forEach(
                 (pebble,cobble) ->{
                     ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,pebble,9)
@@ -295,15 +346,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 oreSmelting(pWriter,TIN_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_TIN_INGOT.get(),0.7f,20*30,"tin");
                 oreBlasting(pWriter,TIN_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_TIN_INGOT.get(),0.5f,20*22+10,"tin");
 
-                //copper
+                oreSmelting(pWriter,List.of(ModItems.CRUDE_TIN_INGOT.get()),RecipeCategory.MISC,ModItems.TIN_INGOT.get(),0.7f,20*30,"tin");
+                oreBlasting(pWriter,List.of(ModItems.CRUDE_TIN_INGOT.get()),RecipeCategory.MISC,ModItems.TIN_INGOT.get(),0.5f,20*22+10,"tin");
+
+
+        //copper
                 oreSmelting(pWriter,COPPER_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_COPPER_INGOT.get(),0.7f,800,"copper");
                 oreBlasting(pWriter,COPPER_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_COPPER_INGOT.get(),0.5f,600,"copper");
+
+                oreSmelting(pWriter,List.of(ModItems.CRUDE_COPPER_INGOT.get()),RecipeCategory.MISC,Items.COPPER_INGOT,0.7f,800,"copper");
+                oreBlasting(pWriter,List.of(ModItems.CRUDE_COPPER_INGOT.get()),RecipeCategory.MISC,Items.COPPER_INGOT,0.5f,600,"copper");
 
                 //iron
                 oreBlasting(pWriter,IRON_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_IRON_INGOT.get(),0.5f,600,"iron");
                 oreSmelting(pWriter,IRON_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_IRON_INGOT.get(),0.5f,600,"iron");
+
+                oreBlasting(pWriter,List.of(ModItems.CRUDE_IRON_INGOT.get()),RecipeCategory.MISC,Items.IRON_INGOT,0.5f,600*4,"iron");
                 //gold
                 oreBlasting(pWriter,List.of(Items.RAW_GOLD),RecipeCategory.MISC,ModItems.CRUDE_GOLD_INGOT.get(),0.5f,675,"gold");
+
+                oreBlasting(pWriter,List.of(ModItems.CRUDE_GOLD_INGOT.get()),RecipeCategory.MISC,Items.GOLD_INGOT,0.5f,675,"gold");
     }
     private static void stairBuilder(Consumer<FinishedRecipe> writer, Block base, Block stairs) {
         ModRecipeBuilders.stairBuilder(writer, base, stairs);
