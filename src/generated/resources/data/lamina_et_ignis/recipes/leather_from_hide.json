@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "lamina_et_ignis:hide"
+    },
+    {
+      "item": "lamina_et_ignis:hide"
+    },
+    {
+      "tag": "forge:rods/wooden"
+    }
+  ],
+  "result": {
+    "item": "minecraft:leather"
+  }
+}

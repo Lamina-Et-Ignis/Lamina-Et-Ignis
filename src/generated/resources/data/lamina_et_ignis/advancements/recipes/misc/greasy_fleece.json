@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_greasy_fleece": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "lamina_et_ignis:greasy_fleece"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "lamina_et_ignis:greasy_fleece"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_greasy_fleece",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "lamina_et_ignis:greasy_fleece"
+    ]
+  },
+  "sends_telemetry_event": false
+}
