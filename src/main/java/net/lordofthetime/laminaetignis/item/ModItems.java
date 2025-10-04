@@ -23,8 +23,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> COW_HIDE_PELT_CLOAK = ITEMS.register("cow_hide_pelt_cloak", () -> new ArmorItem(ModArmorMaterials.COWHIDE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     //wool production
-    public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLEECE = ITEMS.register("fleece", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new WashableItem(new Item.Properties(),FLEECE.get()));
+
 
     //crude copper materials
     public static final RegistryObject<Item> CRUDE_COPPER_INGOT = ITEMS.register("crude_copper_ingot", () -> new Item(new Item.Properties()));

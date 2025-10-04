@@ -350,7 +350,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 oreBlasting(pWriter,List.of(ModItems.CRUDE_TIN_INGOT.get()),RecipeCategory.MISC,ModItems.TIN_INGOT.get(),0.5f,20*22+10,"tin");
 
 
-        //copper
+                //copper
                 oreSmelting(pWriter,COPPER_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_COPPER_INGOT.get(),0.7f,800,"copper");
                 oreBlasting(pWriter,COPPER_SMELTABLES,RecipeCategory.MISC,ModItems.CRUDE_COPPER_INGOT.get(),0.5f,600,"copper");
 
