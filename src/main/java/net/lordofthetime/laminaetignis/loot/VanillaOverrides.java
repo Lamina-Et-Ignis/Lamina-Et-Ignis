@@ -2,7 +2,7 @@ package net.lordofthetime.laminaetignis.loot;
 
 import net.lordofthetime.laminaetignis.item.ModItems;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -14,52 +14,54 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
+import java.util.Random;
 import java.util.function.Predicate;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class VanillaLootOverrides {
+public class VanillaOverrides {
 
+    @SubscribeEvent
+    public static void onCrafting(PlayerEvent.ItemCraftedEvent event) {
+        ItemStack crafted = event.getCrafting();
+        if (crafted.getItem() == ModItems.GREASY_FLEECE.get()) {
+            event.getEntity().addItem(new ItemStack(ModItems.HIDE.get(), 1));
+        }
+    }
+    @SubscribeEvent
+    public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
+        if (!(event.getTarget() instanceof Sheep sheep)) return;
+        ItemStack stack = event.getItemStack();
+        if (stack.getItem() != Items.SHEARS) return;
+        if (!sheep.level().isClientSide && sheep.readyForShearing()) {
+            event.setCanceled(true);
+            stack.hurtAndBreak(1, event.getEntity(), e -> e.broadcastBreakEvent(event.getHand()));
+            int amount = 1 + new Random().nextInt(2);
+            List<ItemStack> drops = List.of(
+                    new ItemStack(ModItems.GREASY_FLEECE.get(),amount)
+            );
 
-    /*--------------------------------------
-
-        Sheep drops change disabled for 0.1
-        update, planned release in 0.1.1
-
-    --------------------------------------*/
-
-//    @SubscribeEvent
-//    public static void onEntityInteract(PlayerInteractEvent.EntityInteract event) {
-//        if (!(event.getTarget() instanceof Sheep sheep)) return;
-//        ItemStack stack = event.getItemStack();
-//        if (stack.getItem() != Items.SHEARS) return;
-//        if (!sheep.level().isClientSide && sheep.readyForShearing()) {
-//            event.setCanceled(true);
-//            stack.hurtAndBreak(1, event.getEntity(), e -> e.broadcastBreakEvent(event.getHand()));
-//            List<ItemStack> drops = List.of(
-//                    new ItemStack(ModItems.GREASY_FLEECE.get(),1)
-//            );
-//
-//            for (ItemStack drop : drops) {
-//                sheep.spawnAtLocation(drop);
-//            }
-//            sheep.setSheared(true);
-//        }
-//    }
-//    @SubscribeEvent
-//    public static void onLivingDrops(LivingDropsEvent event) {
-//        if (event.getEntity() instanceof Sheep sheep) {
-//            // Remove wool drops added outside the loot table
-//            event.getDrops().removeIf(itemEntity ->
-//                    itemEntity.getItem().getTags().anyMatch(Predicate.isEqual(BlockTags.WOOL)) ||
-//                            itemEntity.getItem().is(Items.WHITE_WOOL)
-//            );
-//        }
-//    }
+            for (ItemStack drop : drops) {
+                sheep.spawnAtLocation(drop);
+            }
+            sheep.setSheared(true);
+        }
+    }
+    @SubscribeEvent
+    public static void onLivingDrops(LivingDropsEvent event) {
+        if (event.getEntity() instanceof Sheep sheep) {
+            // Remove wool drops added outside the loot table
+            event.getDrops().removeIf(itemEntity ->
+                    itemEntity.getItem().getTags().anyMatch(Predicate.isEqual(ItemTags.WOOL)) ||
+                            itemEntity.getItem().is(Items.WHITE_WOOL)
+            );
+        }
+    }
 @SubscribeEvent
     public static void onLootTableLoad(LootTableLoadEvent event) {
         //mobs
@@ -68,7 +70,7 @@ public class VanillaLootOverrides {
                 .withPool(
                         LootPool.lootPool()
                                 .setRolls(BinomialDistributionGenerator.binomial(1, 0.40F))
-                                .add(LootItem.lootTableItem(ModItems.COW_HIDE.get()))
+                                .add(LootItem.lootTableItem(ModItems.COWHIDE.get()))
                 ).withPool(
                         LootPool.lootPool()
                                 .setRolls(UniformGenerator.between(0.0F, 2.0F))
@@ -81,24 +83,20 @@ public class VanillaLootOverrides {
     }
     if (event.getName().equals(ResourceLocation.tryBuild("minecraft","entities/sheep"))) {
 
-
-          // replace for 0.1.1
-          event.getTable().addPool(LootPool.lootPool()
-                                .setRolls(UniformGenerator.between(0.0F, 2.0F))
-                                .add(LootItem.lootTableItem(Items.BONE)).build());
-          event.getTable().addPool(LootPool.lootPool()
-                  .setRolls(BinomialDistributionGenerator.binomial(1,0.66F))
-                  .add(LootItem.lootTableItem(Items.STRING)).build());
-//        event.setTable(LootTable.lootTable()
-//                .withPool(
-//                        LootPool.lootPool()
-//                                .setRolls(UniformGenerator.between(0.0F, 2.0F))
-//                                .add(LootItem.lootTableItem(Items.BONE))
-//                ).withPool(
-//                        LootPool.lootPool()
-//                                .setRolls(ConstantValue.exactly(1))
-//                                .add(LootItem.lootTableItem(ModItems.GREASY_FLEECE.get()))
-//                ).build());
+            event.setTable(LootTable.lootTable()
+                .withPool(
+                        LootPool.lootPool()
+                                .setRolls(UniformGenerator.between(0, 2))
+                                .add(LootItem.lootTableItem(Items.BONE))
+                ).withPool(
+                        LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1))
+                                .add(LootItem.lootTableItem(ModItems.SHEEPSKIN.get()))
+                ).withPool(
+                        LootPool.lootPool()
+                                .setRolls(UniformGenerator.between(1, 3))
+                                .add(LootItem.lootTableItem(Items.MUTTON))
+                ).build());
     }
 
 

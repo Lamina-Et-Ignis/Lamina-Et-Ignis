@@ -23,6 +23,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> COW_HIDE_PELT_CLOAK = ITEMS.register("cow_hide_pelt_cloak", () -> new ArmorItem(ModArmorMaterials.COWHIDE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     //wool production
+    public static final RegistryObject<Item> SHEEPSKIN = ITEMS.register("sheepskin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLEECE = ITEMS.register("fleece", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new WashableItem(new Item.Properties(),FLEECE.get()));
 
@@ -83,18 +84,23 @@ public class ModItems {
     public static final RegistryObject<Item> CHALKOUS = ITEMS.register("chalkous", () -> new Item(new Item.Properties()));
 
     //hides
-    public static final RegistryObject<Item> COW_HIDE = ITEMS.register("cow_hide", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> COWHIDE = ITEMS.register("cowhide", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> HIDE = ITEMS.register("hide", () -> new Item(new Item.Properties()));
+
+    //knifes
+    public static final RegistryObject<Item> COPPER_KNIFE = ITEMS.register("copper_knife", () -> new KnifeItem(ModToolTiers.COPPER,new Item.Properties().durability(100)));
+
 
     //sewing
     public static final RegistryObject<Item> BONE_SHARD = ITEMS.register("bone_shard", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BONE_NEEDLE = ITEMS.register("bone_needle", () -> new DurabilityCraftingItem(new Item.Properties().durability(16)));
-    public static final RegistryObject<Item> CORD_SPOOL = ITEMS.register("cord_spool", () -> new DurabilityCraftingItem(new Item.Properties().durability(16)));
+    public static final RegistryObject<Item> BONE_NEEDLE = ITEMS.register("bone_needle", () -> new DurabilityCraftingItem(new Item.Properties().durability(16),1));
+    public static final RegistryObject<Item> CORD_SPOOL = ITEMS.register("cord_spool", () -> new DurabilityCraftingItem(new Item.Properties().durability(16),1));
 
 
     //blueprints
     public static final RegistryObject<Item> SCROLL = ITEMS.register("scroll", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> HELLENIC_BLUEPRINT = ITEMS.register("hellenic_blueprint", () -> new DurabilityCraftingItem(new Item.Properties().durability(64)));
-    public static final RegistryObject<Item> ROMAN_BLUEPRINT = ITEMS.register("roman_blueprint", () -> new DurabilityCraftingItem(new Item.Properties().durability(64)));
+    public static final RegistryObject<Item> HELLENIC_BLUEPRINT = ITEMS.register("hellenic_blueprint", () -> new DurabilityCraftingItem(new Item.Properties().durability(64),1));
+    public static final RegistryObject<Item> ROMAN_BLUEPRINT = ITEMS.register("roman_blueprint", () -> new DurabilityCraftingItem(new Item.Properties().durability(64),1));
 
     //wooden tools
     public static final RegistryObject<Item> WOODEN_HAMMER = ITEMS.register("wooden_hammer", () -> new HammerPickaxeItem(Tiers.WOOD,0,-2.5f,new Item.Properties().durability(32),1));

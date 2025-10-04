@@ -39,7 +39,6 @@ public class WashableItem extends Item {
         return UseAnim.BRUSH;
     }
 
-    // ✅ Works on air too
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);

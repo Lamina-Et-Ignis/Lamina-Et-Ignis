@@ -1,11 +1,12 @@
 package net.lordofthetime.laminaetignis.item.custom;
 
+import net.lordofthetime.laminaetignis.item.DurabilityCraftable;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 
-public class MehtySwordItem extends SwordItem {
+public class MehtySwordItem extends SwordItem implements DurabilityCraftable {
     private int durabilityUse = 2;
 
     public MehtySwordItem(Tier pTier, int pAttackDamageModifier, float pAttackSpeedModifier, Properties pProperties,int durabilityUse) {
@@ -17,13 +18,16 @@ public class MehtySwordItem extends SwordItem {
 
     @Override
     public boolean hasCraftingRemainingItem(ItemStack stack) {
-        return stack.getDamageValue() < this.getMaxDamage(stack);
+        return hasDurability(stack);
     }
 
     @Override
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
-        ItemStack old = itemStack.copy();
-        old.setDamageValue(old.getDamageValue()+this.durabilityUse);
-        return old;
+        return applyDurability(itemStack);
+    }
+
+    @Override
+    public int getDurabilityUse() {
+        return durabilityUse;
     }
 }

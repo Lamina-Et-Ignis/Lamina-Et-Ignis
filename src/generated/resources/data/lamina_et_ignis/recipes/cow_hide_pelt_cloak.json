@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "#": {
-      "item": "lamina_et_ignis:cow_hide"
+      "item": "lamina_et_ignis:cowhide"
     },
     "/": {
       "item": "lamina_et_ignis:cord_spool"

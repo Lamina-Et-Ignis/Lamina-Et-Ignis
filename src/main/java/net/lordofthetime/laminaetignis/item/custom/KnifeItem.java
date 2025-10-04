@@ -1,22 +1,19 @@
 package net.lordofthetime.laminaetignis.item.custom;
 
 import net.lordofthetime.laminaetignis.item.DurabilityCraftable;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TieredItem;
 
-public class DurabilityCraftingItem extends Item implements DurabilityCraftable {
-    private int durabilityUse;
-
-    public DurabilityCraftingItem(Properties pProperties,int durabilityUse) {
-        super(pProperties);
-        this.durabilityUse = durabilityUse;
+public class KnifeItem extends TieredItem implements DurabilityCraftable {
+    public KnifeItem(Tier pTier, Properties pProperties) {
+        super(pTier, pProperties);
     }
 
     @Override
     public int getDurabilityUse() {
-        return this.durabilityUse;
+        return 1;
     }
-
     @Override
     public boolean hasCraftingRemainingItem(ItemStack stack) {
         return hasDurability(stack);

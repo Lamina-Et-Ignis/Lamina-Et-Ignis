@@ -10,7 +10,6 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,8 +33,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         );
         this.tag(ModTags.Items.HIDES).add(
-                ModItems.COW_HIDE.get(),
-                Items.RABBIT_HIDE
+                ModItems.HIDE.get()
+        );
+        this.tag(ModTags.Items.KNIFES).add(
+            ModItems.COPPER_KNIFE.get()
         );
         this.tag(ItemTags.STONE_CRAFTING_MATERIALS).add(
                 ModBlocks.GRANITE_COBBLE.get().asItem(),

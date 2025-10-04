@@ -1,6 +1,7 @@
 package net.lordofthetime.laminaetignis.datagen.util;
 
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
+import net.lordofthetime.laminaetignis.tags.ModTags;
 import net.minecraft.advancements.critereon.ContextAwarePredicate;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -23,6 +24,16 @@ import java.util.function.Consumer;
 
 public class ModRecipeBuilders implements IConditionBuilder {
     public record gridItems(Item nugget, List<Item> ores){}
+
+    // for adding additional, second output, check out VanillaOverrides.java
+    public static  void knifeRecipe(Consumer<FinishedRecipe> pWriter,Item input, Item output, int amount){
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,output,amount)
+                .requires(input)
+                .requires(ModTags.Items.KNIFES)
+                .unlockedBy(getHasName(output),has(output))
+                .save(pWriter);
+    }
+
     public static void gritBuilder(Consumer<FinishedRecipe> pWriter, gridItems items, Item grit, TagKey<Item> hammer){
 
         Item nugget = items.nugget;

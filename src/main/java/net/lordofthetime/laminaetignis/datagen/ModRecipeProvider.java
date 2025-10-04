@@ -186,7 +186,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" |/")
                 .pattern("# #")
                 .pattern("###")
-                .define('#', ModItems.COW_HIDE.get())
+                .define('#', ModItems.COWHIDE.get())
                 .define('/', ModItems.CORD_SPOOL.get())
                 .define('|', ModItems.BONE_NEEDLE.get())
                 .unlockedBy("has_hide", has(ModTags.Items.HIDES))
@@ -261,6 +261,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ,ModItems.CRUDE_GOLD_GRIT.get(),ModTags.Items.HAMMER_TIER_1);
 
 
+        //knife recipes
+        knifeRecipe(pWriter,ModItems.SHEEPSKIN.get(),ModItems.GREASY_FLEECE.get(),1);
+        knifeRecipe(pWriter,ModItems.COWHIDE.get(),ModItems.HIDE.get(),2);
+
         //shapeless
         hammerRecipe(pWriter,Items.RAW_GOLD,ModItems.GOLDVEIN.get(),ModTags.Items.HAMMER_TIER_0,1);
         hammerRecipe(pWriter,ModItems.CHALKOUS.get(),ModItems.COPPER_CHIP.get(),ModTags.Items.HAMMER_TIER_1,1);
@@ -318,10 +322,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.LEATHER),has(Items.LEATHER))
                 .save(pWriter);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,Items.LEATHER,1)
-                .requires(ModItems.COW_HIDE.get(),2)
+                .requires(ModItems.HIDE.get(),2)
                 .requires(Tags.Items.RODS_WOODEN)
-                .unlockedBy(getHasName(ModItems.COW_HIDE.get()),has(ModItems.COW_HIDE.get()))
-                .save(pWriter, ResourceLocation.tryBuild(LaminaEtIgnis.MODID, "leather_from_cow_hide"));
+                .unlockedBy(getHasName(ModItems.HIDE.get()),has(ModItems.HIDE.get()))
+                .save(pWriter, ResourceLocation.tryBuild(LaminaEtIgnis.MODID, "leather_from_hide"));
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC,Items.LEATHER,1)
                 .requires(Items.RABBIT_HIDE,4)
                 .requires(Tags.Items.RODS_WOODEN)
