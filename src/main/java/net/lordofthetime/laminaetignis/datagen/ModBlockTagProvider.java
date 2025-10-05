@@ -114,8 +114,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 ModBlocks.TIN_ORE.get()
 
         );
-//        this.tag(BlockTags.MINEABLE_WITH_AXE).add(
-//        );
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(
+        ModBlocks.DRYING_RACK.get()
+        );
 //        this.tag(BlockTags.MINEABLE_WITH_HOE).add(
 //        );
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(

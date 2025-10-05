@@ -1,0 +1,57 @@
+package net.lordofthetime.laminaetignis.block.entity;
+
+import net.lordofthetime.laminaetignis.item.ModItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
+
+public class DryingRackBlockEntity extends BlockEntity{
+
+    private ItemStack dryingItem = ItemStack.EMPTY;
+    private static final int dryingTime = 200;
+    private int dryingTimeLeft;
+
+    public DryingRackBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.DRYING_RACK_BLOCK_ENTITY.get(), pPos, pBlockState);
+    }
+
+    public void startDrying(ItemStack dryingItem){
+        this.dryingItem = dryingItem.copy();
+        this.dryingItem.setCount(1);
+        this.dryingTimeLeft = dryingTime;
+        setChanged();
+    }
+    public ItemStack stopDrying(){
+        ItemStack itemStack = dryingItem;
+        dryingItem = ItemStack.EMPTY;
+        setChanged();
+        return itemStack;
+    }
+    public void tickServer(Level pLevel,BlockPos pPos, BlockState pState){
+        if (!dryingItem.isEmpty() && dryingTimeLeft > 0) {
+            dryingTimeLeft--;
+            if (dryingTimeLeft <= 0) {
+                this.dryingItem = new ItemStack(ModItems.LEATHER_STRAP.get(),1);
+                setChanged();
+            }
+        }
+    }
+    public void drops(){
+        this.level.addFreshEntity(
+                new ItemEntity(this.level,
+                this.worldPosition.getX(),
+                this.worldPosition.getY(),
+                this.worldPosition.getZ(),
+                        dryingItem));
+    }
+    public Boolean hasItem(){
+        return dryingItem != ItemStack.EMPTY;
+    }
+}

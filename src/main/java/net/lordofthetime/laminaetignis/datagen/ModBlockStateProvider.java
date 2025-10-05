@@ -2,6 +2,7 @@ package net.lordofthetime.laminaetignis.datagen;
 
 import net.lordofthetime.laminaetignis.block.ModBlocks;
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
+import net.lordofthetime.laminaetignis.block.custom.DryingRackBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
@@ -61,6 +62,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     blockItem(block, name);
                 }
 
+            }else if(block.get() instanceof DryingRackBlock){
+                simpleBlock(block.get(), new ModelFile.UncheckedModelFile(modLoc("block/drying_rack")));
             }else {
                 simpleBlockState(block); //all other blocks
             }

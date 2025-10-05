@@ -2,6 +2,7 @@ package net.lordofthetime.laminaetignis;
 
 import com.mojang.logging.LogUtils;
 import net.lordofthetime.laminaetignis.block.ModBlocks;
+import net.lordofthetime.laminaetignis.block.entity.ModBlockEntities;
 import net.lordofthetime.laminaetignis.entity.ModEntities;
 import net.lordofthetime.laminaetignis.item.ModCreativeModeTabs;
 import net.lordofthetime.laminaetignis.item.ModItems;
@@ -36,6 +37,7 @@ public class LaminaEtIgnis {
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

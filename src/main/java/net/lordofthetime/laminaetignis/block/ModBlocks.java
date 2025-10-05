@@ -1,6 +1,7 @@
 package net.lordofthetime.laminaetignis.block;
 
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
+import net.lordofthetime.laminaetignis.block.custom.DryingRackBlock;
 import net.lordofthetime.laminaetignis.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -19,6 +20,10 @@ public class ModBlocks {
     public static final DeferredRegister<Block> ORES = DeferredRegister.create(ForgeRegistries.BLOCKS, LaminaEtIgnis.MODID);
 
 
+
+
+    public static final RegistryObject<Block> DRYING_RACK = registerBlock("drying_rack",
+            () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).noOcclusion()));
 
     //ores
     public static final RegistryObject<Block> TIN_ORE = registerOre("tin_ore", () -> new DropExperienceBlock(BlockBehaviour

@@ -35,6 +35,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
         this.tag(ModTags.Items.HIDES).add(
                 ModItems.HIDE.get()
         );
+        this.tag(ModTags.Items.IS_WET).add(
+                ModItems.FLEECE.get()
+        );
         this.tag(ModTags.Items.KNIFES).add(
             ModItems.COPPER_KNIFE.get()
         );
