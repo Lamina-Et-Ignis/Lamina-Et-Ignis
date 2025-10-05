@@ -25,11 +25,12 @@ public class DryingRackBlockEntity extends BlockEntity{
         setChanged();
     }
     public ItemStack stopDrying(){
-        setChanged();
-        ItemStack itemStack = getItem();
+        ItemStack finished = dryingTimeLeft <= 0 ? output.copy() : dryingItem.copy();
         dryingItem = ItemStack.EMPTY;
         output = ItemStack.EMPTY;
-        return itemStack;
+        dryingTimeLeft = 0;
+        setChanged();
+        return finished;
     }
     public void tickServer(Level pLevel,BlockPos pPos, BlockState pState){
         if (!dryingItem.isEmpty() && dryingTimeLeft > 0) {
@@ -40,20 +41,13 @@ public class DryingRackBlockEntity extends BlockEntity{
         }
     }
     public void drops(){
-        ItemStack drop = getItem();
+        ItemStack finished = dryingTimeLeft <= 0 ? output.copy() : dryingItem.copy();
         this.level.addFreshEntity(
                 new ItemEntity(this.level,
                 this.worldPosition.getX(),
                 this.worldPosition.getY(),
                 this.worldPosition.getZ(),
-                        drop));
-    }
-
-    private ItemStack getItem(){
-        if (dryingTimeLeft <= 0) {
-            return  output;
-        }
-        return dryingItem;
+                        finished));
     }
 
     public Boolean hasItem(){

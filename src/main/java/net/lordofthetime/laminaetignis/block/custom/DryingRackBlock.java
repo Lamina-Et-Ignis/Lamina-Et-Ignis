@@ -59,18 +59,14 @@ public class DryingRackBlock extends BaseEntityBlock {
                 if(!rack.hasItem()){
                     SimpleContainer fake = new SimpleContainer(1);
                     fake.setItem(0, handItem);
-                    System.out.println("Looking for recipe for: " + handItem.getItem().getName(handItem));
                     Optional<DryingRecipe> recipe = pLevel.getRecipeManager()
                             .getRecipeFor(DryingRecipe.Type.INSTANCE, fake, pLevel);
-
                     if (recipe.isPresent()) {
-                        System.out.println("Recipe detected");
                         DryingRecipe dryingRecipe = recipe.get();
                         rack.startDrying(dryingRecipe.getInput(),dryingRecipe.getOutput(),dryingRecipe.getDryingTime());
                         handItem.shrink(1);
                         return InteractionResult.CONSUME;
                     } else {
-                        System.out.println("Recipe not detected");
                         return InteractionResult.PASS;
                     }
                 }else{
