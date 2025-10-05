@@ -13,13 +13,13 @@
               "function": "minecraft:apply_bonus"
             }
           ],
-          "name": "lamina_et_ignis:crude_iron_nugget"
+          "name": "lamina_et_ignis:crude_iron_grit"
         }
       ],
       "rolls": {
-        "type": "minecraft:binomial",
-        "n": 1.0,
-        "p": 0.5
+        "type": "minecraft:uniform",
+        "max": 2.0,
+        "min": 1.0
       }
     },
     {
@@ -34,13 +34,13 @@
               "function": "minecraft:apply_bonus"
             }
           ],
-          "name": "lamina_et_ignis:crude_iron_grit"
+          "name": "lamina_et_ignis:crude_iron_nugget"
         }
       ],
       "rolls": {
-        "type": "minecraft:uniform",
-        "max": 2.0,
-        "min": 1.0
+        "type": "minecraft:binomial",
+        "n": 1.0,
+        "p": 0.5
       }
     },
     {

@@ -2,12 +2,12 @@ package net.lordofthetime.laminaetignis.block.custom;
 
 import net.lordofthetime.laminaetignis.block.entity.DryingRackBlockEntity;
 import net.lordofthetime.laminaetignis.block.entity.ModBlockEntities;
-import net.lordofthetime.laminaetignis.tags.ModTags;
+import net.lordofthetime.laminaetignis.recipe.DryingRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -23,7 +23,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.function.Predicate;
+import java.util.Optional;
 
 public class DryingRackBlock extends BaseEntityBlock {
     private static  final VoxelShape SHAPE = Block.box(4,0, 0, 12 ,10,16);
@@ -57,9 +57,21 @@ public class DryingRackBlock extends BaseEntityBlock {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if(blockEntity instanceof DryingRackBlockEntity rack){
                 if(!rack.hasItem()){
-                    if(handItem.is(ModTags.Items.IS_WET)){
-                        rack.startDrying(handItem.copy());
+                    SimpleContainer fake = new SimpleContainer(1);
+                    fake.setItem(0, handItem);
+                    System.out.println("Looking for recipe for: " + handItem.getItem().getName(handItem));
+                    Optional<DryingRecipe> recipe = pLevel.getRecipeManager()
+                            .getRecipeFor(DryingRecipe.Type.INSTANCE, fake, pLevel);
+
+                    if (recipe.isPresent()) {
+                        System.out.println("Recipe detected");
+                        DryingRecipe dryingRecipe = recipe.get();
+                        rack.startDrying(dryingRecipe.getInput(),dryingRecipe.getOutput(),dryingRecipe.getDryingTime());
                         handItem.shrink(1);
+                        return InteractionResult.CONSUME;
+                    } else {
+                        System.out.println("Recipe not detected");
+                        return InteractionResult.PASS;
                     }
                 }else{
                     ItemStack itemStack = rack.stopDrying();
@@ -69,7 +81,6 @@ public class DryingRackBlock extends BaseEntityBlock {
         }
         return InteractionResult.CONSUME;
     }
-
     @Override
     public  @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState){
         return new DryingRackBlockEntity(pPos,pState);

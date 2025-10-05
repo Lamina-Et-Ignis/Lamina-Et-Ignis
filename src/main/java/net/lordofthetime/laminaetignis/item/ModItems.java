@@ -25,7 +25,8 @@ public class ModItems {
     //wool production
     public static final RegistryObject<Item> SHEEPSKIN = ITEMS.register("sheepskin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLEECE = ITEMS.register("fleece", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new WashableItem(new Item.Properties(),FLEECE.get()));
+    public static final RegistryObject<Item> WET_FLEECE = ITEMS.register("wet_fleece", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GREASY_FLEECE = ITEMS.register("greasy_fleece", () -> new WashableItem(new Item.Properties(),WET_FLEECE.get()));
 
 
     //crude copper materials

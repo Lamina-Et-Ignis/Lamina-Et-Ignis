@@ -6,6 +6,7 @@ import net.lordofthetime.laminaetignis.block.entity.ModBlockEntities;
 import net.lordofthetime.laminaetignis.entity.ModEntities;
 import net.lordofthetime.laminaetignis.item.ModCreativeModeTabs;
 import net.lordofthetime.laminaetignis.item.ModItems;
+import net.lordofthetime.laminaetignis.recipe.ModRecipes;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -38,6 +39,8 @@ public class LaminaEtIgnis {
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

@@ -1,0 +1,10 @@
+{
+  "type": "lamina_et_ignis:drying",
+  "input": {
+    "item": "lamina_et_ignis:wet_fleece"
+  },
+  "output": {
+    "item": "lamina_et_ignis:fleece"
+  },
+  "time": 200
+}
