@@ -25,28 +25,34 @@ public class DryingRackBlockEntity extends BlockEntity{
         setChanged();
     }
     public ItemStack stopDrying(){
-        ItemStack itemStack = dryingItem;
-        dryingItem = ItemStack.EMPTY;
         setChanged();
-        return itemStack;
+        return getItem();
     }
     public void tickServer(Level pLevel,BlockPos pPos, BlockState pState){
         if (!dryingItem.isEmpty() && dryingTimeLeft > 0) {
             dryingTimeLeft--;
             if (dryingTimeLeft <= 0) {
-                this.dryingItem = output;
                 setChanged();
             }
         }
     }
     public void drops(){
+        ItemStack drop = getItem();
         this.level.addFreshEntity(
                 new ItemEntity(this.level,
                 this.worldPosition.getX(),
                 this.worldPosition.getY(),
                 this.worldPosition.getZ(),
-                        dryingItem));
+                        drop));
     }
+
+    private ItemStack getItem(){
+        if (dryingTimeLeft <= 0) {
+            return  output;
+        }
+        return dryingItem;
+    }
+
     public Boolean hasItem(){
         return dryingItem != ItemStack.EMPTY;
     }
