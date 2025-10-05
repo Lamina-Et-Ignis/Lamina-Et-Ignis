@@ -26,7 +26,10 @@ public class DryingRackBlockEntity extends BlockEntity{
     }
     public ItemStack stopDrying(){
         setChanged();
-        return getItem();
+        ItemStack itemStack = getItem();
+        dryingItem = ItemStack.EMPTY;
+        output = ItemStack.EMPTY;
+        return itemStack;
     }
     public void tickServer(Level pLevel,BlockPos pPos, BlockState pState){
         if (!dryingItem.isEmpty() && dryingTimeLeft > 0) {
