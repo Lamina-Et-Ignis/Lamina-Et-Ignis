@@ -2,6 +2,7 @@ package net.lordofthetime.laminaetignis.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.lordofthetime.laminaetignis.block.custom.DryingRackBlock;
 import net.lordofthetime.laminaetignis.block.entity.DryingRackBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
@@ -11,6 +12,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -31,13 +33,45 @@ public class DryingRackBlockEntityRendered implements BlockEntityRenderer<Drying
 
         if(!itemStack.is(ItemStack.EMPTY.getItem())){
             ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+            Direction dir = pBlockEntity.getBlockState().getValue(DryingRackBlock.FACING);
+
+
+            float scaleX;
+            float scaleZ;
+
+            float positonX;
+            float positionZ;
+
+            switch (dir) {
+                case NORTH, SOUTH -> {
+                    scaleX = 0.5f;
+                    scaleZ = 0.7f;
+                    positonX = 1f;
+                    positionZ = 0.7f;
+                }
+                default -> { //EAST, WEST
+                    scaleX = 0.7f;
+                    scaleZ = 0.5f;
+                    positonX = 0.7f;
+                    positionZ = 1f;
+                }
+            }
             pPoseStack.pushPose();
-            pPoseStack.translate(0.5f,0.625f,0.5f);
-            pPoseStack.scale(0.5f,0.5f,1f);
+
+            pPoseStack.scale(scaleX, 0.5f, scaleZ);
+            pPoseStack.translate(positonX,1.15f,positionZ);
             pPoseStack.mulPose(Axis.XP.rotationDegrees(270));
+            pPoseStack.mulPose(Axis.ZP.rotationDegrees(
+                    switch (dir) {
+                case NORTH -> 180f;
+                case WEST  -> 90f;
+                case EAST  -> 270f;
+                default    -> 0f; //south
+            }));
 
             itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(),pBlockEntity.getBlockPos()),
                     OverlayTexture.NO_OVERLAY, pPoseStack,pBuffer,pBlockEntity.getLevel(),1);
+
             pPoseStack.popPose();
         }
     }

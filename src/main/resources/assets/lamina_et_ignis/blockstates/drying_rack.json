@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "lamina_et_ignis:block/drying_rack"
+    },
+    "facing=south": {
+      "model": "lamina_et_ignis:block/drying_rack",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "lamina_et_ignis:block/drying_rack",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "lamina_et_ignis:block/drying_rack",
+      "y": 90
+    }
+  }
+}

@@ -63,7 +63,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 }
 
             }else if(block.get() instanceof DryingRackBlock){
-                simpleBlock(block.get(), new ModelFile.UncheckedModelFile(modLoc("block/drying_rack")));
+                    continue;
             }else {
                 simpleBlockState(block); //all other blocks
             }
