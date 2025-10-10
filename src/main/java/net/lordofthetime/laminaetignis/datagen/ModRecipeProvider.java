@@ -187,9 +187,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("# #")
                 .pattern("###")
                 .define('#', ModItems.COWHIDE.get())
-                .define('/', ModItems.CORD_SPOOL.get())
-                .define('|', ModItems.BONE_NEEDLE.get())
-                .unlockedBy("has_hide", has(ModTags.Items.HIDES))
+                .define('/', ModTags.Items.SPOOL)
+                .define('|', ModTags.Items.NEEDLES)
+                .unlockedBy(getHasName(ModItems.COWHIDE.get()), has(ModItems.COWHIDE.get()))
                 .save(pWriter);
         //nugget recipes
         Map.of(

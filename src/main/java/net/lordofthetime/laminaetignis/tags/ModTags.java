@@ -23,8 +23,12 @@ public class ModTags {
 
         public static final TagKey<Item> SLING_AMMO = tag("sling_ammo");
         public static final TagKey<Item> KNIFES = tag("knifes");
-        public static final TagKey<Item> IS_WET = tag("is_wet");
+        public static final TagKey<Item> NEEDLES = tag("needles");
         public static final TagKey<Item> HIDES = tag("hides");
+        public static final TagKey<Item> HIGH_QUALITY_CLOTH = tag("high_quality_cloth");
+        public static final TagKey<Item> CLOTH = tag("cloth");
+        public static final TagKey<Item> HIGH_QUALITY_SPOOL = tag("high_quality_spool");
+        public static final TagKey<Item> SPOOL = tag("spool");
         public static final TagKey<Item> HAMMER_TIER_0 = tag("hammer_tier_0");
         public static final TagKey<Item> HAMMER_TIER_1 = tag("hammer_tier_1");
 

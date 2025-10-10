@@ -6,10 +6,10 @@
       "item": "lamina_et_ignis:cowhide"
     },
     "/": {
-      "item": "lamina_et_ignis:cord_spool"
+      "tag": "lamina_et_ignis:spool"
     },
     "|": {
-      "item": "lamina_et_ignis:bone_needle"
+      "tag": "lamina_et_ignis:needles"
     }
   },
   "pattern": [

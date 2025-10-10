@@ -4,9 +4,13 @@ import com.mojang.logging.LogUtils;
 import net.lordofthetime.laminaetignis.block.ModBlocks;
 import net.lordofthetime.laminaetignis.block.entity.ModBlockEntities;
 import net.lordofthetime.laminaetignis.entity.ModEntities;
+import net.lordofthetime.laminaetignis.gui.ModMenuTypes;
+import net.lordofthetime.laminaetignis.gui.screen.AdvancedBarrelScreen;
 import net.lordofthetime.laminaetignis.item.ModCreativeModeTabs;
 import net.lordofthetime.laminaetignis.item.ModItems;
+import net.lordofthetime.laminaetignis.network.ModMessages;
 import net.lordofthetime.laminaetignis.recipe.ModRecipes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
@@ -39,6 +43,7 @@ public class LaminaEtIgnis {
         ModBlocks.register(modEventBus);
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
 
         ModRecipes.register(modEventBus);
 
@@ -52,7 +57,7 @@ public class LaminaEtIgnis {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event){
-
+        ModMessages.register();
     }
 
 
@@ -72,6 +77,8 @@ public class LaminaEtIgnis {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event){
             EntityRenderers.register(ModEntities.PEBBLE_PROJECTILE.get(), ThrownItemRenderer::new);
+            MenuScreens.register(ModMenuTypes.ADVANCED_BARREL_MENU.get(), AdvancedBarrelScreen::new);
+
         }
     }
 }

@@ -1,9 +1,12 @@
 package net.lordofthetime.laminaetignis.loot;
 
 import net.lordofthetime.laminaetignis.item.ModItems;
+import net.minecraft.core.Position;
+import net.minecraft.core.Vec3i;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.animal.Sheep;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootPool;
@@ -12,6 +15,7 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.BinomialDistributionGenerator;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -56,10 +60,16 @@ public class VanillaOverrides {
     public static void onLivingDrops(LivingDropsEvent event) {
         if (event.getEntity() instanceof Sheep sheep) {
             // Remove wool drops added outside the loot table
+            Vec3 pos = event.getEntity().position();
             event.getDrops().removeIf(itemEntity ->
                     itemEntity.getItem().getTags().anyMatch(Predicate.isEqual(ItemTags.WOOL)) ||
                             itemEntity.getItem().is(Items.WHITE_WOOL)
             );
+            if(!sheep.isSheared() || !sheep.isBaby()){
+                event.getDrops().add(
+                        new ItemEntity(event.getEntity().level(),pos.x,pos.y,pos.z,new ItemStack(ModItems.SHEEPSKIN.get()))
+                );
+            }
         }
     }
 @SubscribeEvent
@@ -88,10 +98,6 @@ public class VanillaOverrides {
                         LootPool.lootPool()
                                 .setRolls(UniformGenerator.between(0, 2))
                                 .add(LootItem.lootTableItem(Items.BONE))
-                ).withPool(
-                        LootPool.lootPool()
-                                .setRolls(ConstantValue.exactly(1))
-                                .add(LootItem.lootTableItem(ModItems.SHEEPSKIN.get()))
                 ).withPool(
                         LootPool.lootPool()
                                 .setRolls(UniformGenerator.between(1, 3))

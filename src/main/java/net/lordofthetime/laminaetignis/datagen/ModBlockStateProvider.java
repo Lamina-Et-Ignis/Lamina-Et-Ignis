@@ -2,6 +2,7 @@ package net.lordofthetime.laminaetignis.datagen;
 
 import net.lordofthetime.laminaetignis.block.ModBlocks;
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
+import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
 import net.lordofthetime.laminaetignis.block.custom.DryingRackBlock;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -11,8 +12,6 @@ import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-
-import java.util.List;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
@@ -62,7 +61,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                     blockItem(block, name);
                 }
 
-            }else if(block.get() instanceof DryingRackBlock){
+            }else if(block.get() instanceof DryingRackBlock || block.get() instanceof AdvancedBarrelBlock){
                     continue;
             }else {
                 simpleBlockState(block); //all other blocks

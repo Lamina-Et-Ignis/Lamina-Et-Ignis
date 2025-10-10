@@ -1,11 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hide": {
+    "has_cowhide": {
       "conditions": {
         "items": [
           {
-            "tag": "lamina_et_ignis:hides"
+            "items": [
+              "lamina_et_ignis:cowhide"
+            ]
           }
         ]
       },
@@ -20,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_hide",
+      "has_cowhide",
       "has_the_recipe"
     ]
   ],

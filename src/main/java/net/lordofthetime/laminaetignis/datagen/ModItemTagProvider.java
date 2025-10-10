@@ -20,6 +20,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
         super(p_275343_, p_275729_, p_275322_, LaminaEtIgnis.MODID, existingFileHelper);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         this.tag(ModTags.Items.SLING_AMMO).add(
@@ -35,8 +36,20 @@ public class ModItemTagProvider extends ItemTagsProvider {
         this.tag(ModTags.Items.HIDES).add(
                 ModItems.HIDE.get()
         );
-        this.tag(ModTags.Items.IS_WET).add(
-                ModItems.FLEECE.get()
+
+        this.tag(ModTags.Items.SPOOL).add(
+            ModItems.CORD_SPOOL.get()
+        ).addTags(
+                ModTags.Items.HIGH_QUALITY_SPOOL
+        );
+
+        this.tag(ModTags.Items.HIGH_QUALITY_SPOOL).add(
+            ModItems.WOOL_SPOOL.get()
+        );
+
+
+        this.tag(ModTags.Items.NEEDLES).add(
+                ModItems.BONE_NEEDLE.get()
         );
         this.tag(ModTags.Items.KNIFES).add(
             ModItems.COPPER_KNIFE.get()
@@ -53,8 +66,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 ModItems.TIN_MEHTY.get(),
                 ModItems.CRUDE_COPPER_MEHTY.get(),
                 ModItems.COPPER_MEHTY.get()
-        );
-        this.tag(ModTags.Items.HAMMER_TIER_0).addTags(
+        ).addTags(
                 ModTags.Items.HAMMER_TIER_1
         );
         this.tag(ModTags.Items.HAMMER_TIER_1).add(

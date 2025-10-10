@@ -15,6 +15,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<DryingRecipe>> DRYING_SERIALIZER =
             SERIALIZERS.register("drying",() -> DryingRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<WindingRecipe>> WINDING_SERIALIZER =
+            SERIALIZERS.register("winding",() -> WindingRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus){
         SERIALIZERS.register(eventBus);
     }

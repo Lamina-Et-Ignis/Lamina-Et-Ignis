@@ -23,6 +23,10 @@ public class ModItems {
 
     public static final RegistryObject<Item> COW_HIDE_PELT_CLOAK = ITEMS.register("cow_hide_pelt_cloak", () -> new ArmorItem(ModArmorMaterials.COWHIDE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     //wool production
+
+    public static final RegistryObject<Item> WOOL_SPOOL = ITEMS.register("wool_spool", () -> new DurabilityCraftingItem(new Item.Properties().durability(32),1));
+    public static final RegistryObject<Item> WOOL_CLOTH = ITEMS.register("wool_cloth", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SPOOL = ITEMS.register("spool", () -> new SpoolItem(new Item.Properties()));
     public static final RegistryObject<Item> SHEEPSKIN = ITEMS.register("sheepskin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLEECE = ITEMS.register("fleece", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WET_FLEECE = ITEMS.register("wet_fleece", () -> new Item(new Item.Properties()));
@@ -95,7 +99,7 @@ public class ModItems {
     //sewing
     public static final RegistryObject<Item> BONE_SHARD = ITEMS.register("bone_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BONE_NEEDLE = ITEMS.register("bone_needle", () -> new DurabilityCraftingItem(new Item.Properties().durability(16),1));
-    public static final RegistryObject<Item> CORD_SPOOL = ITEMS.register("cord_spool", () -> new DurabilityCraftingItem(new Item.Properties().durability(16),1));
+    public static final RegistryObject<Item> CORD_SPOOL = ITEMS.register("cord_spool", () -> new DurabilityCraftingItem(new Item.Properties().durability(4),1));
 
 
     //blueprints
