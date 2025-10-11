@@ -22,7 +22,6 @@ public class AdvancedBarrelMenu extends AbstractContainerMenu {
     private final Level level;
     public final ContainerData data;
 
-
     private FluidStack clientFluid = FluidStack.EMPTY;
 
     public void setClientFluid(FluidStack fluid) {
@@ -60,7 +59,6 @@ public class AdvancedBarrelMenu extends AbstractContainerMenu {
         });
 
         addDataSlots(data);
-
     }
 
     public boolean isCrafting() {

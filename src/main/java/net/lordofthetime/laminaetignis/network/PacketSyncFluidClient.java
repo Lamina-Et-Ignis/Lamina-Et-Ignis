@@ -9,22 +9,22 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public record PacketSyncFluid(BlockPos pos, FluidStack fluid, Level level) {
+public record PacketSyncFluidClient(BlockPos pos, FluidStack fluid, Level level) {
 
-    public static void encode(PacketSyncFluid pkt, net.minecraft.network.FriendlyByteBuf buf) {
+    public static void encode(PacketSyncFluidClient pkt, net.minecraft.network.FriendlyByteBuf buf) {
         buf.writeBlockPos(pkt.pos());
         buf.writeNbt(pkt.fluid().writeToNBT(new CompoundTag()));
     }
 
-    public static PacketSyncFluid decode(net.minecraft.network.FriendlyByteBuf buf) {
+    public static PacketSyncFluidClient decode(net.minecraft.network.FriendlyByteBuf buf) {
         BlockPos pos = buf.readBlockPos();
         CompoundTag tag = buf.readNbt();
         FluidStack fluid = FluidStack.loadFluidStackFromNBT(tag);
         // level will be set by handler on client
-        return new PacketSyncFluid(pos, fluid, null);
+        return new PacketSyncFluidClient(pos, fluid, null);
     }
 
-    public static void handle(PacketSyncFluid pkt, Supplier<NetworkEvent.Context> ctx) {
+    public static void handle(PacketSyncFluidClient pkt, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
             Level level = pkt.level() != null ? pkt.level() : net.minecraft.client.Minecraft.getInstance().level;
             if (level == null) return;

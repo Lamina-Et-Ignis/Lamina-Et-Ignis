@@ -1,8 +1,11 @@
 package net.lordofthetime.laminaetignis.block.entity;
 
+import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
 import net.lordofthetime.laminaetignis.gui.menu.AdvancedBarrelMenu;
+import net.lordofthetime.laminaetignis.item.ModItems;
 import net.lordofthetime.laminaetignis.network.ModMessages;
-import net.lordofthetime.laminaetignis.network.PacketSyncFluid;
+import net.lordofthetime.laminaetignis.network.PacketSyncFluidClient;
+import net.lordofthetime.laminaetignis.network.PacketToggleSealClient;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -15,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -31,26 +35,48 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock.SEALED;
+
+
 public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvider {
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
         @Override
         protected void onContentsChanged(int slot) {
-            setChanged();
+            updateClient();
         }
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            // 🔒 Block ALL insertions when sealed
+            if (sealed) return false;
+
             // Slot 0: only fluid containers
-            if(slot == LIQUID_INPUT_SLOT){
+            if (slot == LIQUID_INPUT_SLOT) {
                 return stack.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).isPresent();
             }
+
             // Slot 1 and 3: output only
-            if(slot == LIQUID_OUTPUT_SLOT || slot == ITEM_OUTPUT_SLOT){
+            if (slot == LIQUID_OUTPUT_SLOT || slot == ITEM_OUTPUT_SLOT) {
                 return false;
             }
-            // Slot 2 : normal slot
+
+            // Slot 2: normal slot
             return true;
+        }
+
+        @Override
+        public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+            // 🔒 Block insertion logic too
+            if (sealed) return stack;
+            return super.insertItem(slot, stack, simulate);
+        }
+
+        @Override
+        public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
+            // 🔒 Block extraction logic
+            if (sealed) return ItemStack.EMPTY;
+            return super.extractItem(slot, amount, simulate);
         }
     };
 
@@ -61,8 +87,11 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
     private static  final int ITEM_OUTPUT_SLOT = 3;
 
     private final ContainerData data;
+
+    public Boolean sealed = false;
+
     private int progress = 0;
-    private int maxProgress = 25555555;
+    private int maxProgress = 80;
 
     private final FluidTank fluidTank = new FluidTank(10000);
 
@@ -238,14 +267,94 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
         fluidTank.readFromNBT(tag.getCompound("liquid"));
         progress = tag.getInt("progress");
         maxProgress = tag.getInt("maxProgress");
+
         super.load(tag);
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
 
+        if(sealed){
+            if(hasRecipe()){
+                progress++;
+                if(hasProgressFinished()) {
+                    craft();
+                    progress = 0;
+                    setSealed(false);
+                }
+            }
+            else{
+                progress = 0;
+            }
+            updateClient();
+            return;
+        }
+        progress = 0;
+        fluidOperations();
+        updateClient();
+    }
+
+    public void setSealed(boolean sealed) {
+        if (this.sealed != sealed) { // only react if it changed
+            this.sealed = sealed;
+
+            // update blockstate so the model changes
+            if (level != null) {
+                BlockState currentState = level.getBlockState(worldPosition);
+                level.getBlockEntity(worldPosition, ModBlockEntities.ADVANCED_BARREL_BLOCK_ENTITY.get()).ifPresent(barrel -> {
+                    level.setBlockAndUpdate(worldPosition, currentState.setValue(SEALED, sealed));
+                });
+            }
+
+            // optionally update client visuals / fluid sync
+            updateClient();
+        }
+    }
+
+    private boolean hasRecipe(){
+        if(fluidTank.getFluidAmount() < 100) return false;
+
+        ItemStack input = itemHandler.getStackInSlot(ITEM_INPUT_SLOT);
+        return input.getItem() == Items.STICK && itemHandler.getStackInSlot(ITEM_OUTPUT_SLOT).isEmpty();
+    }
+
+    public void updateClient() {
+        setChanged();
+        if (level != null && !level.isClientSide) {
+            BlockState state = level.getBlockState(worldPosition);
+            level.sendBlockUpdated(worldPosition, state, state, 3);
+            ModMessages.sendToTracking(level, worldPosition, new PacketSyncFluidClient(worldPosition, fluidTank.getFluid(), level));
+            ModMessages.sendToTracking(level, worldPosition, new PacketToggleSealClient(worldPosition, sealed));
+
+        }
+    }
+
+    public FluidTank getFluidTank(){
+        return this.fluidTank;
+    }
+
+    private boolean hasProgressFinished() {
+        return progress >= maxProgress;
+    }
+    private void craft() {
+        int fluidCost = 100;
+        int maxAmount = fluidTank.getFluidAmount() / fluidCost;
+        ItemStack input = itemHandler.getStackInSlot(ITEM_INPUT_SLOT);
+        if(maxAmount > input.getCount()){
+            maxAmount = input.getCount();
+        }
+        ItemStack result = new ItemStack(ModItems.CRUDE_TIN_NUGGET.get(), 1);
+        for(int i = 0; i < maxAmount; i++){
+            result.grow(1);
+            input.shrink(1);
+        }
+        result.shrink(1);
+        this.fluidTank.drain(100*maxAmount, IFluidHandler.FluidAction.EXECUTE);
+        this.itemHandler.setStackInSlot(ITEM_OUTPUT_SLOT, result);
+    }
+
+    private void fluidOperations(){
         ItemStack fluidInput = itemHandler.getStackInSlot(LIQUID_INPUT_SLOT);
         ItemStack fluidOutput = itemHandler.getStackInSlot(LIQUID_OUTPUT_SLOT);
-        ItemStack itemInput = itemHandler.getStackInSlot(ITEM_INPUT_SLOT);
 
         if (!fluidInput.isEmpty()) {
             ItemStack singleInput = fluidInput.copy();
@@ -255,7 +364,8 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
                 FluidStack contained = handler.getFluidInTank(0);
                 ItemStack resultContainer = ItemStack.EMPTY;
                 // --- Check if output is at max stack size while not being empty
-                if(fluidOutput.getMaxStackSize() == fluidOutput.getCount() && !fluidOutput.isEmpty()){
+                if(fluidOutput.getMaxStackSize() == fluidOutput.getCount() && !fluidOutput.isEmpty() ||
+                        fluidInput.getItem() == fluidOutput.getItem()){
                     return;
                 }
                 // --- Case 1: Input item has fluid → dump into tank ---
@@ -280,35 +390,13 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
                     if (fluidOutput.isEmpty()) {
                         itemHandler.setStackInSlot(LIQUID_OUTPUT_SLOT, resultContainer.copy());
                         fluidInput.shrink(1);
-                        updateClient();
                     } else if (ItemHandlerHelper.canItemStacksStack(resultContainer, fluidOutput)
                             && fluidOutput.getCount() < fluidOutput.getMaxStackSize()) {
                         fluidOutput.grow(1);
                         fluidInput.shrink(1);
-                        updateClient();
                     }
                 }
             });
         }
-
-
-
-        if(!itemInput.isEmpty()){
-            updateClient();
-        }
-        updateClient();
-    }
-
-    private void updateClient() {
-        setChanged();
-        if (level != null && !level.isClientSide) {
-            BlockState state = level.getBlockState(worldPosition);
-            level.sendBlockUpdated(worldPosition, state, state, 3);
-            ModMessages.sendToTracking(new PacketSyncFluid(worldPosition, fluidTank.getFluid(), level));
-        }
-    }
-
-    public FluidTank getFluidTank(){
-        return this.fluidTank;
     }
 }

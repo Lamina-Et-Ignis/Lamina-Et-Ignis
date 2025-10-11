@@ -1,7 +1,9 @@
 package net.lordofthetime.laminaetignis.network;
 
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
@@ -22,13 +24,25 @@ public class ModMessages {
 
     public static void register() {
         CHANNEL.registerMessage(nextID(),
-                PacketSyncFluid.class,
-                PacketSyncFluid::encode,
-                PacketSyncFluid::decode,
-                PacketSyncFluid::handle);
+                PacketSyncFluidClient.class,
+                PacketSyncFluidClient::encode,
+                PacketSyncFluidClient::decode,
+                PacketSyncFluidClient::handle);
+
+        CHANNEL.registerMessage(nextID(),
+                PacketToggleSeal.class,
+                PacketToggleSeal::toBytes,
+                PacketToggleSeal::new,
+                PacketToggleSeal::handle);
+
+        CHANNEL.registerMessage(nextID(),
+                PacketToggleSealClient.class,
+                PacketToggleSealClient::toBytes,
+                PacketToggleSealClient::new,
+                PacketToggleSealClient::handle);
     }
 
-    public static void sendToTracking(PacketSyncFluid packet) {
-        CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> packet.level().getChunkAt(packet.pos())), packet);
+    public static void sendToTracking(Level level, BlockPos pos, Object packet) {
+        CHANNEL.send(PacketDistributor.TRACKING_CHUNK.with(() -> level.getChunkAt(pos)), packet);
     }
 }

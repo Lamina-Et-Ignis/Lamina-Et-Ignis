@@ -1,7 +1,6 @@
 {
   "variants": {
-    "": {
-      "model": "lamina_et_ignis:block/wooden_barrel"
-    }
+    "sealed=false": { "model": "lamina_et_ignis:block/wooden_barrel" },
+    "sealed=true":  { "model": "lamina_et_ignis:block/wooden_barrel_sealed" }
   }
 }

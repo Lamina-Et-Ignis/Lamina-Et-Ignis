@@ -3,8 +3,11 @@ package net.lordofthetime.laminaetignis.gui.screen;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
 import net.lordofthetime.laminaetignis.gui.menu.AdvancedBarrelMenu;
+import net.lordofthetime.laminaetignis.network.ModMessages;
+import net.lordofthetime.laminaetignis.network.PacketToggleSeal;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -22,6 +25,8 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
     private static final ResourceLocation TEXTURE =
             ResourceLocation.tryBuild(LaminaEtIgnis.MODID, "textures/gui/advanced_barrel_gui.png");
 
+    private static Button seal;
+
     public AdvancedBarrelScreen(AdvancedBarrelMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
     }
@@ -30,6 +35,15 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
     protected void init() {
         super.init();
         this.titleLabelY = 10000;
+
+        int xPos = (this.width - this.imageWidth) / 2 + 120;
+        int yPos = (this.height - this.imageHeight) / 2 + 40;
+
+        seal = new Button.Builder(Component.literal("Seal"), button -> {
+            ModMessages.CHANNEL.sendToServer(new PacketToggleSeal(menu.advancedBarrel.getBlockPos()));
+        }).pos(xPos, yPos).size(50, 20).build();
+
+        this.addRenderableWidget(seal);
     }
 
     @Override
@@ -47,11 +61,14 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
         if(!fluidTank.isEmpty()){
             renderTank(guiGraphics,fluidTank.getFluid(),fluidTank.getCapacity(), x,y);
         }
-
-//        renderProgressArrow(guiGraphics,x,y);
-
         //Render measuring after fluid so its always above fluid render
         guiGraphics.blit(TEXTURE, x+26, y + 23, 177, 27, 10, 32);
+
+
+        renderProgressArrow(guiGraphics,x,y);
+
+
+
 
 
     }
@@ -100,8 +117,34 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta) {
+
+        if (seal != null) {
+            seal.setMessage(Component.literal(
+                    menu.advancedBarrel.sealed ? "Unseal" : "Seal"
+            ));
+        }
+
         renderBackground(guiGraphics);
         super.render(guiGraphics, mouseX, mouseY, delta);
+
         renderTooltip(guiGraphics, mouseX, mouseY);
+
+        sealedOverlay(guiGraphics);
+    }
+
+    private void sealedOverlay(GuiGraphics guiGraphics) {
+        //overlay when barrel is sealed
+        if(menu.advancedBarrel.sealed){
+            guiGraphics.pose().pushPose();
+            guiGraphics.pose().translate(0, 0, 300);
+            int color = 0x44FFFFFF;
+            int x = (width - imageWidth) / 2;
+            int y = (height - imageHeight) / 2;
+            guiGraphics.fill(x + 62, y + 6, x + 62 + 16, y + 6 + 16, color);
+            guiGraphics.fill(x + 98, y + 6, x + 98 + 16, y + 6 + 16, color);
+            guiGraphics.fill(x + 62, y + 54, x + 62 + 16, y + 54 + 16, color);
+            guiGraphics.fill(x + 98, y + 54, x + 98 + 16, y + 54 + 16, color);
+            guiGraphics.pose().popPose();
+        }
     }
 }

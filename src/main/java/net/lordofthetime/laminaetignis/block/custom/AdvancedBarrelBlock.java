@@ -7,6 +7,7 @@
     import net.minecraft.world.InteractionHand;
     import net.minecraft.world.InteractionResult;
     import net.minecraft.world.entity.player.Player;
+    import net.minecraft.world.item.ItemStack;
     import net.minecraft.world.level.BlockGetter;
     import net.minecraft.world.level.Level;
     import net.minecraft.world.level.block.BaseEntityBlock;
@@ -16,15 +17,30 @@
     import net.minecraft.world.level.block.entity.BlockEntityTicker;
     import net.minecraft.world.level.block.entity.BlockEntityType;
     import net.minecraft.world.level.block.state.BlockState;
+    import net.minecraft.world.level.block.state.StateDefinition;
+    import net.minecraft.world.level.block.state.properties.BooleanProperty;
     import net.minecraft.world.phys.BlockHitResult;
     import net.minecraft.world.phys.shapes.CollisionContext;
     import net.minecraft.world.phys.shapes.VoxelShape;
+    import net.minecraftforge.common.capabilities.ForgeCapabilities;
+    import net.minecraftforge.fluids.FluidStack;
+    import net.minecraftforge.fluids.capability.IFluidHandler;
     import net.minecraftforge.network.NetworkHooks;
     import org.jetbrains.annotations.Nullable;
 
+    import javax.swing.text.StyledEditorKit;
+
     public class AdvancedBarrelBlock extends BaseEntityBlock {
-        public AdvancedBarrelBlock(Properties pProperties) {
-            super(pProperties);
+
+        public static final BooleanProperty SEALED = BooleanProperty.create("sealed");
+
+        public AdvancedBarrelBlock(Properties properties) {
+            super(properties);
+            this.registerDefaultState(this.stateDefinition.any().setValue(SEALED, false));
+        }
+        @Override
+        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+            builder.add(SEALED);
         }
 
         @Override
@@ -43,12 +59,14 @@
         }
 
         @Override
-        public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if(blockEntity instanceof AdvancedBarrelBlockEntity barrel){
-                barrel.drops();
+        public void onRemove(BlockState oldState, Level level, BlockPos pos, BlockState newState, boolean moved) {
+            if (oldState.getBlock() != newState.getBlock()) {
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+                if(blockEntity instanceof AdvancedBarrelBlockEntity barrel){
+                    barrel.drops(); // only drop if actually replacing with a different block
+                }
             }
-            super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
+            super.onRemove(oldState, level, pos, newState, moved);
         }
 
         @Override
