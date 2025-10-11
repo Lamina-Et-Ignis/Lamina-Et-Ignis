@@ -26,6 +26,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -242,37 +243,58 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
 
-        ItemStack stack0 = itemHandler.getStackInSlot(LIQUID_INPUT_SLOT);
+        ItemStack fluidInput = itemHandler.getStackInSlot(LIQUID_INPUT_SLOT);
+        ItemStack fluidOutput = itemHandler.getStackInSlot(LIQUID_OUTPUT_SLOT);
+        ItemStack itemInput = itemHandler.getStackInSlot(ITEM_INPUT_SLOT);
 
-        if (!stack0.isEmpty()) {
-            stack0.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> {
+        if (!fluidInput.isEmpty()) {
+            ItemStack singleInput = fluidInput.copy();
+            singleInput.setCount(1);
+
+            singleInput.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> {
                 FluidStack contained = handler.getFluidInTank(0);
-                ItemStack container;
-                // --- Case 1: Container has fluid → fill barrel ---
+                ItemStack resultContainer = ItemStack.EMPTY;
+                // --- Check if output is at max stack size while not being empty
+                if(fluidOutput.getMaxStackSize() == fluidOutput.getCount() && !fluidOutput.isEmpty()){
+                    return;
+                }
+                // --- Case 1: Input item has fluid → dump into tank ---
                 if (!contained.isEmpty()) {
                     int filled = fluidTank.fill(contained, IFluidHandler.FluidAction.EXECUTE);
                     if (filled > 0) {
                         handler.drain(filled, IFluidHandler.FluidAction.EXECUTE);
-                        container = handler.getContainer();
-                        stack0.shrink(1);
-                        itemHandler.setStackInSlot(LIQUID_OUTPUT_SLOT,container);
-                        updateClient();
+                        resultContainer = handler.getContainer();
                     }
-
-                    // --- Case 2: Container is empty → fill it from barrel ---
-                } else if (!fluidTank.getFluid().isEmpty()) {
+                }
+                // --- Case 2: Input item empty → fill from tank ---
+                else if (!fluidTank.getFluid().isEmpty()) {
                     FluidStack available = fluidTank.getFluid();
                     int filled = handler.fill(available, IFluidHandler.FluidAction.EXECUTE);
                     if (filled > 0) {
                         fluidTank.drain(filled, IFluidHandler.FluidAction.EXECUTE);
-                        container = handler.getContainer();
-                        stack0.shrink(1);
-                        itemHandler.setStackInSlot(LIQUID_OUTPUT_SLOT,container);
+                        resultContainer = handler.getContainer();
+                    }
+                }
+                // --- Handle moving the result container to output slot ---
+                if (!resultContainer.isEmpty()) {
+                    if (fluidOutput.isEmpty()) {
+                        itemHandler.setStackInSlot(LIQUID_OUTPUT_SLOT, resultContainer.copy());
+                        fluidInput.shrink(1);
+                        updateClient();
+                    } else if (ItemHandlerHelper.canItemStacksStack(resultContainer, fluidOutput)
+                            && fluidOutput.getCount() < fluidOutput.getMaxStackSize()) {
+                        fluidOutput.grow(1);
+                        fluidInput.shrink(1);
                         updateClient();
                     }
                 }
-
             });
+        }
+
+
+
+        if(!itemInput.isEmpty()){
+            updateClient();
         }
         updateClient();
     }

@@ -48,6 +48,12 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
             renderTank(guiGraphics,fluidTank.getFluid(),fluidTank.getCapacity(), x,y);
         }
 
+//        renderProgressArrow(guiGraphics,x,y);
+
+        //Render measuring after fluid so its always above fluid render
+        guiGraphics.blit(TEXTURE, x, y -31, 177, 27, 10, 32);
+
+
     }
 
     private void renderTank(GuiGraphics guiGraphics, FluidStack fluid, int capacity, int x, int y) {
@@ -81,17 +87,15 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
                 break;
             }
         }
-        guiGraphics.blit(TEXTURE, x, y -31, 177, 27, 10, 32);
-
     }
 
 
 
 
     private void renderProgressArrow(GuiGraphics guiGraphics, int x, int y) {
-//        if(menu.isCrafting()) {
-//            guiGraphics.blit(TEXTURE, x + 85, y + 30, 176, 0, 8, menu.getScaledProgress());
-//        }
+        if(menu.isCrafting()) {
+            guiGraphics.blit(TEXTURE, x + 103, y + 25, 176, 0, 8, menu.getScaledProgress());
+        }
     }
 
     @Override
