@@ -51,7 +51,7 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
 //        renderProgressArrow(guiGraphics,x,y);
 
         //Render measuring after fluid so its always above fluid render
-        guiGraphics.blit(TEXTURE, x, y -31, 177, 27, 10, 32);
+        guiGraphics.blit(TEXTURE, x+26, y + 23, 177, 27, 10, 32);
 
 
     }
