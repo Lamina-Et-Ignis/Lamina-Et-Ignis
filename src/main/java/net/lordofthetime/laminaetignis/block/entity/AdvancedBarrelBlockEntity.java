@@ -1,11 +1,11 @@
 package net.lordofthetime.laminaetignis.block.entity;
 
-import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
 import net.lordofthetime.laminaetignis.gui.menu.AdvancedBarrelMenu;
 import net.lordofthetime.laminaetignis.item.ModItems;
 import net.lordofthetime.laminaetignis.network.ModMessages;
 import net.lordofthetime.laminaetignis.network.PacketSyncFluidClient;
 import net.lordofthetime.laminaetignis.network.PacketToggleSealClient;
+import net.lordofthetime.laminaetignis.recipe.SealedBarrelRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -34,6 +34,8 @@ import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 import static net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock.SEALED;
 
@@ -258,6 +260,7 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
         tag.put("liquid", fluidTank.writeToNBT(new CompoundTag()));
         tag.putInt("progress",progress);
         tag.putInt("maxProgress",maxProgress);
+        tag.putBoolean("sealed",sealed);
         super.saveAdditional(tag);
     }
 
@@ -267,17 +270,21 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
         fluidTank.readFromNBT(tag.getCompound("liquid"));
         progress = tag.getInt("progress");
         maxProgress = tag.getInt("maxProgress");
-
+        setSealed(tag.getBoolean("sealed"));
         super.load(tag);
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
 
         if(sealed){
-            if(hasRecipe()){
+            Optional<SealedBarrelRecipe> recipe = getRecipe(itemHandler.getStackInSlot(ITEM_INPUT_SLOT));
+            if(hasRecipe(recipe)){
+                if(progress == 0){
+                    maxProgress = recipe.get().getTime();
+                }
                 progress++;
                 if(hasProgressFinished()) {
-                    craft();
+                    craft(recipe.get());
                     progress = 0;
                     setSealed(false);
                 }
@@ -310,13 +317,16 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
         }
     }
 
-    private boolean hasRecipe(){
-        if(fluidTank.getFluidAmount() < 100) return false;
-
-        ItemStack input = itemHandler.getStackInSlot(ITEM_INPUT_SLOT);
-        return input.getItem() == Items.STICK && itemHandler.getStackInSlot(ITEM_OUTPUT_SLOT).isEmpty();
+    private  Boolean hasRecipe(Optional<SealedBarrelRecipe> recipe){
+        return recipe.isPresent() && recipe.get().fluidMatches(fluidTank) && itemHandler.getStackInSlot(ITEM_OUTPUT_SLOT).isEmpty();
     }
 
+    private Optional<SealedBarrelRecipe> getRecipe(ItemStack input){
+        SimpleContainer fake = new SimpleContainer(1);
+        fake.setItem(0, input);
+        return level.getRecipeManager()
+                .getRecipeFor(SealedBarrelRecipe.Type.INSTANCE, fake, level);
+    }
     public void updateClient() {
         setChanged();
         if (level != null && !level.isClientSide) {
@@ -335,23 +345,30 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
     private boolean hasProgressFinished() {
         return progress >= maxProgress;
     }
-    private void craft() {
-        int fluidCost = 100;
-        int maxAmount = fluidTank.getFluidAmount() / fluidCost;
+    private void craft(SealedBarrelRecipe recipe) {
         ItemStack input = itemHandler.getStackInSlot(ITEM_INPUT_SLOT);
-        if(maxAmount > input.getCount()){
-            maxAmount = input.getCount();
-        }
-        ItemStack result = new ItemStack(ModItems.CRUDE_TIN_NUGGET.get(), 1);
-        for(int i = 0; i < maxAmount; i++){
-            result.grow(1);
-            input.shrink(1);
-        }
-        result.shrink(1);
-        this.fluidTank.drain(100*maxAmount, IFluidHandler.FluidAction.EXECUTE);
-        this.itemHandler.setStackInSlot(ITEM_OUTPUT_SLOT, result);
-    }
 
+        int fluidPerCraft = recipe.getFluid().getAmount();
+        int maxFromFluid = fluidTank.getFluidAmount() / fluidPerCraft;
+
+        int inputPerCraft = 1; // adjust if your recipe needs more than 1 input
+        int maxFromInput = input.getCount() / inputPerCraft;
+
+        // How many times we can craft this recipe
+        int maxCraftable = Math.min(maxFromFluid, maxFromInput);
+
+        if (maxCraftable <= 0) return; // nothing to craft
+
+        input.shrink(maxCraftable * inputPerCraft);
+        itemHandler.setStackInSlot(ITEM_INPUT_SLOT, input);
+
+        fluidTank.drain(fluidPerCraft * maxCraftable, IFluidHandler.FluidAction.EXECUTE);
+
+        ItemStack resultStack = recipe.getOutput().copy();
+        resultStack.setCount(resultStack.getCount() * maxCraftable);
+
+        itemHandler.setStackInSlot(ITEM_OUTPUT_SLOT, resultStack);
+    }
     private void fluidOperations(){
         ItemStack fluidInput = itemHandler.getStackInSlot(LIQUID_INPUT_SLOT);
         ItemStack fluidOutput = itemHandler.getStackInSlot(LIQUID_OUTPUT_SLOT);

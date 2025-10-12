@@ -1,0 +1,15 @@
+{
+  "type": "lamina_et_ignis:sealed_barrel",
+  "input": {
+    "item": "lamina_et_ignis:greasy_fleece"
+  },
+  "output": {
+    "item": "lamina_et_ignis:wet_fleece",
+    "count": 1
+  },
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 250
+  },
+  "time": 2000
+}
