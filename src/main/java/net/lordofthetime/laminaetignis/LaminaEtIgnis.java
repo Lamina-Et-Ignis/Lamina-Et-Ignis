@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.lordofthetime.laminaetignis.block.ModBlocks;
 import net.lordofthetime.laminaetignis.block.entity.ModBlockEntities;
 import net.lordofthetime.laminaetignis.entity.ModEntities;
+import net.lordofthetime.laminaetignis.fluid.ModFluids;
 import net.lordofthetime.laminaetignis.gui.ModMenuTypes;
 import net.lordofthetime.laminaetignis.gui.screen.AdvancedBarrelScreen;
 import net.lordofthetime.laminaetignis.item.ModCreativeModeTabs;
@@ -39,11 +40,20 @@ public class LaminaEtIgnis {
         IEventBus modEventBus = context.getModEventBus();
 
         ModCreativeModeTabs.register(modEventBus);
+
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+
+        // entities and block entities
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+
         ModMenuTypes.register(modEventBus);
+
+        // FLuids
+        ModFluids.FLUIDS.register(modEventBus);
+        ModFluids.FLUID_TYPES.register(modEventBus);
+
 
         ModRecipes.register(modEventBus);
 

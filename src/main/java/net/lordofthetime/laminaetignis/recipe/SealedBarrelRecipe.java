@@ -94,14 +94,14 @@ public class SealedBarrelRecipe implements Recipe<Container> {
             ItemStack output = ShapedRecipe.itemStackFromJson(json.getAsJsonObject("output"));
 
             JsonObject fluidObj = json.getAsJsonObject("fluid");
-            ResourceLocation fluidId = new ResourceLocation(fluidObj.get("fluid").getAsString());
+            ResourceLocation fluidId = ResourceLocation.tryParse(fluidObj.get("fluid").getAsString());
             Fluid fluid = ForgeRegistries.FLUIDS.getValue(fluidId);
             int amount = fluidObj.get("amount").getAsInt();
             FluidStack fluidStack = new FluidStack(fluid, amount);
 
             int time = json.get("time").getAsInt();
 
-            return new SealedBarrelRecipe(ID,input,output,fluidStack,time);
+            return new SealedBarrelRecipe(id,input,output,fluidStack,time);
         }
 
         @Override

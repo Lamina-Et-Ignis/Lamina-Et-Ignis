@@ -3,12 +3,15 @@ package net.lordofthetime.laminaetignis.block;
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
 import net.lordofthetime.laminaetignis.block.custom.DryingRackBlock;
 import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
+import net.lordofthetime.laminaetignis.fluid.ModFluids;
 import net.lordofthetime.laminaetignis.item.ModItems;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -212,6 +215,12 @@ public class ModBlocks {
             registerStoneSlab("crude_deepslate_brick_slab",CRUDE_DEEPSLATE_BRICKS);
     public static final RegistryObject<Block> CRUDE_DEEPSLATE_BRICK_WALL =
             registerStoneWall("crude_deepslate_brick_wall",CRUDE_DEEPSLATE_BRICKS);
+
+    //FLUIDS
+    public static final RegistryObject<LiquidBlock> TANNIN_BLOCK =
+            BLOCKS.register("tannin", () -> new LiquidBlock(() -> ModFluids.TANNIN.get(),
+                    BlockBehaviour.Properties.copy(Blocks.WATER)));
+
 
     private static RegistryObject<Block> registerBricks(String name, Supplier<Block> usedBlock) {
         return registerBlock(name, () -> new Block(BlockBehaviour
