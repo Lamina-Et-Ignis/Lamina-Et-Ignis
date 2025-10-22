@@ -125,7 +125,7 @@ public class AdvancedBarrelMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, advancedBarrel.getBlockPos()),
-                pPlayer, ModBlocks.BARREL_TEST.get());
+                pPlayer, ModBlocks.WOODEN_BARREL.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

@@ -19,7 +19,7 @@ public class ModBlockEntities {
 
     public static final RegistryObject<BlockEntityType<AdvancedBarrelBlockEntity>> ADVANCED_BARREL_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("advanced_barrel_block_entity",() ->
-                    BlockEntityType.Builder.of(AdvancedBarrelBlockEntity::new,ModBlocks.BARREL_TEST.get()).build(null));
+                    BlockEntityType.Builder.of(AdvancedBarrelBlockEntity::new,ModBlocks.WOODEN_BARREL.get()).build(null));
 
     public static void register(IEventBus eventBus){
         BLOCK_ENTITIES.register(eventBus);

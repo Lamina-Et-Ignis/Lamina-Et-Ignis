@@ -3,6 +3,7 @@ package net.lordofthetime.laminaetignis.item;
 import net.lordofthetime.laminaetignis.LaminaEtIgnis;
 import net.lordofthetime.laminaetignis.fluid.ModFluids;
 import net.lordofthetime.laminaetignis.item.custom.*;
+import net.lordofthetime.laminaetignis.item.custom.fluidcontainer.FluidContainerItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,6 +14,9 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, LaminaEtIgnis.MODID);
 
     //buckets
+    public static final RegistryObject<Item> WOODEN_BUCKET = ModItems.ITEMS.register("wooden_bucket",
+            () -> new FluidContainerItem(
+                    new Item.Properties().stacksTo(1).craftRemainder(null),100));
     public static final RegistryObject<Item> TANNIN_BUCKET = ModItems.ITEMS.register("tannin_bucket",
             () -> new BucketItem(() -> ModFluids.TANNIN.get(),
                     new Item.Properties().stacksTo(1).craftRemainder(Items.BUCKET)));

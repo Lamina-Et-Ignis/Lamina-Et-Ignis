@@ -1,5 +1,6 @@
 package net.lordofthetime.laminaetignis.block.entity;
 
+import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
 import net.lordofthetime.laminaetignis.gui.menu.AdvancedBarrelMenu;
 import net.lordofthetime.laminaetignis.item.ModItems;
 import net.lordofthetime.laminaetignis.network.ModMessages;
@@ -95,7 +96,7 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
     private int progress = 0;
     private int maxProgress = 80;
 
-    private final FluidTank fluidTank = new FluidTank(10000);
+    private final FluidTank fluidTank;
 
     private final IFluidHandler fluidHandler = new IFluidHandler() {
 
@@ -183,6 +184,14 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
 
     public AdvancedBarrelBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.ADVANCED_BARREL_BLOCK_ENTITY.get(), pPos, pBlockState);
+
+        if(pBlockState.getBlock() instanceof AdvancedBarrelBlock barrelBlock){
+            this.fluidTank = new FluidTank(barrelBlock.getCapacity());
+        }
+        else{
+            this.fluidTank = new FluidTank(1000);
+        }
+
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {

@@ -5,13 +5,11 @@ import net.lordofthetime.laminaetignis.block.custom.DryingRackBlock;
 import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
 import net.lordofthetime.laminaetignis.fluid.ModFluids;
 import net.lordofthetime.laminaetignis.item.ModItems;
-import net.minecraft.client.resources.model.Material;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,6 +20,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LaminaEtIgnis.MODID);
     public static final DeferredRegister<Block> ORES = DeferredRegister.create(ForgeRegistries.BLOCKS, LaminaEtIgnis.MODID);
+    public static final DeferredRegister<Block> FLUID_BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, LaminaEtIgnis.MODID);
 
 
 
@@ -29,8 +28,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> DRYING_RACK = registerBlock("drying_rack",
             () -> new DryingRackBlock(BlockBehaviour.Properties.copy(Blocks.COBBLESTONE).noOcclusion()));
 
-    public static final RegistryObject<Block> BARREL_TEST = registerBlock("wooden_barrel",
-            () -> new AdvancedBarrelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion()));
+    public static final RegistryObject<Block> WOODEN_BARREL = registerBlock("wooden_barrel",
+            () -> new AdvancedBarrelBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).noOcclusion(),1000));
 
     //ores
     public static final RegistryObject<Block> TIN_ORE = registerOre("tin_ore", () -> new DropExperienceBlock(BlockBehaviour
@@ -218,7 +217,7 @@ public class ModBlocks {
 
     //FLUIDS
     public static final RegistryObject<LiquidBlock> TANNIN_BLOCK =
-            BLOCKS.register("tannin", () -> new LiquidBlock(() -> ModFluids.TANNIN.get(),
+            FLUID_BLOCKS.register("tannin", () -> new LiquidBlock(() -> ModFluids.TANNIN.get(),
                     BlockBehaviour.Properties.copy(Blocks.WATER)));
 
 
@@ -262,5 +261,6 @@ public class ModBlocks {
     public static void register(IEventBus eventBus){
         BLOCKS.register(eventBus);
         ORES.register(eventBus);
+        FLUID_BLOCKS.register(eventBus);
     }
 }

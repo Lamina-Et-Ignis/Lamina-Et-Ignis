@@ -87,6 +87,11 @@
   "item.lamina_et_ignis.goldvein": "Goldvein",
 
   "item.lamina_et_ignis.raw_tin": "Raw Tin",
+
+  "item.lamina_et_ignis.wooden_bucket": "Wooden Bucket",
+
+  "fluid_type.lamina_et_ignis.tannin": "Tannin",
+
   "block.lamina_et_ignis.tin_ore": "Tin Ore",
 
   "block.lamina_et_ignis.iron_sand": "Iron Sand",

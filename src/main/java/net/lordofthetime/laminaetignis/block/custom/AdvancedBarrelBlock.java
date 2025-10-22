@@ -33,9 +33,10 @@
     public class AdvancedBarrelBlock extends BaseEntityBlock {
 
         public static final BooleanProperty SEALED = BooleanProperty.create("sealed");
-
-        public AdvancedBarrelBlock(Properties properties) {
+        private final int capacity;
+        public AdvancedBarrelBlock(Properties properties, int capacity) {
             super(properties);
+            this.capacity = capacity;
             this.registerDefaultState(this.stateDefinition.any().setValue(SEALED, false));
         }
         @Override
@@ -89,5 +90,9 @@
             }
             return createTickerHelper(pBlockEntityType, ModBlockEntities.ADVANCED_BARREL_BLOCK_ENTITY.get(),
                     (pLevel1, pPos, pState1, pBlockEntity) -> pBlockEntity.tick(pLevel1, pPos, pState1));
+        }
+
+        public int getCapacity(){
+            return capacity;
         }
     }
