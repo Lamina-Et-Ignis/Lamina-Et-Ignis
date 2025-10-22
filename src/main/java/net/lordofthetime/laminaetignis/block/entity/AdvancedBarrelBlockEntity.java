@@ -320,7 +320,6 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
     private  Boolean hasRecipe(Optional<SealedBarrelRecipe> recipe){
         return recipe.isPresent() && recipe.get().fluidMatches(fluidTank) && itemHandler.getStackInSlot(ITEM_OUTPUT_SLOT).isEmpty();
     }
-
     private Optional<SealedBarrelRecipe> getRecipe(ItemStack input){
         SimpleContainer fake = new SimpleContainer(1);
         fake.setItem(0, input);
@@ -363,6 +362,12 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
         itemHandler.setStackInSlot(ITEM_INPUT_SLOT, input);
 
         fluidTank.drain(fluidPerCraft * maxCraftable, IFluidHandler.FluidAction.EXECUTE);
+        if(!recipe.getFluidOutput().equals(FluidStack.EMPTY)){
+            FluidStack outputFluid = recipe.getFluidOutput();
+            outputFluid.setAmount(outputFluid.getAmount() * maxCraftable);
+            fluidTank.drain(fluidTank.getFluidAmount(),IFluidHandler.FluidAction.EXECUTE);
+            fluidTank.fill(outputFluid,IFluidHandler.FluidAction.EXECUTE);
+        }
 
         ItemStack resultStack = recipe.getOutput().copy();
         resultStack.setCount(resultStack.getCount() * maxCraftable);

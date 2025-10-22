@@ -1,0 +1,15 @@
+{
+  "type": "lamina_et_ignis:sealed_barrel",
+  "input": {
+    "item": "lamina_et_ignis:hide"
+  },
+  "output": {
+    "item": "minecraft:leather",
+    "count": 1
+  },
+  "fluid": {
+    "fluid": "lamina_et_ignis:tannin",
+    "amount": 250
+  },
+  "time": 7200
+}

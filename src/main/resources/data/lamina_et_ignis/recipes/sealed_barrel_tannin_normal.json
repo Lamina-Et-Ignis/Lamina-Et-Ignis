@@ -1,0 +1,15 @@
+{
+  "type": "lamina_et_ignis:sealed_barrel",
+  "input": {
+    "tag": "minecraft:logs"
+  },
+  "fluid": {
+    "fluid": "minecraft:water",
+    "amount": 100
+  },
+  "fluidOutput": {
+    "fluid": "lamina_et_ignis:tannin",
+    "amount": 100
+  },
+  "time": 20
+}
