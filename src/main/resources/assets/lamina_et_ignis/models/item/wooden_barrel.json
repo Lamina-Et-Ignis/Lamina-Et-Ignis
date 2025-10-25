@@ -1,3 +1,22 @@
 {
-  "parent": "lamina_et_ignis:block/wooden_barrel"
+  "parent": "lamina_et_ignis:block/drying_rack",
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        225,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    }
+  }
 }

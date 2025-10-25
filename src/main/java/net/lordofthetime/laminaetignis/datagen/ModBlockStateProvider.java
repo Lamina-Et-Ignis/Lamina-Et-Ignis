@@ -80,8 +80,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }
     private void blockItem(RegistryObject<Block> blockRegistryObject,String name) {
-        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(LaminaEtIgnis.MODID +
-                ":block/" + name));
+        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(modLoc("block/" + name)));
     }
     private void leavesBlock(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(),
