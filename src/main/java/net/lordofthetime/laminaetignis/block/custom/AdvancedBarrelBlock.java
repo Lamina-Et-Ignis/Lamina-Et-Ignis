@@ -23,8 +23,13 @@
     import net.minecraft.world.phys.shapes.CollisionContext;
     import net.minecraft.world.phys.shapes.VoxelShape;
     import net.minecraftforge.common.capabilities.ForgeCapabilities;
+    import net.minecraftforge.common.util.LazyOptional;
+    import net.minecraftforge.fluids.FluidActionResult;
     import net.minecraftforge.fluids.FluidStack;
+    import net.minecraftforge.fluids.FluidUtil;
     import net.minecraftforge.fluids.capability.IFluidHandler;
+    import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+    import net.minecraftforge.fluids.capability.templates.FluidTank;
     import net.minecraftforge.network.NetworkHooks;
     import org.jetbrains.annotations.Nullable;
 
@@ -71,12 +76,14 @@
         }
 
         @Override
-        public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-            if (!pLevel.isClientSide()) {
-                BlockEntity entity = pLevel.getBlockEntity(pPos);
-                if(entity instanceof AdvancedBarrelBlockEntity barrel) {
-                    NetworkHooks.openScreen(((ServerPlayer)pPlayer), barrel, pPos);
-                } else {
+        public InteractionResult use(BlockState pState, Level level, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+            if (!level.isClientSide()) {
+                BlockEntity entity = level.getBlockEntity(pPos);
+                if (entity instanceof AdvancedBarrelBlockEntity barrel) {
+                    // right click interaction for sealing and filling/draining buckets is in event/AdvancedBarrelEvents.java
+                    NetworkHooks.openScreen(((ServerPlayer) pPlayer), barrel, pPos);
+                }
+                else {
                     throw new IllegalStateException("Container provider missing for " + entity.toString());
                 }
             }

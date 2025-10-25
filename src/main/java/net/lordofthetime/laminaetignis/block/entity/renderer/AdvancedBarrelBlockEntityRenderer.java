@@ -2,16 +2,22 @@ package net.lordofthetime.laminaetignis.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
 import net.lordofthetime.laminaetignis.block.entity.AdvancedBarrelBlockEntity;
 import net.lordofthetime.laminaetignis.fluid.FluidHelpers;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.minecraftforge.fluids.FluidStack;
@@ -24,6 +30,30 @@ public class AdvancedBarrelBlockEntityRenderer implements BlockEntityRenderer<Ad
     public void render(AdvancedBarrelBlockEntity pBlockEntity, float pPartialTick, PoseStack poseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
 
         FluidStack fluid = pBlockEntity.getFluidTank().getFluid();
+        ItemStack input = pBlockEntity.getItemInputSlot();
+        ItemStack output = pBlockEntity.getItemOutputSlot();
+        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+        if(!input.isEmpty()){
+            poseStack.pushPose();
+
+            poseStack.translate(0.35f,0.2f,0.35f);
+
+            poseStack.scale(0.3f, 0.3f, 0.3f);
+
+            poseStack.mulPose(Axis.XP.rotationDegrees(270));
+            itemRenderer.renderStatic(input, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(),pBlockEntity.getBlockPos()),
+                    OverlayTexture.NO_OVERLAY, poseStack,pBuffer,pBlockEntity.getLevel(),1);
+            poseStack.popPose();
+        }
+        if(!output.isEmpty()){
+            poseStack.pushPose();
+            poseStack.translate(0.65f,0.2f,0.65f);
+            poseStack.scale(0.3f, 0.3f, 0.3f);
+            poseStack.mulPose(Axis.XP.rotationDegrees(270));
+            itemRenderer.renderStatic(output, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(),pBlockEntity.getBlockPos()),
+                    OverlayTexture.NO_OVERLAY, poseStack,pBuffer,pBlockEntity.getLevel(),1);
+            poseStack.popPose();
+        }
         if(!fluid.isEmpty() && !pBlockEntity.getBlockState().getValue(AdvancedBarrelBlock.SEALED)){
             float minX = 2.5f / 16f;
             float maxX = 13.5f / 16f;

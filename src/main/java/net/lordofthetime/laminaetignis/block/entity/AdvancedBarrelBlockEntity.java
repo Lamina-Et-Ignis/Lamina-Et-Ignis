@@ -2,7 +2,6 @@ package net.lordofthetime.laminaetignis.block.entity;
 
 import net.lordofthetime.laminaetignis.block.custom.AdvancedBarrelBlock;
 import net.lordofthetime.laminaetignis.gui.menu.AdvancedBarrelMenu;
-import net.lordofthetime.laminaetignis.item.ModItems;
 import net.lordofthetime.laminaetignis.network.ModMessages;
 import net.lordofthetime.laminaetignis.network.PacketSyncFluidClient;
 import net.lordofthetime.laminaetignis.network.PacketToggleSealClient;
@@ -19,7 +18,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -70,19 +68,14 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
         @Override
         public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
             if (sealed) return stack;
-            if(slot == ITEM_INPUT_SLOT){
-                return super.insertItem(slot, stack, simulate);
-            }
-            return stack;
+            return super.insertItem(slot,stack,simulate);
         }
 
         @Override
         public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
             if (sealed) return ItemStack.EMPTY;
-            if(slot == ITEM_OUTPUT_SLOT){
-                return super.extractItem(slot, amount, simulate);
-            }
-            return ItemStack.EMPTY;
+            return super.extractItem(slot, amount, simulate);
+
 
         }
     };
@@ -355,6 +348,13 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
 
     public FluidTank getFluidTank(){
         return this.fluidTank;
+    }
+
+    public ItemStack getItemInputSlot() {
+        return itemHandler.getStackInSlot(ITEM_INPUT_SLOT).copy();
+    }
+    public ItemStack getItemOutputSlot() {
+        return itemHandler.getStackInSlot(ITEM_OUTPUT_SLOT).copy();
     }
 
     private boolean hasProgressFinished() {
