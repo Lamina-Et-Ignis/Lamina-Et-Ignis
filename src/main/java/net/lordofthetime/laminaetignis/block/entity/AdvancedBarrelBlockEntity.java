@@ -51,7 +51,6 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            // 🔒 Block ALL insertions when sealed
             if (sealed) return false;
 
             // Slot 0: only fluid containers
@@ -70,16 +69,21 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
 
         @Override
         public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
-            // 🔒 Block insertion logic too
             if (sealed) return stack;
-            return super.insertItem(slot, stack, simulate);
+            if(slot == ITEM_INPUT_SLOT){
+                return super.insertItem(slot, stack, simulate);
+            }
+            return stack;
         }
 
         @Override
         public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
-            // 🔒 Block extraction logic
             if (sealed) return ItemStack.EMPTY;
-            return super.extractItem(slot, amount, simulate);
+            if(slot == ITEM_OUTPUT_SLOT){
+                return super.extractItem(slot, amount, simulate);
+            }
+            return ItemStack.EMPTY;
+
         }
     };
 
@@ -122,16 +126,19 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
 
         @Override
         public int fill(FluidStack resource, FluidAction action) {
+            if(sealed) return 0;
             return fluidTank.fill(resource,action);
         }
 
         @Override
         public @NotNull FluidStack drain(FluidStack resource, FluidAction action) {
+            if(sealed) return FluidStack.EMPTY;
             return fluidTank.drain(resource,action);
         }
 
         @Override
         public @NotNull FluidStack drain(int maxDrain, FluidAction action) {
+            if(sealed) return FluidStack.EMPTY;
             return fluidTank.drain(maxDrain,action);
         }
     };
