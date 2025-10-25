@@ -10,6 +10,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,6 +24,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+
+        this.tag(Tags.Items.STRING).add(
+                ModItems.WOOL_STRING.get()
+        );
+
         this.tag(ModTags.Items.SLING_AMMO).add(
                 ModItems.PEBBLE.get(),
                 ModItems.DEEPSLATE_PEBBLE.get(),
