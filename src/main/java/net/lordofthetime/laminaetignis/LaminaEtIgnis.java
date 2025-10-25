@@ -50,7 +50,7 @@ public class LaminaEtIgnis {
 
         ModMenuTypes.register(modEventBus);
 
-        // FLuids
+        // Fluids
         ModFluids.FLUIDS.register(modEventBus);
         ModFluids.FLUID_TYPES.register(modEventBus);
 

@@ -43,7 +43,7 @@ public class FluidContainerItem extends Item {
             }
             else{
                 pTooltipComponents.add(Component.literal(
-                         "0 / " + handler.getTankCapacity(0) + " mB"));
+                        "0 / " + handler.getTankCapacity(0) + " mB"));
             }
         });
 
@@ -56,7 +56,7 @@ public class FluidContainerItem extends Item {
         FluidStack fluid = handler.getFluidInTank(0);
         if(!fluid.isEmpty()){
             // copies fluid name and puts it before normal item name
-            MutableComponent prefix = Component.literal(fluid.getDisplayName() + " ");
+            MutableComponent prefix = Component.literal(fluid.getDisplayName().getString() + " ");
             return prefix.append(super.getName(pStack));
         }
         return super.getName(pStack);

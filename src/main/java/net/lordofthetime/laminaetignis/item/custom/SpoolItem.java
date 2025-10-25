@@ -37,19 +37,20 @@ public class SpoolItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity){
         if(entity instanceof Player player){
-            ItemStack material;
+            ItemStack input;
             if (player.getMainHandItem().equals(stack)) {
-                material = player.getOffhandItem();
-                material.shrink(1);
+                input = player.getOffhandItem();
             }
             else{
-                material = player.getMainHandItem();
-                material.shrink(1);
+                input = player.getMainHandItem();
             }
-            stack.shrink(1);
-            WindingRecipe windingRecipe = getRecipe(material,level);
 
+            WindingRecipe windingRecipe = getRecipe(input,level);
             if (windingRecipe != null) {
+                //spool
+                stack.shrink(1);
+
+                input.shrink(windingRecipe.getInput().getCount());
                 player.addItem(new ItemStack(windingRecipe.getOutput().getItem()));
             }
             return stack;
@@ -79,10 +80,12 @@ public class SpoolItem extends Item {
         }
 
         WindingRecipe windingRecipe = getRecipe(material,level);
-
+        System.out.println(windingRecipe.getInput());
         if (windingRecipe != null) {
-            player.startUsingItem(hand);
-            return InteractionResultHolder.consume(spool);
+            if(windingRecipe.getInput().getCount() <= material.getCount()){
+                player.startUsingItem(hand);
+                return InteractionResultHolder.consume(spool);
+            }
         }
         return InteractionResultHolder.pass(spool);
     }

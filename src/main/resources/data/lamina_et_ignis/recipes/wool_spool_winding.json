@@ -1,7 +1,8 @@
 {
   "type": "lamina_et_ignis:winding",
   "input": {
-    "item": "lamina_et_ignis:fleece"
+    "item": {"item": "lamina_et_ignis:fleece"},
+    "amount": 8
   },
   "output": {
     "item": "lamina_et_ignis:wool_spool"

@@ -394,9 +394,9 @@ public class AdvancedBarrelBlockEntity extends BlockEntity implements MenuProvid
             singleInput.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).ifPresent(handler -> {
                 FluidStack contained = handler.getFluidInTank(0);
                 ItemStack resultContainer = ItemStack.EMPTY;
-                // --- Check if output is at max stack size while not being empty
+                // --- Check if output is at max stack size while not being empty or input and output don't match
                 if(fluidOutput.getMaxStackSize() == fluidOutput.getCount() && !fluidOutput.isEmpty() ||
-                        fluidInput.getItem() == fluidOutput.getItem()){
+                        !(fluidInput.getItem() == fluidOutput.getItem() || fluidOutput.isEmpty())){
                     return;
                 }
                 // --- Case 1: Input item has fluid → dump into tank ---

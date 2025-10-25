@@ -47,8 +47,20 @@
   "item.lamina_et_ignis.gold_grit": "Gold Grit",
 
 
-  "item.lamina_et_ignis.cow_hide": "Cow Hide",
+  "item.lamina_et_ignis.cowhide": "Cowhide",
   "item.lamina_et_ignis.cow_hide_pelt_cloak": "Cow Hide Pelt Cloak",
+
+  "item.lamina_et_ignis.sheepskin": "Sheepskin",
+  "item.lamina_et_ignis.greasy_fleece": "Greasy Fleece",
+  "item.lamina_et_ignis.wet_fleece": "Wet Fleece",
+  "item.lamina_et_ignis.fleece": "Fleece",
+
+  "item.lamina_et_ignis.wool_string": "Wool String",
+  "item.lamina_et_ignis.spool": "Spool",
+  "item.lamina_et_ignis.wool_spool": "Wool Spool",
+  "item.lamina_et_ignis.wool_cloth": "Wool Cloth",
+
+  "item.lamina_et_ignis.hide": "Hide",
   "item.lamina_et_ignis.leather_strap": "Leather Strap",
 
   "item.lamina_et_ignis.sling": "Sling",
@@ -79,11 +91,6 @@
   "item.lamina_et_ignis.andesite_pebble": "Andesite Pebble",
   "item.lamina_et_ignis.diorite_pebble": "Diorite Pebble",
 
-  "item.lamina_et_ignis.greasy_fleece": "Greasy Fleece",
-  "item.lamina_et_ignis.fleece": "Fleece",
-
-
-
   "item.lamina_et_ignis.goldvein": "Goldvein",
 
   "item.lamina_et_ignis.raw_tin": "Raw Tin",
@@ -91,6 +98,11 @@
   "item.lamina_et_ignis.wooden_bucket": "Wooden Bucket",
 
   "fluid_type.lamina_et_ignis.tannin": "Tannin",
+  "item.lamina_et_ignis.tannin_bucket": "Tannin Bucket",
+
+
+  "block.lamina_et_ignis.drying_rack": "Drying Rack",
+  "block.lamina_et_ignis.wooden_barrel": "Wooden Barrel",
 
   "block.lamina_et_ignis.tin_ore": "Tin Ore",
 

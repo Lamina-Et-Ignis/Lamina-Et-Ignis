@@ -7,9 +7,11 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class WindingRecipe implements Recipe<SimpleContainer> {
 
@@ -76,7 +78,10 @@ public class WindingRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public WindingRecipe fromJson(ResourceLocation id, JsonObject json) {
-            ItemStack input = ShapedRecipe.itemStackFromJson(json.getAsJsonObject("input"));
+            JsonObject itemObject = json.getAsJsonObject("input");
+            ItemStack input = ShapedRecipe.itemStackFromJson(itemObject.getAsJsonObject("item"));
+            input.setCount(itemObject.get("amount").getAsInt());
+            System.out.println(input.toString());
             ItemStack output = ShapedRecipe.itemStackFromJson(json.getAsJsonObject("output"));
             return new WindingRecipe(id, input,output);
         }

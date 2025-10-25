@@ -19,6 +19,8 @@ import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 
+import net.lordofthetime.laminaetignis.fluid.FluidHelpers;
+
 import static com.mojang.blaze3d.systems.RenderSystem.setShaderColor;
 
 public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrelMenu> {
@@ -74,16 +76,13 @@ public class AdvancedBarrelScreen extends AbstractContainerScreen<AdvancedBarrel
     }
 
     private void renderTank(GuiGraphics guiGraphics, FluidStack fluid, int capacity, int x, int y) {
-        TextureAtlasSprite sprite = Minecraft.getInstance()
-                .getTextureAtlas(InventoryMenu.BLOCK_ATLAS)
-                .apply(IClientFluidTypeExtensions.of(fluid.getFluid()).getStillTexture(fluid));
+        TextureAtlasSprite sprite = FluidHelpers.getSprite(fluid);
 
-        int color = IClientFluidTypeExtensions.of(fluid.getFluid()).getTintColor(fluid);
-        float a = ((color >> 24) & 0xFF) / 255f;
-        float r = ((color >> 16) & 0xFF) / 255f;
-        float g = ((color >> 8) & 0xFF) / 255f;
-        float b = (color & 0xFF) / 255f;
-
+        float[] rgba = FluidHelpers.getFluidColorRGBA(fluid);
+        float r = rgba[0];
+        float g = rgba[1];
+        float b = rgba[2];
+        float a = rgba[3];
         x += 26;
         y += 54;
         int maxY = (int)((fluid.getAmount() /  (float)capacity) * 64);
