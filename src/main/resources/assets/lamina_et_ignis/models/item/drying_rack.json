@@ -1,5 +1,5 @@
 {
-  "parent": "lamina_et_ignis:block/wooden_barrel",
+  "parent": "lamina_et_ignis:block/drying_rack",
   "display": {
     "gui": {
       "rotation": [
